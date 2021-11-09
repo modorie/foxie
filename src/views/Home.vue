@@ -27,7 +27,7 @@ export default {
   methods: {
     getArticles() {
       axios
-        .get("/api/v1/articles")
+        .get("/api/v1/articles/")
         .then((response) => console.log(response))
         .catch((error) => {
           console.log(error);
