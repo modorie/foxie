@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Local
     'articles',
+    'accounts',
     
     # Third Party Apps
     'django_extensions',
@@ -135,4 +136,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Django - Vue.js CORS
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
