@@ -1,18 +1,38 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <header>인덱스 페이지</header>
+
+    <section>최신 글</section>
+
+    <div v-for="article in articles" :key="article.id">
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.content }}</p>
+    </div>
   </div>
 </template>
+<script lang="js">
+// ts 이슈 해결
+import axios from "axios";
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
-
-@Component({
-  components: {
-    HelloWorld,
+export default {
+  name: "Home",
+  data() {
+    return {
+      Articles: [],
+    };
   },
-})
-export default class Home extends Vue {}
+  mounted() {
+    this.getArticles();
+  },
+  methods: {
+    getArticles() {
+      axios
+        .get("/api/v1/articles")
+        .then((response) => console.log(response))
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
