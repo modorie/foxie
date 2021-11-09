@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     
     # Third Party Apps
     'django_extensions',
-    'drf_yasg'
+    'drf_yasg',
     'rest_framework',
     'corsheaders',
 
