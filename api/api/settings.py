@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Local
+    'articles',
+    
     # Third Party Apps
     'django_extensions',
     'rest_framework',
