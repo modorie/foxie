@@ -10,12 +10,14 @@
     </div>
   </div>
 </template>
+
 <script lang="js">
 // ts 이슈 해결
 import axios from "axios";
 
 export default {
   name: "Home",
+
   data() {
     return {
       Articles: [],

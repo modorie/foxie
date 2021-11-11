@@ -1,11 +1,23 @@
 <template>
   <div id="app">
-    <div class="bg-gray-900 text-white">
-      <router-link to="/">Home | </router-link>
-      <router-link to="/about">About</router-link>
-    </div>
+    <side-bar />
     <router-view />
   </div>
 </template>
 
-<style></style>
+<script>
+import SideBar from "./components/Sidebar.vue";
+
+export default {
+  name: "app",
+  components: {
+    SideBar,
+  },
+};
+</script>
+
+<style>
+#app {
+  margin-left: 100px;
+}
+</style>
