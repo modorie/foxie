@@ -1,57 +1,75 @@
 <template>
   <div class="sidebar">
-    <div class="control"></div>
+    <div class="menu-item">
+      <!-- TODO : for문으로 리팩토링 -->
+      <router-link to="/">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="64"
+          height="64"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-logo />
+        </icon-base>
+      </router-link>
+    </div>
 
-    <!-- TODO : for문으로 리팩토링 -->
-    <icon-base
-      viewBox="0 0 64 64"
-      width="64"
-      height="64"
-      iconColor="transparent"
-      icon-name="icon"
-    >
-      <icon-logo />
-    </icon-base>
+    <div class="menu-item">
+      <router-link to="/">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="64"
+          height="64"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-home />
+        </icon-base>
+      </router-link>
+    </div>
 
-    <icon-base
-      viewBox="0 0 32 32"
-      width="24"
-      height="24"
-      iconColor="transparent"
-      icon-name="icon"
-    >
-      <icon-home />
-    </icon-base>
+    <div class="menu-item">
+      <router-link to="/movie">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="64"
+          height="64"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-movie />
+        </icon-base>
+      </router-link>
+    </div>
 
-    <icon-base
-      viewBox="0 0 32 32"
-      width="24"
-      height="24"
-      iconColor="transparent"
-      icon-name="droplet"
-    >
-      <icon-movie />
-    </icon-base>
+    <div class="menu-item">
+      <router-link to="/review">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="64"
+          height="64"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-review />
+        </icon-base>
+      </router-link>
+    </div>
 
-    <icon-base
-      viewBox="0 0 32 32"
-      width="24"
-      height="24"
-      iconColor="transparent"
-      icon-name="droplet"
-    >
-      <icon-review />
-    </icon-base>
-
-    <icon-base
-      viewBox="0 0 32 32"
-      width="24"
-      height="24"
-      iconColor="transparent"
-      icon-name="droplet"
-    >
-      <icon-community />
-    </icon-base>
+    <div class="menu-item">
+      <router-link to="/community">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="64"
+          height="64"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-community />
+        </icon-base>
+      </router-link>
+    </div>
   </div>
 </template>
 
