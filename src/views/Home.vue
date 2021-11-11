@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <Sidebar />
-
     <header>인덱스 페이지</header>
 
     <section>최신 글</section>
@@ -15,16 +13,10 @@
 
 <script lang="js">
 // ts 이슈 해결
-import Sidebar from '../components/Sidebar.vue'
-
 import axios from "axios";
 
 export default {
   name: "Home",
-
-  components: {
-    Sidebar
-  },
 
   data() {
     return {
