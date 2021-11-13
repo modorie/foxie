@@ -23,6 +23,18 @@
         <icon-bell />
       </icon-base>
     </div>
+
+    <div class="header-item">
+      <icon-base
+        viewBox="0 0 64 64"
+        width="48"
+        height="48"
+        iconColor="transparent"
+        icon-name="icon"
+      >
+        <icon-avatar />
+      </icon-base>
+    </div>
   </div>
 </template>
 
@@ -30,6 +42,7 @@
 import IconBase from "./IconBase.vue";
 import IconSearch from "./icons/IconSearch.vue";
 import IconBell from "./icons/IconBell.vue";
+import IconAvatar from "./icons/IconAvatar.vue";
 
 export default {
   name: "Header",
@@ -37,6 +50,7 @@ export default {
     IconBase,
     IconSearch,
     IconBell,
+    IconAvatar,
   },
 };
 </script>
