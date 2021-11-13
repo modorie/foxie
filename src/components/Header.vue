@@ -1,48 +1,51 @@
 <template>
   <div class="header">
-    <div class="header-item">
-      <icon-base
-        viewBox="0 0 64 64"
-        width="64"
-        height="64"
-        iconColor="transparent"
-        icon-name="icon"
-      >
-        <icon-search />
-      </icon-base>
-    </div>
+    <section class="header-search">
+      <div>
+        <icon-base
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-search />
+        </icon-base>
+      </div>
 
-    <input
-      class="movie-input"
-      type="text"
-      placeholder="Search"
-      v-model.trim="todoTitle"
-      @keyup.enter="creteTodo"
-    />
+      <input
+        type="text"
+        placeholder="Search"
+        v-model.trim="todoTitle"
+        @keyup.enter="creteTodo"
+      />
+    </section>
 
-    <div class="header-item">
-      <icon-base
-        viewBox="0 0 64 64"
-        width="64"
-        height="64"
-        iconColor="transparent"
-        icon-name="icon"
-      >
-        <icon-bell />
-      </icon-base>
-    </div>
+    <section class="header-info">
+      <div class="header-bell">
+        <icon-base
+          viewBox="0 0 32 32"
+          width="24"
+          height="24"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-bell />
+        </icon-base>
+      </div>
 
-    <div class="header-item">
-      <icon-base
-        viewBox="0 0 64 64"
-        width="48"
-        height="48"
-        iconColor="transparent"
-        icon-name="icon"
-      >
-        <icon-avatar />
-      </icon-base>
-    </div>
+      <div class="header-avatar">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="32"
+          height="32"
+          iconColor="transparent"
+          icon-name="icon"
+        >
+          <icon-avatar />
+        </icon-base>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -79,16 +82,39 @@ export default {
 <style scoped>
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   height: 70px;
+  align-items: center;
 }
 
-.movie-input {
-  @apply px-4 w-full;
+.header-search {
+  margin-left: 3rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.movie-input:focus {
+.header-search input {
+  margin-left: 1.5rem;
+  width: 100%;
+}
+
+.header-search input:focus {
   outline: none;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+}
+
+.header-bell {
+  margin-left: 2rem;
+}
+
+.header-avatar {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 </style>
