@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-logo">
-      <router-link to="/">
+      <router-link to="/" exact="">
         <!-- TODO : for문으로 리팩토링 -->
-        <icon-base viewBox="0 0 43 54" width="32" height="32" icon-name="icon">
+        <icon-base viewBox="0 0 43 54" width="42" height="42" icon-name="icon">
           <icon-logo />
         </icon-base>
       </router-link>
@@ -91,6 +91,7 @@ export default {
 
 .sidebar-logo {
   padding: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
 
@@ -105,7 +106,8 @@ export default {
 
 .sidebar-menu-title {
   color: #515a67;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .router-link-active {
