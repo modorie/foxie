@@ -2,13 +2,7 @@
   <div class="header">
     <section class="header-search">
       <div>
-        <icon-base
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 24 24" width="24" height="24" icon-name="icon">
           <icon-search />
         </icon-base>
       </div>
@@ -23,25 +17,13 @@
 
     <section class="header-info">
       <div class="header-bell">
-        <icon-base
-          viewBox="0 0 32 32"
-          width="24"
-          height="24"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 32 32" width="24" height="24" icon-name="icon">
           <icon-bell />
         </icon-base>
       </div>
 
       <div class="header-avatar">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="32"
-          height="32"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 64 64" width="32" height="32" icon-name="icon">
           <icon-avatar />
         </icon-base>
       </div>

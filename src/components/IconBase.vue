@@ -21,7 +21,7 @@ export default {
     width: { type: [Number, String], default: 18 },
     height: { type: [Number, String], default: 18 },
     viewBox: { type: String, default: "0 0 24 24" },
-    iconColor: { type: String, default: "currentColor" },
+    iconColor: { type: String, default: "transparent" },
   },
 };
 </script>
