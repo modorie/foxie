@@ -3,15 +3,16 @@
     <section class="header-search">
       <div>
         <icon-base viewBox="0 0 24 24" width="24" height="24" icon-name="icon">
-          <icon-search />
+          <icon-search :class="[active ? 'header-search-active' : '']" />
         </icon-base>
       </div>
 
       <input
         type="text"
         placeholder="Search"
-        v-model.trim="todoTitle"
-        @keyup.enter="creteTodo"
+        v-model.trim="searchInput"
+        @focus="active = true"
+        @blur="active = false"
       />
     </section>
 
@@ -48,15 +49,8 @@ export default {
   data() {
     return {
       searchInput: "",
+      active: false,
     };
-  },
-  methods: {
-    creteTodo() {
-      const todoItem = {
-        title: this.searchInput,
-      };
-      this.searchInput = null;
-    },
   },
 };
 </script>
@@ -75,6 +69,10 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.header-search-active {
+  stroke: #52525b;
 }
 
 .header-search input {
