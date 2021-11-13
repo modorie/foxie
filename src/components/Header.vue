@@ -12,6 +12,14 @@
       </icon-base>
     </div>
 
+    <input
+      class="movie-input"
+      type="text"
+      placeholder="Search"
+      v-model.trim="todoTitle"
+      @keyup.enter="creteTodo"
+    />
+
     <div class="header-item">
       <icon-base
         viewBox="0 0 64 64"
@@ -52,10 +60,35 @@ export default {
     IconBell,
     IconAvatar,
   },
+  data() {
+    return {
+      searchInput: "",
+    };
+  },
+  methods: {
+    creteTodo() {
+      const todoItem = {
+        title: this.searchInput,
+      };
+      this.searchInput = null;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .header {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  height: 70px;
+}
+
+.movie-input {
+  @apply px-4 w-full;
+}
+
+.movie-input:focus {
+  outline: none;
 }
 </style>
