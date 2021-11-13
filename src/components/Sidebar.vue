@@ -14,7 +14,7 @@
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-home class="sidebar-menu-icon" />
         </icon-base>
-        <p class="sidebar-menu-title">Home</p>
+        <p class="sidebar-menu-title">HOME</p>
       </div>
     </router-link>
 
@@ -23,7 +23,7 @@
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-movie class="sidebar-menu-icon" />
         </icon-base>
-        <p class="sidebar-menu-title">Movie</p>
+        <p class="sidebar-menu-title">MOVIE</p>
       </div>
     </router-link>
 
@@ -32,7 +32,7 @@
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-review class="sidebar-menu-icon" />
         </icon-base>
-        <p class="sidebar-menu-title">Review</p>
+        <p class="sidebar-menu-title">REVIEW</p>
       </div>
     </router-link>
 
@@ -41,7 +41,7 @@
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-community class="sidebar-menu-icon" />
         </icon-base>
-        <p class="sidebar-menu-title">Community</p>
+        <p class="sidebar-menu-title">COMMUNITY</p>
       </div>
     </router-link>
   </div>
@@ -106,8 +106,8 @@ export default {
 
 .sidebar-menu-title {
   color: #515a67;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .router-link-active {
@@ -116,7 +116,9 @@ export default {
 }
 
 .router-link-active .sidebar-menu-title {
-  color: #ed5656;
+  color: #ffffff;
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0rem;
 }
 
 .router-link-active .sidebar-menu-icon {
