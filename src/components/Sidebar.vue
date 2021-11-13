@@ -124,4 +124,21 @@ export default {
 .router-link-active .sidebar-menu-icon {
   stroke: #ed5656;
 }
+
+.sidebar-menu:hover .sidebar-menu-title {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-menu:hover .sidebar-menu-icon {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+
+/* not active를 css not selector로 처리 하기 어려워서 무식하게 구현 */
+.router-link-active .sidebar-menu:hover .sidebar-menu-title {
+  color: #ffffff;
+}
+
+.router-link-active .sidebar-menu:hover .sidebar-menu-icon {
+  stroke: #ed5656;
+}
 </style>
