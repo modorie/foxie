@@ -3,13 +3,7 @@
     <div class="menu-item">
       <!-- TODO : for문으로 리팩토링 -->
       <router-link to="/">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="64"
-          height="64"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
           <icon-logo />
         </icon-base>
       </router-link>
@@ -17,13 +11,7 @@
 
     <div class="menu-item">
       <router-link to="/">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="64"
-          height="64"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
           <icon-home />
         </icon-base>
       </router-link>
@@ -31,13 +19,7 @@
 
     <div class="menu-item">
       <router-link to="/movie">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="64"
-          height="64"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
           <icon-movie />
         </icon-base>
       </router-link>
@@ -45,13 +27,7 @@
 
     <div class="menu-item">
       <router-link to="/review">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="64"
-          height="64"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
           <icon-review />
         </icon-base>
       </router-link>
@@ -59,13 +35,7 @@
 
     <div class="menu-item">
       <router-link to="/community">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="64"
-          height="64"
-          iconColor="transparent"
-          icon-name="icon"
-        >
+        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
           <icon-community />
         </icon-base>
       </router-link>
