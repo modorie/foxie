@@ -1,45 +1,49 @@
 <template>
   <div class="sidebar">
-    <div class="menu-item">
-      <!-- TODO : for문으로 리팩토링 -->
+    <div class="sidebar-logo">
       <router-link to="/">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
+        <!-- TODO : for문으로 리팩토링 -->
+        <icon-base viewBox="0 0 43 54" width="32" height="32" icon-name="icon">
           <icon-logo />
         </icon-base>
       </router-link>
     </div>
 
-    <div class="menu-item">
-      <router-link to="/">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-home />
+    <router-link to="/" exact="">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-home class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">Home</p>
+      </div>
+    </router-link>
 
-    <div class="menu-item">
-      <router-link to="/movie">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-movie />
+    <router-link to="/movie">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-movie class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">Movie</p>
+      </div>
+    </router-link>
 
-    <div class="menu-item">
-      <router-link to="/review">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-review />
+    <router-link to="/review">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-review class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">Review</p>
+      </div>
+    </router-link>
 
-    <div class="menu-item">
-      <router-link to="/community">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-community />
+    <router-link to="/community">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-community class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">Community</p>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -53,6 +57,11 @@ import IconReview from "./icons/IconReview.vue";
 
 export default {
   name: "Sidebar",
+  data() {
+    return {
+      active: false,
+    };
+  },
   components: {
     IconLogo,
     IconBase,
@@ -75,7 +84,40 @@ export default {
 
   width: 100px;
 
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-menu {
+  width: 100px;
+
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-menu-title {
+  color: #515a67;
+  font-weight: 600;
+}
+
+.router-link-active {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset -3px 0 0 0px #ed5656;
+}
+
+.router-link-active .sidebar-menu-title {
+  color: #ed5656;
+}
+
+.router-link-active .sidebar-menu-icon {
+  stroke: #ed5656;
 }
 </style>
