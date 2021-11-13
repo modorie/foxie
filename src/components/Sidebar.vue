@@ -57,11 +57,6 @@ import IconReview from "./icons/IconReview.vue";
 
 export default {
   name: "Sidebar",
-  data() {
-    return {
-      active: false,
-    };
-  },
   components: {
     IconLogo,
     IconBase,
