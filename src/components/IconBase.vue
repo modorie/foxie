@@ -17,7 +17,7 @@
 <script>
 export default {
   props: {
-    iconName: { type: String, default: "" },
+    iconName: { type: String, default: "icon" },
     width: { type: [Number, String], default: 18 },
     height: { type: [Number, String], default: 18 },
     viewBox: { type: String, default: "0 0 24 24" },

@@ -2,7 +2,7 @@
   <div id="app">
     <Header />
     <SideBar />
-    <router-view />
+    <router-view class="router__view" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import SideBar from "./components/Sidebar.vue";
 import Header from "./components/Header.vue";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     SideBar,
     Header,
@@ -22,5 +22,11 @@ export default {
 <style>
 #app {
   margin-left: 100px;
+}
+
+.router__view {
+  margin-top: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 </style>
