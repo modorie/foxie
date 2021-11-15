@@ -57,6 +57,11 @@ export default {
 
 <style scoped>
 .header {
+  position: fixed;
+  left: 100px;
+  top: 0;
+  width: calc(100% - 100px);
+
   display: flex;
   justify-content: space-between;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
