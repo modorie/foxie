@@ -1,10 +1,6 @@
 <template>
   <div class="container">
-    <MovieCard
-      v-for="movie in movies"
-      :key="movie.id"
-      :movie="movie"
-    ></MovieCard>
+    <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
   </div>
 </template>
 
@@ -28,9 +24,6 @@ export default {
     return {};
   },
   methods: {},
-  created() {
-    console.log(this.movies);
-  },
 };
 </script>
 

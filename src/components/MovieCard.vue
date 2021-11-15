@@ -10,9 +10,9 @@
           {{ movie.title | truncate(19) }}
         </p>
 
-        <span class="card__info__left__year">
-          ({{ movie.release_date.split("-")[0] }})</span
-        >
+        <div class="card__info__left__year">
+          ({{ movie.release_date.split("-")[0] }})
+        </div>
       </div>
 
       <div class="card__info__right">
@@ -20,9 +20,9 @@
           <icon-star />
         </icon-base>
 
-        <span class="card__info__right__score">
-          {{ movie.vote_average.toFixed(1) }}</span
-        >
+        <div class="card__info__right__score">
+          {{ movie.vote_average.toFixed(1) }}
+        </div>
       </div>
     </div>
   </div>
