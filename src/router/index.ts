@@ -5,6 +5,8 @@ import Home from "../views/Home.vue";
 import Movie from "../views/Movie.vue";
 import Review from "../views/Review.vue";
 import Community from "../views/Community.vue";
+import Signup from "../views/accounts/Signup.vue";
+import Login from "../views/accounts/Login.vue";
 
 Vue.use(Router);
 
@@ -31,6 +33,16 @@ export default new Router({
       path: "/community",
       name: "Community",
       component: Community,
+    },
+    {
+      path: "/accounts/signup",
+      name: "Signup",
+      component: Signup,
+    },
+    {
+      path: "/accounts/login",
+      name: "Login",
+      component: Login,
     },
   ],
 });
