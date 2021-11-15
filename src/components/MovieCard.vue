@@ -20,7 +20,9 @@
           <icon-star />
         </icon-base>
 
-        <span class="card__info__right__score"> {{ movie.vote_average }}</span>
+        <span class="card__info__right__score">
+          {{ movie.vote_average.toFixed(1) }}</span
+        >
       </div>
     </div>
   </div>
