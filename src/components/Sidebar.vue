@@ -1,45 +1,49 @@
 <template>
   <div class="sidebar">
-    <div class="menu-item">
-      <!-- TODO : for문으로 리팩토링 -->
-      <router-link to="/">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
+    <div class="sidebar-logo">
+      <router-link to="/" exact="">
+        <!-- TODO : for문으로 리팩토링 -->
+        <icon-base viewBox="0 0 43 54" width="42" height="42" icon-name="icon">
           <icon-logo />
         </icon-base>
       </router-link>
     </div>
 
-    <div class="menu-item">
-      <router-link to="/">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-home />
+    <router-link to="/" exact="">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-home class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">HOME</p>
+      </div>
+    </router-link>
 
-    <div class="menu-item">
-      <router-link to="/movie">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-movie />
+    <router-link to="/movie">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-movie class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">MOVIE</p>
+      </div>
+    </router-link>
 
-    <div class="menu-item">
-      <router-link to="/review">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-review />
+    <router-link to="/review">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-review class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">REVIEW</p>
+      </div>
+    </router-link>
 
-    <div class="menu-item">
-      <router-link to="/community">
-        <icon-base viewBox="0 0 64 64" width="64" height="64" icon-name="icon">
-          <icon-community />
+    <router-link to="/community">
+      <div class="sidebar-menu">
+        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+          <icon-community class="sidebar-menu-icon" />
         </icon-base>
-      </router-link>
-    </div>
+        <p class="sidebar-menu-title">COMMUNITY</p>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -75,7 +79,61 @@ export default {
 
   width: 100px;
 
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-menu {
+  width: 100px;
+
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-menu-title {
+  color: #515a67;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.router-link-active {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset -3px 0 0 0px #ed5656;
+}
+
+.router-link-active .sidebar-menu-title {
+  color: #ffffff;
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0rem;
+}
+
+.router-link-active .sidebar-menu-icon {
+  stroke: #ed5656;
+}
+
+.sidebar-menu:hover .sidebar-menu-title {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-menu:hover .sidebar-menu-icon {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+
+/* not active를 css not selector로 처리 하기 어려워서 무식하게 구현 */
+.router-link-active .sidebar-menu:hover .sidebar-menu-title {
+  color: #ffffff;
+}
+
+.router-link-active .sidebar-menu:hover .sidebar-menu-icon {
+  stroke: #ed5656;
 }
 </style>
