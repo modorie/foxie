@@ -62,6 +62,7 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   height: 70px;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .header-search {
