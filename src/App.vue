@@ -21,7 +21,8 @@ export default {
 
 <style>
 #app {
-  margin-left: 100px;
+  padding-left: 100px;
+  padding-top: 70px;
 }
 
 .router__view {
