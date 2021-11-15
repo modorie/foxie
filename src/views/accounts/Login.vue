@@ -25,7 +25,7 @@ import axios from "axios";
 
 export default {
   name: "Login",
-  data: function () {
+  data() {
     return {
       credentials: {
         email: null,
@@ -34,7 +34,7 @@ export default {
     };
   },
   methods: {
-    login: function () {
+    login() {
       axios({
         method: "post",
         url: "/accounts/api-token-auth/",

@@ -33,7 +33,7 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL;
 
 export default {
   name: "Signup",
-  data: function () {
+  data() {
     return {
       credentials: {
         email: null,
@@ -44,7 +44,7 @@ export default {
     };
   },
   methods: {
-    signup: function () {
+    signup() {
       axios({
         method: "post",
         url: "/accounts/signup/",

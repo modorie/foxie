@@ -41,12 +41,12 @@ export default new Router({
       component: Community,
     },
     {
-      path: "/accounts/signup",
+      path: "/signup",
       name: "Signup",
       component: Signup,
     },
     {
-      path: "/accounts/login",
+      path: "/login",
       name: "Login",
       component: Login,
     },

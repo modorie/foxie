@@ -50,13 +50,15 @@
       <router-link
         :to="{ name: 'Login' }"
         class="mulish header__button header__button__secondary"
-        >Log In</router-link
       >
+        Log in
+      </router-link>
       <router-link
         :to="{ name: 'Signup' }"
         class="mulish header__button header__button__primary"
-        >Sign Up</router-link
       >
+        Sign up
+      </router-link>
     </div>
   </div>
 </template>
@@ -86,13 +88,13 @@ export default {
     };
   },
   methods: {
-    logout: function () {
+    logout() {
       this.isLogin = false;
       localStorage.removeItem("jwt");
       this.$router.push({ name: "Login" });
     },
   },
-  created: function () {
+  created() {
     const token = localStorage.getItem("jwt");
     if (token) {
       this.isLogin = true;
@@ -111,7 +113,6 @@ export default {
   display: flex;
   justify-content: space-between;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  background-color: #fff;
   height: 70px;
   align-items: center;
   background-color: #ffffff;
@@ -161,12 +162,12 @@ export default {
 .header__button__primary {
   background-color: #ed5656;
   border: 1px solid #ed5656;
-  color: #fff;
+  color: #ffffff;
   font-weight: 500;
 }
 
 .header__button__secondary {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #52525b;
   border: 1px solid #d1d5db;
   font-weight: 500;

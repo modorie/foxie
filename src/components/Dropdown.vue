@@ -1,22 +1,22 @@
 <template>
-  <div class="dropdown__list">
-    <div class="dropdown__list__partition">
+  <div class="dropdown">
+    <div class="dropdown__list">
       <!-- TODO: text-sm -->
-      <span class="dropdown__list__info text-sm">Signed in as</span>
-      <b class="dropdown__list__info text-sm">example@example.com</b>
+      <span class="dropdown__info text-sm">Signed in as</span>
+      <b class="dropdown__info text-sm">example@example.com</b>
     </div>
-    <div class="dropdown__list__partition">
-      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-      <a href="#" class="dropdown__list__item text-sm"> Profile </a>
-      <a href="#" class="dropdown__list__item text-sm"> Accounts settings </a>
+    <div class="dropdown__list">
+      <a href="#" class="dropdown__item text-sm"> Profile </a>
+      <a href="#" class="dropdown__item text-sm"> Accounts settings </a>
     </div>
-    <div class="dropdown__list__partition">
+    <div class="dropdown__list">
       <router-link
         @click.native="logout"
         to="#"
-        class="dropdown__list__item block text-sm"
-        >Log out</router-link
+        class="dropdown__item block text-sm"
       >
+        Log out
+      </router-link>
     </div>
   </div>
 </template>
@@ -24,19 +24,19 @@
 <script>
 export default {
   name: "Dropdown",
-  data: function () {
+  data() {
     return {
       isLogin: false,
     };
   },
   methods: {
-    logout: function () {
+    logout() {
       this.isLogin = false;
       localStorage.removeItem("jwt");
       this.$router.push({ name: "Home" });
     },
   },
-  created: function () {
+  created() {
     const token = localStorage.getItem("jwt");
     if (token) {
       this.isLogin = true;
@@ -46,8 +46,7 @@ export default {
 </script>
 
 <style>
-.dropdown__list {
-  display: block;
+.dropdown {
   position: absolute;
   right: 10px;
   top: 60px;
@@ -58,28 +57,28 @@ export default {
   border: #f4f4f5 1px solid;
 }
 
-.dropdown__list__partition {
+.dropdown__list {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: #f4f4f5 1px solid;
+  border-bottom: 1px solid #f4f4f5;
 }
 
-.dropdown__list__partition:first-child {
+.dropdown__list:first-child {
   padding-top: 1rem;
   padding-bottom: 0.6rem;
 }
 
-.dropdown__list__partition:last-child {
+.dropdown__list:last-child {
   border-bottom: none;
 }
 
-.dropdown__list__info {
+.dropdown__info {
   display: block;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.dropdown__list__item {
+.dropdown__item {
   color: #3f3f46;
   display: block;
   padding-left: 1rem;
