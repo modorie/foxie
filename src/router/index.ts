@@ -3,6 +3,7 @@ import Router from "vue-router";
 
 import Home from "../views/Home.vue";
 import Movie from "../views/Movie.vue";
+import MovieDetail from "../views/MovieDetail.vue";
 import Review from "../views/Review.vue";
 import Community from "../views/Community.vue";
 
@@ -21,6 +22,11 @@ export default new Router({
       path: "/movie",
       name: "Movie",
       component: Movie,
+    },
+    {
+      path: "/movie/:id",
+      name: "MovieDetail",
+      component: MovieDetail,
     },
     {
       path: "/review",
