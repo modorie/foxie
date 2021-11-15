@@ -3,7 +3,7 @@
     <div class="dropdown__list">
       <!-- TODO: text-sm -->
       <span class="dropdown__info text-sm">Signed in as</span>
-      <b class="dropdown__info text-sm">example@example.com</b>
+      <span class="dropdown__info text-sm font-600">example@example.com</span>
     </div>
     <div class="dropdown__list">
       <a href="#" class="dropdown__item text-sm"> Profile </a>
@@ -85,5 +85,9 @@ export default {
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.font-600 {
+  font-weight: 600;
 }
 </style>
