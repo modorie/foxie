@@ -1,30 +1,32 @@
 <template>
   <div class="card">
-    <img
-      class="card__image"
-      :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-    />
-    <div class="card__info">
-      <div class="card__info__left">
-        <p class="card__info__left__title">
-          {{ movie.title | truncate(19) }}
-        </p>
+    <router-link :to="`movie/${movie.id}`">
+      <img
+        class="card__image"
+        :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
+      />
+      <div class="card__info">
+        <div class="card__info__left">
+          <p class="card__info__left__title">
+            {{ movie.title | truncate(19) }}
+          </p>
 
-        <div class="card__info__left__year">
-          ({{ movie.release_date.split("-")[0] }})
+          <div class="card__info__left__year">
+            ({{ movie.release_date.split("-")[0] }})
+          </div>
+        </div>
+
+        <div class="card__info__right">
+          <icon-base viewBox="0 0 18 20" width="18" height="18">
+            <icon-star />
+          </icon-base>
+
+          <div class="card__info__right__score">
+            {{ movie.vote_average.toFixed(1) }}
+          </div>
         </div>
       </div>
-
-      <div class="card__info__right">
-        <icon-base viewBox="0 0 18 20" width="18" height="18">
-          <icon-star />
-        </icon-base>
-
-        <div class="card__info__right__score">
-          {{ movie.vote_average.toFixed(1) }}
-        </div>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
