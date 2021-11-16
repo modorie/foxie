@@ -1,0 +1,15 @@
+:root.lightmode {
+  --background: #f7f7f7;
+  --sidebar: #2f3641;
+  --header: #ffffff;
+  --btn-primary: #ed5656;
+  --btn-secondary: #ffffff;
+}
+
+:root.darkmode {
+  --background: #181c40;
+  --sidebar: #27272a;
+  --header: #242427;
+  --btn-primary: #ed5656;
+  --btn-secondary: #71717a;
+}
