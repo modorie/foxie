@@ -8,16 +8,16 @@
       <div class="post__sub">
         <div class="post__left">
           <div class="post__author">
-            <p>소여우{{ post.userId }}</p>
-
             <icon-base
               viewBox="0 0 64 64"
-              width="22"
-              height="22"
+              width="32"
+              height="32"
               class="post__author__avatar"
             >
               <icon-avatar />
             </icon-base>
+
+            <p>소여우{{ post.userId }}</p>
           </div>
           <p class="post__date">2021. 11. 17. 15:00</p>
         </div>
@@ -40,6 +40,7 @@
 
     <div class="comment">
       <CommentWrite />
+
       <Comment v-for="index in 5" :key="index" />
     </div>
   </div>
@@ -109,27 +110,29 @@ export default {
 .post__left {
 }
 
+.post__author {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.post__author__avatar {
+  margin-right: 0.5rem;
+}
+
+.post__date {
+  margin-bottom: 2rem;
+  font-size: 12px;
+}
+
 .post__right {
   display: flex;
 }
 
 .post__right__info {
   margin-left: 1rem;
-}
-
-.post__author {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.post__author__avatar {
-  margin-left: 1rem;
-}
-
-.post__date {
-  margin-bottom: 2rem;
 }
 
 .post__content {
