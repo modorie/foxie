@@ -27,6 +27,9 @@
   --board-body-text: var(--gray-800);
   --board-body-line: var(--gray-200);
   --board-comment-cnt: var(--coral);
+  --dropdown: var(--gray-50);
+  --dropdown-text: var(--gray-800);
+  --dropdown-line: var(--gray-300);
 }
 
 :root.darkmode {
@@ -56,4 +59,7 @@
   --board-body-text: var(--gray-200);
   --board-body-line: var(--gray-900);
   --board-comment-cnt: var(--coral);
+  --dropdown: var(--gray-800);
+  --dropdown-text: var(--gray-200);
+  --dropdown-line: var(--gray-400);
 }
