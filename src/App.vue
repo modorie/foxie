@@ -26,8 +26,8 @@ export default {
 }
 
 .router__view {
-  margin-top: 2rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  padding-top: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 </style>

@@ -70,7 +70,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  background-color: #2f3641;
+  background-color: var(--sidebar);
   position: fixed;
   z-index: 1;
   top: 0;

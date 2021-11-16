@@ -1,0 +1,43 @@
+@import "fds.css";
+
+:root.lightmode {
+  --background: #f7f7f7;
+  --text: var(--black);
+  --sidebar: #2f3641;
+
+  /* Common */
+  --page-title: #7b6161;
+
+  /* Header */
+  --header: var(--white);
+  --header-search: var(--black);
+  --btn-primary: var(--coral);
+  --btn-secondary: var(--white);
+  --btn-secondary-text: var(--gray-600);
+  --btn-secondary-border: var(--gray-300);
+
+  /* Movie */
+  --card-background: var(--white);
+  --card-text: var(--gray-800);
+}
+
+:root.darkmode {
+  --background: var(--gray-900);
+  --text: var(--gray-200);
+  --sidebar: var(--gray-800);
+
+  /* Common */
+  --page-title: var(--gray-100);
+
+  /* Header */
+  --header: #242427;
+  --header-search: var(--gray-100);
+  --btn-primary: var(--coral);
+  --btn-secondary: var(--gray-700);
+  --btn-secondary-text: var(--gray-50);
+  --btn-secondary-border: var(--gray-500);
+
+  /* Movie */
+  --card-background: var(--gray-800);
+  --card-text: var(--gray-100);
+}

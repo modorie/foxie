@@ -15,9 +15,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+
 import axios from "axios";
-import MovieList from "@/components/MovieList";
+import MovieList from "@/components/MovieList.vue";
+
 const MOVIE_DB_API_URL_POPULAR = "https://api.themoviedb.org/3/movie/popular";
 const MOVIE_DB_API_URL_UPCOMING = "https://api.themoviedb.org/3/movie/upcoming";
 const MOVIE_DB_API_URL_TOP_RATED =
@@ -25,9 +28,9 @@ const MOVIE_DB_API_URL_TOP_RATED =
 const MOVIE_DB_API_URL_GET_NOW_PLAYING =
   "https://api.themoviedb.org/3/movie/now_playing";
 
-export default {
+export default Vue.extend({
   name: "Home",
-  data: function () {
+  data() {
     return {
       popular_MovieList: [],
       upcoming_MovieList: [],
@@ -95,13 +98,14 @@ export default {
       .catch((err) => console.log(err));
   },
   methods: {},
-};
+});
 </script>
+
 <style scoped>
 .page__title {
   font-family: "Mulish", sans-serif;
   letter-spacing: 0rem;
-  color: #7b6161;
+  color: var(--page-title);
   font-size: 24px;
   font-weight: 700;
 }

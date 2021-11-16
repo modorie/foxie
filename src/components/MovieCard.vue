@@ -1,10 +1,22 @@
 <template>
   <div class="card">
     <router-link :to="`movie/${movie.id}`">
+      <!-- TODO : parameter를 data에서 미리 계산하면 if 분기 필요 X -->
       <img
+        v-if="movie.backdrop_path"
         class="card__image"
         :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
       />
+
+      <img
+        v-else-if="movie.poster_path"
+        class="card__image"
+        :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+      />
+
+      <!-- 포스터도 없는 영화가 있음 -->
+      <div v-else class="card__no__image mulish">No Poster</div>
+
       <div class="card__info">
         <div class="card__info__left">
           <p class="card__info__left__title">
@@ -57,12 +69,27 @@ export default {
 
 .card__image {
   border-radius: 8px 8px 0px 0px;
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.card__no__image {
+  width: 100%;
+  height: 12rem;
+  background-color: var(--header);
+  color: var(--header-search);
+  text-align: center;
+  padding-top: 5rem;
+  font-size: 24px;
+  font-weight: 800;
 }
 
 .card__info {
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: var(--card-background);
+  color: var(--card-text);
   border-radius: 0px 0px 8px 8px;
   padding: 1rem;
   font-size: 14px;

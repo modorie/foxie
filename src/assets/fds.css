@@ -1,0 +1,40 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap");
+
+html {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  letter-spacing: -0.02rem;
+
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.mulish {
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0rem;
+}
+
+:root {
+  /* Colors */
+  --coral: #ed5656;
+  --coral-200: #cf3737;
+  --peach: #ffcc99;
+
+  --white: #ffffff;
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-650: #494951;
+  --gray-700: #3f3f46;
+  --gray-750: #343438;
+  --gray-800: #27272a;
+  --gray-850: #202023;
+  --gray-900: #18181b;
+  --black: #000000;
+}

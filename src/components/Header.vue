@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-    <section class="header-search">
+    <div class="header__search">
       <div>
         <icon-base viewBox="0 0 24 24" width="24" height="24" icon-name="icon">
-          <icon-search :class="[active ? 'header-search-active' : '']" />
+          <icon-search :class="{ header__search__active: active }" />
         </icon-base>
       </div>
       <input
@@ -13,9 +13,14 @@
         @focus="active = true"
         @blur="active = false"
       />
-    </section>
+    </div>
+
+    <button type="button" @click="onToggleDarkMode">
+      {{ isDark ? "🌙" : "🌞" }}
+    </button>
+
     <div v-if="isLogin">
-      <section class="header-info">
+      <div class="header__info">
         <div class="header-bell">
           <icon-base
             viewBox="0 0 32 32"
@@ -27,10 +32,7 @@
           </icon-base>
         </div>
 
-        <div
-          class="header-avatar"
-          @click="isDropdownViewed = !isDropdownViewed"
-        >
+        <div class="header__avatar" @click="isDropdownOpen = !isDropdownOpen">
           <icon-base
             viewBox="0 0 64 64"
             width="32"
@@ -40,37 +42,38 @@
             <icon-avatar />
           </icon-base>
         </div>
-      </section>
-      <dropdown
-        v-if="isDropdownViewed"
-        @close-dropdown="isDropdownViewed = false"
-      ></dropdown>
+      </div>
+
+      <Dropdown
+        v-if="isDropdownOpen"
+        @close-dropdown="isDropdownOpen = false"
+      />
     </div>
-    <div v-else>
-      <router-link
-        :to="{ name: 'Login' }"
-        class="mulish header__button header__button__secondary"
-      >
-        Log in
+
+    <div v-else class="header__auth">
+      <router-link :to="{ name: 'Login' }">
+        <div class="mulish header__button header__button__secondary">
+          Log in
+        </div>
       </router-link>
-      <router-link
-        :to="{ name: 'Signup' }"
-        class="mulish header__button header__button__primary"
-      >
-        Sign up
+
+      <router-link :to="{ name: 'Signup' }">
+        <div class="mulish header__button header__button__primary">Sign up</div>
       </router-link>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+
 import IconBase from "./IconBase.vue";
 import IconSearch from "./icons/IconSearch.vue";
 import IconBell from "./icons/IconBell.vue";
 import IconAvatar from "./icons/IconAvatar.vue";
 import Dropdown from "./Dropdown.vue";
 
-export default {
+export default Vue.extend({
   name: "Header",
   components: {
     IconBase,
@@ -84,14 +87,42 @@ export default {
       searchInput: "",
       active: false,
       isLogin: false,
-      isDropdownViewed: false,
+      isDropdownOpen: false,
+      isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
     };
   },
+
   methods: {
     logout() {
       this.isLogin = false;
       localStorage.removeItem("jwt");
       this.$router.push({ name: "Login" });
+    },
+    onToggleDarkMode() {
+      // TODO : 코드 중복 제거 100% 가능! 근데 나중에 할래..
+      if (window) {
+        if (this.isDark) {
+          if (document.documentElement.classList.contains("darkmode")) {
+            document.documentElement.classList.remove("darkmode");
+            document.documentElement.classList.add("lightmode");
+            this.isDark = !this.isDark;
+          } else {
+            document.documentElement.classList.remove("lightmode");
+            document.documentElement.classList.add("darkmode");
+            this.isDark = !this.isDark;
+          }
+        } else {
+          if (document.documentElement.classList.contains("lightmode")) {
+            document.documentElement.classList.remove("lightmode");
+            document.documentElement.classList.add("darkmode");
+            this.isDark = !this.isDark;
+          } else {
+            document.documentElement.classList.remove("darkmode");
+            document.documentElement.classList.add("lightmode");
+            this.isDark = !this.isDark;
+          }
+        }
+      }
     },
   },
   created() {
@@ -100,7 +131,14 @@ export default {
       this.isLogin = true;
     }
   },
-};
+  mounted() {
+    if (window && this.isDark) {
+      document.documentElement.classList.add("darkmode");
+    } else {
+      document.documentElement.classList.add("lightmode");
+    }
+  },
+});
 </script>
 
 <style scoped>
@@ -115,30 +153,32 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   height: 70px;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--header);
 }
 
-.header-search {
+.header__search {
   margin-left: 3rem;
   display: flex;
   align-items: center;
-  width: 65%;
-}
-
-.header-search-active {
-  stroke: #52525b;
-}
-
-.header-search input {
-  margin-left: 1.5rem;
   width: 100%;
 }
 
-.header-search input:focus {
+.header__search__active {
+  stroke: #52525b;
+}
+
+.header__search input {
+  margin-left: 1.5rem;
+  width: 100%;
+  background-color: transparent;
+  color: var(--header-search);
+}
+
+.header__search input:focus {
   outline: none;
 }
 
-.header-info {
+.header__info {
   display: flex;
   align-items: center;
 }
@@ -147,29 +187,37 @@ export default {
   margin-left: 2rem;
 }
 
-.header-avatar {
+.header__avatar {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.header__auth {
+  display: flex;
   margin-left: 2rem;
   margin-right: 2rem;
 }
 
 .header__button {
   border-radius: 0.3rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem;
   margin-right: 0.5rem;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  width: 5.5rem;
+  text-align: center;
 }
 
 .header__button__primary {
-  background-color: #ed5656;
-  border: 1px solid #ed5656;
-  color: #ffffff;
-  font-weight: 500;
+  background-color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
+  color: var(--white);
+  font-weight: 600;
 }
 
 .header__button__secondary {
-  background-color: #ffffff;
-  color: #52525b;
-  border: 1px solid #d1d5db;
-  font-weight: 500;
+  background-color: var(--btn-secondary);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+  font-weight: 600;
 }
 </style>
