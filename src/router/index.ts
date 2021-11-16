@@ -6,6 +6,8 @@ import Movie from "../views/Movie.vue";
 import MovieDetail from "../views/MovieDetail.vue";
 import Review from "../views/Review.vue";
 import Community from "../views/Community.vue";
+import CommunityNew from "../views/CommunityNew.vue";
+import CommunityDetail from "../views/CommunityDetail.vue";
 import Signup from "../views/accounts/Signup.vue";
 import Login from "../views/accounts/Login.vue";
 
@@ -39,6 +41,16 @@ export default new Router({
       path: "/community",
       name: "Community",
       component: Community,
+    },
+    {
+      path: "/community/new",
+      name: "CommunityNew",
+      component: CommunityNew,
+    },
+    {
+      path: "/community/:id",
+      name: "CommunityDetail",
+      component: CommunityDetail,
     },
     {
       path: "/signup",
