@@ -1,9 +1,63 @@
 <template>
-  <div>나는 페이지네이션이다</div>
+  <div class="pagination">
+    <icon-base
+      viewBox="0 0 14 14"
+      width="20"
+      height="14"
+      class="pagination__arrow"
+    >
+      <icon-left class="pagination__arrow__svg" />
+    </icon-base>
+
+    <div v-for="index in 10" :key="index" class="pagination__index">
+      {{ index }}
+    </div>
+
+    <icon-base
+      viewBox="0 0 14 14"
+      width="20"
+      height="14"
+      class="pagination__arrow"
+    >
+      <icon-right class="pagination__arrow__svg" />
+    </icon-base>
+  </div>
 </template>
 
 <script>
-export default {};
+import IconBase from "./IconBase.vue";
+import IconLeft from "./icons/IconLeft.vue";
+import IconRight from "./icons/IconRight.vue";
+
+export default {
+  props: {},
+  components: {
+    IconBase,
+    IconLeft,
+    IconRight,
+  },
+  methods: {},
+};
 </script>
 
-<style></style>
+<style scoped>
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.pagination__arrow {
+  margin: 0 1rem;
+  font-size: 14px;
+}
+
+.pagination__arrow__svg {
+  fill: var(--board-body-text);
+}
+
+.pagination__index {
+  padding: 0.5rem;
+}
+</style>
