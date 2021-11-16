@@ -28,10 +28,7 @@
           </icon-base>
         </div>
 
-        <div
-          class="header__avatar"
-          @click="isDropdownViewed = !isDropdownViewed"
-        >
+        <div class="header__avatar" @click="isDropdownOpen = !isDropdownOpen">
           <icon-base
             viewBox="0 0 64 64"
             width="32"
@@ -44,24 +41,20 @@
       </div>
 
       <Dropdown
-        v-if="isDropdownViewed"
-        @close-dropdown="isDropdownViewed = false"
+        v-if="isDropdownOpen"
+        @close-dropdown="isDropdownOpen = false"
       />
     </div>
 
-    <div v-else>
-      <router-link
-        :to="{ name: 'Login' }"
-        class="mulish header__button header__button__secondary"
-      >
-        Log in
+    <div v-else class="header__auth">
+      <router-link :to="{ name: 'Login' }">
+        <div class="mulish header__button header__button__secondary">
+          Log in
+        </div>
       </router-link>
 
-      <router-link
-        :to="{ name: 'Signup' }"
-        class="mulish header__button header__button__primary"
-      >
-        Sign up
+      <router-link :to="{ name: 'Signup' }">
+        <div class="mulish header__button header__button__primary">Sign up</div>
       </router-link>
     </div>
   </div>
@@ -89,10 +82,11 @@ export default Vue.extend({
     return {
       searchInput: "",
       active: false,
-      isLogin: true,
-      isDropdownViewed: false,
+      isLogin: false,
+      isDropdownOpen: false,
     };
   },
+
   methods: {
     logout() {
       this.isLogin = false;
@@ -128,7 +122,7 @@ export default Vue.extend({
   margin-left: 3rem;
   display: flex;
   align-items: center;
-  width: 65%;
+  width: 100%;
 }
 
 .header__search__active {
@@ -158,11 +152,18 @@ export default Vue.extend({
   margin-right: 2rem;
 }
 
+.header__auth {
+  display: flex;
+  margin-left: 2rem;
+}
+
 .header__button {
   border-radius: 0.3rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem;
   margin-right: 0.5rem;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  width: 5.5rem;
+  text-align: center;
 }
 
 .header__button__primary {
