@@ -9,10 +9,13 @@
       />
 
       <img
-        v-else
+        v-else-if="movie.poster_path"
         class="card__image"
         :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
       />
+
+      <!-- 포스터도 없는 영화가 있음 -->
+      <div v-else class="card__no__image mulish">No Poster</div>
 
       <div class="card__info">
         <div class="card__info__left">
@@ -69,6 +72,17 @@ export default {
   width: 100%;
   height: 12rem;
   object-fit: cover;
+}
+
+.card__no__image {
+  width: 100%;
+  height: 12rem;
+  background-color: var(--header);
+  color: var(--header-search);
+  text-align: center;
+  padding-top: 5rem;
+  font-size: 24px;
+  font-weight: 800;
 }
 
 .card__info {
