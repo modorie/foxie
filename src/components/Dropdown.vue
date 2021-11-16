@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .dropdown {
   position: absolute;
   right: 10px;
