@@ -1,9 +1,9 @@
 <template>
   <div class="header">
-    <section class="header-search">
+    <div class="header__search">
       <div>
         <icon-base viewBox="0 0 24 24" width="24" height="24" icon-name="icon">
-          <icon-search :class="[active ? 'header-search-active' : '']" />
+          <icon-search :class="{ header__search__active: active }" />
         </icon-base>
       </div>
       <input
@@ -13,9 +13,10 @@
         @focus="active = true"
         @blur="active = false"
       />
-    </section>
+    </div>
+
     <div v-if="isLogin">
-      <section class="header-info">
+      <div class="header__info">
         <div class="header-bell">
           <icon-base
             viewBox="0 0 32 32"
@@ -28,7 +29,7 @@
         </div>
 
         <div
-          class="header-avatar"
+          class="header__avatar"
           @click="isDropdownViewed = !isDropdownViewed"
         >
           <icon-base
@@ -40,12 +41,14 @@
             <icon-avatar />
           </icon-base>
         </div>
-      </section>
-      <dropdown
+      </div>
+
+      <Dropdown
         v-if="isDropdownViewed"
         @close-dropdown="isDropdownViewed = false"
-      ></dropdown>
+      />
     </div>
+
     <div v-else>
       <router-link
         :to="{ name: 'Login' }"
@@ -53,6 +56,7 @@
       >
         Log in
       </router-link>
+
       <router-link
         :to="{ name: 'Signup' }"
         class="mulish header__button header__button__primary"
@@ -118,27 +122,27 @@ export default {
   background-color: #ffffff;
 }
 
-.header-search {
+.header__search {
   margin-left: 3rem;
   display: flex;
   align-items: center;
   width: 65%;
 }
 
-.header-search-active {
+.header__search__active {
   stroke: #52525b;
 }
 
-.header-search input {
+.header__search input {
   margin-left: 1.5rem;
   width: 100%;
 }
 
-.header-search input:focus {
+.header__search input:focus {
   outline: none;
 }
 
-.header-info {
+.header__info {
   display: flex;
   align-items: center;
 }
@@ -147,7 +151,7 @@ export default {
   margin-left: 2rem;
 }
 
-.header-avatar {
+.header__avatar {
   margin-left: 2rem;
   margin-right: 2rem;
 }
