@@ -15,6 +15,10 @@
       />
     </div>
 
+    <button type="button" @click="onToggleDarkMode">
+      {{ isDark ? "🌙" : "🌞" }}
+    </button>
+
     <div v-if="isLogin">
       <div class="header__info">
         <div class="header-bell">
@@ -84,6 +88,7 @@ export default Vue.extend({
       active: false,
       isLogin: false,
       isDropdownOpen: false,
+      isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
     };
   },
 
@@ -93,11 +98,44 @@ export default Vue.extend({
       localStorage.removeItem("jwt");
       this.$router.push({ name: "Login" });
     },
+    onToggleDarkMode() {
+      // TODO : 코드 중복 제거 100% 가능! 근데 나중에 할래..
+      if (window) {
+        if (this.isDark) {
+          if (document.documentElement.classList.contains("darkmode")) {
+            document.documentElement.classList.remove("darkmode");
+            document.documentElement.classList.add("lightmode");
+            this.isDark = !this.isDark;
+          } else {
+            document.documentElement.classList.remove("lightmode");
+            document.documentElement.classList.add("darkmode");
+            this.isDark = !this.isDark;
+          }
+        } else {
+          if (document.documentElement.classList.contains("lightmode")) {
+            document.documentElement.classList.remove("lightmode");
+            document.documentElement.classList.add("darkmode");
+            this.isDark = !this.isDark;
+          } else {
+            document.documentElement.classList.remove("darkmode");
+            document.documentElement.classList.add("lightmode");
+            this.isDark = !this.isDark;
+          }
+        }
+      }
+    },
   },
   created() {
     const token = localStorage.getItem("jwt");
     if (token) {
       this.isLogin = true;
+    }
+  },
+  mounted() {
+    if (window && this.isDark) {
+      document.documentElement.classList.add("darkmode");
+    } else {
+      document.documentElement.classList.add("lightmode");
     }
   },
 });
@@ -115,7 +153,7 @@ export default Vue.extend({
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   height: 70px;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--header);
 }
 
 .header__search {
@@ -132,6 +170,7 @@ export default Vue.extend({
 .header__search input {
   margin-left: 1.5rem;
   width: 100%;
+  background-color: transparent;
 }
 
 .header__search input:focus {
@@ -167,14 +206,14 @@ export default Vue.extend({
 }
 
 .header__button__primary {
-  background-color: #ed5656;
-  border: 1px solid #ed5656;
+  background-color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
   color: #ffffff;
   font-weight: 500;
 }
 
 .header__button__secondary {
-  background-color: #ffffff;
+  background-color: var(--btn-secondary);
   color: #52525b;
   border: 1px solid #d1d5db;
   font-weight: 500;
