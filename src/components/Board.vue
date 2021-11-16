@@ -4,29 +4,31 @@
       <table>
         <thead class="board__header">
           <tr>
-            <th>#</th>
-            <th>TITLE</th>
-            <th>NAME</th>
-            <th>DATE</th>
-            <th>VIEWS</th>
-            <th>LIKE</th>
+            <th class="board__header__row">#</th>
+            <th class="board__header__row">TITLE</th>
+            <th class="board__header__row">NAME</th>
+            <th class="board__header__row">DATE</th>
+            <th class="board__header__row">VIEWS</th>
+            <th class="board__header__row">LIKE</th>
           </tr>
         </thead>
 
         <tbody
           v-for="article in articles"
           :key="article.id"
-          class="board__list"
+          class="board__body"
         >
           <tr>
-            <td>{{ article.id }}</td>
+            <td class="board__body__row">{{ article.id }}</td>
             <router-link :to="`community/${article.id}`">
-              <td>{{ article.title | truncate(50) }}</td>
+              <td class="board__body__row">
+                {{ article.title | truncate(50) }}
+              </td>
             </router-link>
-            <td>{{ article.userId }}</td>
-            <td>11.16</td>
-            <td>1234</td>
-            <td>12</td>
+            <td class="board__body__row">{{ article.userId }}</td>
+            <td class="board__body__row">11.16</td>
+            <td class="board__body__row">1234</td>
+            <td class="board__body__row">12</td>
           </tr>
         </tbody>
       </table>
@@ -34,7 +36,7 @@
 
     <div class="board__pagination"><Pagination /></div>
 
-    <div class="board__search"><BoardSearch /></div>
+    <div class="board__search"><BoardSearchBar /></div>
   </div>
 </template>
 
@@ -42,7 +44,7 @@
 import Vue from "vue";
 import axios from "axios";
 
-import BoardSearch from "./BoardSearch.vue";
+import BoardSearchBar from "./BoardSearchBar.vue";
 import Pagination from "./Pagination.vue";
 
 export default Vue.extend({
@@ -53,7 +55,7 @@ export default Vue.extend({
   },
 
   components: {
-    BoardSearch,
+    BoardSearchBar,
     Pagination,
   },
   created() {
@@ -67,4 +69,41 @@ export default Vue.extend({
 });
 </script>
 
-<style></style>
+<style>
+.board {
+}
+
+.board table {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.board__header {
+  width: 100%;
+  background-color: var(--board-header);
+  color: var(--board-header-text);
+}
+
+.board__header__row {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.board__body {
+  background-color: var(--board-body);
+  color: var(--board-body-text);
+  border-top: 1px solid var(--board-body-line);
+}
+
+.board__body__row {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  font-size: 14px;
+}
+</style>
