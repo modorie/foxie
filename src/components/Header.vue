@@ -195,6 +195,7 @@ export default Vue.extend({
 .header__auth {
   display: flex;
   margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .header__button {
@@ -210,13 +211,13 @@ export default Vue.extend({
   background-color: var(--btn-primary);
   border: 1px solid var(--btn-primary);
   color: var(--white);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .header__button__secondary {
   background-color: var(--btn-secondary);
   color: var(--btn-secondary-text);
-  border: 1px solid #d1d5db;
-  font-weight: 500;
+  border: 1px solid var(--btn-secondary-border);
+  font-weight: 600;
 }
 </style>
