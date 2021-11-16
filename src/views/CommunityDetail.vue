@@ -160,5 +160,6 @@ export default {
   background-color: var(--board-body);
   color: var(--board-header-text);
   padding: 2rem;
+  margin-bottom: 8rem;
 }
 </style>

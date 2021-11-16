@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 .container {
-  border-bottom: 1px solid var(--board-header);
+  border-top: 1px solid var(--board-header);
 }
 
 .comment__author {
