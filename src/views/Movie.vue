@@ -100,11 +100,12 @@ export default Vue.extend({
   methods: {},
 });
 </script>
+
 <style scoped>
 .page__title {
   font-family: "Mulish", sans-serif;
   letter-spacing: 0rem;
-  color: #7b6161;
+  color: var(--page-title);
   font-size: 24px;
   font-weight: 700;
 }

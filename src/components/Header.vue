@@ -171,6 +171,7 @@ export default Vue.extend({
   margin-left: 1.5rem;
   width: 100%;
   background-color: transparent;
+  color: var(--header-search);
 }
 
 .header__search input:focus {
@@ -208,13 +209,13 @@ export default Vue.extend({
 .header__button__primary {
   background-color: var(--btn-primary);
   border: 1px solid var(--btn-primary);
-  color: #ffffff;
+  color: var(--white);
   font-weight: 500;
 }
 
 .header__button__secondary {
   background-color: var(--btn-secondary);
-  color: #52525b;
+  color: var(--btn-secondary-text);
   border: 1px solid #d1d5db;
   font-weight: 500;
 }

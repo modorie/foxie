@@ -62,7 +62,8 @@ export default {
 .card__info {
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: var(--card-background);
+  color: var(--card-text);
   border-radius: 0px 0px 8px 8px;
   padding: 1rem;
   font-size: 14px;
