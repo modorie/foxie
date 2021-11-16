@@ -67,14 +67,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+
 import IconBase from "./IconBase.vue";
 import IconSearch from "./icons/IconSearch.vue";
 import IconBell from "./icons/IconBell.vue";
 import IconAvatar from "./icons/IconAvatar.vue";
 import Dropdown from "./Dropdown.vue";
 
-export default {
+export default Vue.extend({
   name: "Header",
   components: {
     IconBase,
@@ -87,7 +89,7 @@ export default {
     return {
       searchInput: "",
       active: false,
-      isLogin: false,
+      isLogin: true,
       isDropdownViewed: false,
     };
   },
@@ -104,7 +106,7 @@ export default {
       this.isLogin = true;
     }
   },
-};
+});
 </script>
 
 <style scoped>
