@@ -26,15 +26,8 @@ export default {
 }
 
 .router__view {
-  position: fixed;
-  left: 100px;
-  top: 70px;
-  width: 100%;
-  height: 100%;
   padding-top: 2rem;
   padding-left: 3rem;
   padding-right: 3rem;
-  background-color: var(--background);
-  color: var(--text);
 }
 </style>
