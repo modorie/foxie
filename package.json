@@ -61,7 +61,8 @@
         {
           "endOfLine": "auto"
         }
-      ]
+      ],
+      "@typescript-eslint/explicit-function-return-type": "off"
     }
   },
   "browserslist": [
