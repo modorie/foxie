@@ -17,7 +17,7 @@
               <icon-avatar />
             </icon-base>
 
-            <p>소여우{{ post.userId }}</p>
+            <p>소왕자{{ post.userId }}</p>
           </div>
           <p class="post__date">2021. 11. 17. 15:00</p>
         </div>
@@ -124,7 +124,7 @@ export default {
 
 .post__date {
   margin-bottom: 2rem;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .post__right {
