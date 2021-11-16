@@ -23,6 +23,7 @@
             <router-link :to="`community/${article.id}`">
               <td class="board__body__row">
                 {{ article.title | truncate(50) }}
+                <span class="board__comment">[3]</span>
               </td>
             </router-link>
             <td class="board__body__row">{{ article.userId }}</td>
@@ -80,7 +81,6 @@ export default Vue.extend({
 }
 
 .board__header {
-  width: 100%;
   background-color: var(--board-header);
   color: var(--board-header-text);
 }
@@ -105,5 +105,10 @@ export default Vue.extend({
   padding-left: 1rem;
   padding-right: 2rem;
   font-size: 14px;
+}
+
+.board__comment {
+  color: var(--coral);
+  padding-left: 0.5rem;
 }
 </style>
