@@ -42,11 +42,11 @@ export default new Router({
       name: "Community",
       component: Community,
     },
-    // {
-    //   path: "/community/new",
-    //   name: "CommunityNew",
-    //   component: CommunityNew,
-    // },
+    {
+      path: "/community/new",
+      name: "CommunityNew",
+      component: CommunityNew,
+    },
     {
       path: "/community/:id",
       name: "CommunityDetail",
