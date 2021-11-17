@@ -80,7 +80,8 @@ export default {
 
 <style scoped>
 .post {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1),
+    0px 1px 2px 1px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   overflow: hidden;
   background-color: var(--board-body);
@@ -154,7 +155,8 @@ export default {
 }
 
 .comment {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1),
+    0px 1px 2px 1px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   overflow: hidden;
   background-color: var(--board-body);

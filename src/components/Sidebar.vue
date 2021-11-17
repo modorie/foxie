@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <div class="sidebar-logo">
+    <div class="sidebar__logo">
       <router-link to="/" exact="">
         <!-- TODO : for문으로 리팩토링 -->
         <icon-base viewBox="0 0 43 54" width="42" height="42" icon-name="icon">
@@ -10,38 +10,38 @@
     </div>
 
     <router-link to="/" exact="">
-      <div class="sidebar-menu">
+      <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
-          <icon-home class="sidebar-menu-icon" />
+          <icon-home class="sidebar__menu__icon" />
         </icon-base>
-        <p class="sidebar-menu-title">HOME</p>
+        <p class="sidebar__menu__title mulish">HOME</p>
       </div>
     </router-link>
 
     <router-link to="/movie">
-      <div class="sidebar-menu">
+      <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
-          <icon-movie class="sidebar-menu-icon" />
+          <icon-movie class="sidebar__menu__icon" />
         </icon-base>
-        <p class="sidebar-menu-title">MOVIE</p>
+        <p class="sidebar__menu__title mulish">MOVIE</p>
       </div>
     </router-link>
 
     <router-link to="/review">
-      <div class="sidebar-menu">
+      <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
-          <icon-review class="sidebar-menu-icon" />
+          <icon-review class="sidebar__menu__icon" />
         </icon-base>
-        <p class="sidebar-menu-title">REVIEW</p>
+        <p class="sidebar__menu__title mulish">REVIEW</p>
       </div>
     </router-link>
 
     <router-link to="/community">
-      <div class="sidebar-menu">
+      <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
-          <icon-community class="sidebar-menu-icon" />
+          <icon-community class="sidebar__menu__icon" />
         </icon-base>
-        <p class="sidebar-menu-title">COMMUNITY</p>
+        <p class="sidebar__menu__title mulish">COMMUNITY</p>
       </div>
     </router-link>
   </div>
@@ -84,13 +84,13 @@ export default {
   flex-direction: column;
 }
 
-.sidebar-logo {
+.sidebar__logo {
   padding: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
 
-.sidebar-menu {
+.sidebar__menu {
   width: 100px;
 
   padding: 1rem;
@@ -99,10 +99,10 @@ export default {
   align-items: center;
 }
 
-.sidebar-menu-title {
+.sidebar__menu__title {
   color: #515a67;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
 }
 
 .router-link-active {
@@ -110,30 +110,28 @@ export default {
   box-shadow: inset -3px 0 0 0px #ed5656;
 }
 
-.router-link-active .sidebar-menu-title {
+.router-link-active .sidebar__menu__title {
   color: #ffffff;
-  font-family: "Mulish", sans-serif;
-  letter-spacing: 0rem;
 }
 
-.router-link-active .sidebar-menu-icon {
+.router-link-active .sidebar__menu__icon {
   stroke: #ed5656;
 }
 
-.sidebar-menu:hover .sidebar-menu-title {
+.sidebar__menu:hover .sidebar__menu__title {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.sidebar-menu:hover .sidebar-menu-icon {
+.sidebar__menu:hover .sidebar__menu__icon {
   stroke: rgba(255, 255, 255, 0.6);
 }
 
 /* not active를 css not selector로 처리 하기 어려워서 무식하게 구현 */
-.router-link-active .sidebar-menu:hover .sidebar-menu-title {
+.router-link-active .sidebar__menu:hover .sidebar__menu__title {
   color: #ffffff;
 }
 
-.router-link-active .sidebar-menu:hover .sidebar-menu-icon {
+.router-link-active .sidebar__menu:hover .sidebar__menu__icon {
   stroke: #ed5656;
 }
 </style>
