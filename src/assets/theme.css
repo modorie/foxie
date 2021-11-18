@@ -35,7 +35,8 @@
   --dropdown-line: var(--gray-300);
 
   /* Profile */
-  --profile: var(--white);
+  --profile-header: var(--white);
+  --profile-body: var(--gray-50);
   --profile-label: var(--gray-500);
   --profile-tag: var(--gray-100);
 }
@@ -75,7 +76,8 @@
   --dropdown-line: var(--gray-400);
 
   /* Profile */
-  --profile: var(--gray-800);
+  --profile-header: var(--gray-800);
+  --profile-body: var(--gray-750);
   --profile-label: var(--gray-400);
   --profile-tag: var(--gray-700);
 }
