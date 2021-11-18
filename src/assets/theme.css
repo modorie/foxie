@@ -33,6 +33,11 @@
   --dropdown: var(--gray-50);
   --dropdown-text: var(--gray-800);
   --dropdown-line: var(--gray-300);
+
+  /* Profile */
+  --profile: var(--white);
+  --profile-label: var(--gray-500);
+  --profile-tag: var(--gray-100);
 }
 
 :root.darkmode {
@@ -68,4 +73,9 @@
   --dropdown: var(--gray-800);
   --dropdown-text: var(--gray-200);
   --dropdown-line: var(--gray-400);
+
+  /* Profile */
+  --profile: var(--gray-800);
+  --profile-label: var(--gray-400);
+  --profile-tag: var(--gray-700);
 }
