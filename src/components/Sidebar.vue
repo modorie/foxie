@@ -20,21 +20,21 @@
 
     <router-link to="/movie">
       <div class="sidebar__menu">
-        <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
+        <icon-base viewBox="0 0 29 34" width="32" height="32" icon-name="icon">
           <icon-movie class="sidebar__menu__icon" />
         </icon-base>
         <p class="sidebar__menu__title mulish">MOVIE</p>
       </div>
     </router-link>
 
-    <router-link to="/review">
+    <!-- <router-link to="/review">
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-review class="sidebar__menu__icon" />
         </icon-base>
         <p class="sidebar__menu__title mulish">REVIEW</p>
       </div>
-    </router-link>
+    </router-link> -->
 
     <router-link to="/community">
       <div class="sidebar__menu">
@@ -44,26 +44,37 @@
         <p class="sidebar__menu__title mulish">COMMUNITY</p>
       </div>
     </router-link>
+
+    <router-link to="/profile">
+      <div class="sidebar__menu">
+        <icon-base viewBox="0 0 32 36" width="32" height="32" icon-name="icon">
+          <icon-profile class="sidebar__menu__icon" />
+        </icon-base>
+        <p class="sidebar__menu__title mulish">PROFILE</p>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 import IconBase from "./IconBase.vue";
 import IconLogo from "./icons/IconLogo.vue";
-import IconCommunity from "./icons/IconCommunity.vue";
 import IconHome from "./icons/IconHome.vue";
 import IconMovie from "./icons/IconMovie.vue";
-import IconReview from "./icons/IconReview.vue";
+import IconCommunity from "./icons/IconCommunity.vue";
+import IconProfile from "./icons/IconProfile.vue";
+// import IconReview from "./icons/IconReview.vue";
 
 export default {
   name: "Sidebar",
   components: {
-    IconLogo,
     IconBase,
+    IconLogo,
     IconHome,
-    IconCommunity,
     IconMovie,
-    IconReview,
+    IconCommunity,
+    IconProfile,
+    // IconReview,
   },
 };
 </script>

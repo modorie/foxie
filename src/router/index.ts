@@ -8,6 +8,7 @@ import Review from "../views/Review.vue";
 import Community from "../views/Community.vue";
 import CommunityNew from "../views/CommunityNew.vue";
 import CommunityDetail from "../views/CommunityDetail.vue";
+import Profile from "../views/Profile.vue";
 import Signup from "../views/accounts/Signup.vue";
 import Login from "../views/accounts/Login.vue";
 
@@ -52,6 +53,12 @@ export default new Router({
       name: "CommunityDetail",
       component: CommunityDetail,
     },
+    {
+      path: "/profile",
+      name: "Profile",
+      component: Profile,
+    },
+
     {
       path: "/signup",
       name: "Signup",
