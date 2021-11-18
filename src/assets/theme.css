@@ -7,6 +7,9 @@
 
   /* Common */
   --page-title: #7b6161;
+  --scroll: var(--gray-100);
+  --scroll-bar: var(--gray-300);
+  --scroll-bar-hover: var(--gray-400);
 
   /* Header */
   --header: var(--white);
@@ -39,6 +42,9 @@
 
   /* Common */
   --page-title: var(--gray-100);
+  --scroll: var(--gray-700);
+  --scroll-bar: var(--gray-500);
+  --scroll-bar-hover: var(--gray-400);
 
   /* Header */
   --header: #242427;
@@ -62,4 +68,23 @@
   --dropdown: var(--gray-800);
   --dropdown-text: var(--gray-200);
   --dropdown-line: var(--gray-400);
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scroll);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-bar);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-bar-hover);
 }
