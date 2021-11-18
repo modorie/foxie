@@ -29,7 +29,30 @@
     </div>
 
     <div class="home__body">
-      <div class="home__body__left">그모냐</div>
+      <div class="home__body__left">
+        <div>
+          <h1 class="left__title mulish">Best Movies 🚀</h1>
+          <p class="left__subtitle">
+            장르별 전문가들의 섬세한 리뷰들을 읽어보세요.
+          </p>
+          <MovieCarousel />
+        </div>
+
+        <div>
+          <h1 class="left__title mulish">Best Reviews 🚀</h1>
+          <p class="left__subtitle">
+            가장 인기 있는 리뷰들을 모아봤어. 즐겁게 봐줘 - 알겠어
+          </p>
+          <MovieCarousel />
+        </div>
+
+        <div>
+          <h1 class="left__title mulish">Best Issues 🚀</h1>
+          <p class="left__subtitle">가장 인기 있는 게시글들이야. 재밌게 봐줘</p>
+          <MovieCarousel />
+        </div>
+      </div>
+
       <div class="home__body__right">
         <MovieRecommend />
         <MovieRecommend />
@@ -42,12 +65,14 @@
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
+import MovieCarousel from "@/components/MovieCarousel.vue";
 
 export default {
   components: {
     IconBase,
     IconLogo,
     MovieRecommend,
+    MovieCarousel,
   },
 };
 </script>
@@ -90,7 +115,7 @@ export default {
 }
 
 .banner__right__text {
-  color: var(--header);
+  color: var(--gray-700);
   font-size: 16px;
 }
 
@@ -117,5 +142,17 @@ export default {
 
 .home__body__left {
   width: 100%;
+  margin-right: 3rem;
+}
+
+.left__title {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.left__subtitle {
+  color: var(--gray-400);
+  font-weight: 300;
+  margin-bottom: 1rem;
 }
 </style>
