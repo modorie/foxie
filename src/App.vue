@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   padding-left: 100px;
   padding-top: 70px;

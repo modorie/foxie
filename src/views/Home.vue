@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- TODO : Banner 컴포넌트로 빼기 -->
     <div class="banner">
       <div class="banner__left" />
       <div class="banner__right">
@@ -26,22 +27,32 @@
         </div>
       </div>
     </div>
+
+    <div class="home__body">
+      <div class="home__body__left">그모냐</div>
+      <div class="home__body__right">
+        <MovieRecommend />
+        <MovieRecommend />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
+import MovieRecommend from "@/components/MovieRecommend.vue";
 
 export default {
   components: {
     IconBase,
     IconLogo,
+    MovieRecommend,
   },
 };
 </script>
 
-<style>
+<style scoped>
 .banner {
   width: 100%;
   height: 20rem;
@@ -50,6 +61,7 @@ export default {
   background: rgba(255, 255, 255, 0.65);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(50px);
+  margin-bottom: 2rem;
 }
 
 .banner__left {
@@ -97,5 +109,13 @@ export default {
   color: var(--white);
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
+}
+
+.home__body {
+  display: flex;
+}
+
+.home__body__left {
+  width: 100%;
 }
 </style>

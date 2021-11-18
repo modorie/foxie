@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* radius 여러 개 둬서 모서리 그림자가 라운딩 */
 .card {
   width: 20rem;
