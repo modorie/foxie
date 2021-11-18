@@ -7,6 +7,9 @@
 
   /* Common */
   --page-title: #7b6161;
+  --scroll: var(--gray-100);
+  --scroll-bar: var(--gray-300);
+  --scroll-bar-hover: var(--gray-400);
 
   /* Header */
   --header: var(--white);
@@ -30,6 +33,12 @@
   --dropdown: var(--gray-50);
   --dropdown-text: var(--gray-800);
   --dropdown-line: var(--gray-300);
+
+  /* Profile */
+  --profile-header: var(--white);
+  --profile-body: var(--gray-50);
+  --profile-label: var(--gray-500);
+  --profile-tag: var(--gray-100);
 }
 
 :root.darkmode {
@@ -39,6 +48,9 @@
 
   /* Common */
   --page-title: var(--gray-100);
+  --scroll: var(--gray-700);
+  --scroll-bar: var(--gray-500);
+  --scroll-bar-hover: var(--gray-400);
 
   /* Header */
   --header: #242427;
@@ -62,4 +74,10 @@
   --dropdown: var(--gray-800);
   --dropdown-text: var(--gray-200);
   --dropdown-line: var(--gray-400);
+
+  /* Profile */
+  --profile-header: var(--gray-800);
+  --profile-body: var(--gray-750);
+  --profile-label: var(--gray-400);
+  --profile-tag: var(--gray-700);
 }
