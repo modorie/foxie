@@ -24,23 +24,11 @@
 <script>
 export default {
   name: "Dropdown",
-  data() {
-    return {
-      isLogin: false,
-    };
-  },
   methods: {
     logout() {
-      this.isLogin = false;
-      localStorage.removeItem("jwt");
+      this.$store.dispatch("logout");
       this.$router.push({ name: "Home" });
     },
-  },
-  created() {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      this.isLogin = true;
-    }
   },
 };
 </script>
