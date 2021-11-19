@@ -2,11 +2,12 @@
   <div>
     <div class="container">
       <div class="header">
-        <div class="header__backdrop">
-          <img
-            :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-          />
-        </div>
+        <div
+          class="header__backdrop"
+          :style="{
+            'background-image': 'url(' + this.backdrop_path + ')',
+          }"
+        ></div>
       </div>
 
       <div class="header__info">
@@ -45,7 +46,7 @@
           </div>
 
           <div class="info__score">
-            <icon-base viewBox="0 0 18 20" width="2rem" height="1.5rem">
+            <icon-base viewBox="0 0 18 20" width="1.5rem" height="1.5rem">
               <icon-star />
             </icon-base>
 
@@ -75,6 +76,7 @@ export default {
   data() {
     return {
       movie: [],
+      backdrop_path: "",
     };
   },
   created() {
@@ -89,6 +91,7 @@ export default {
       })
       .then((res) => {
         this.movie = res.data;
+        this.backdrop_path = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`;
       })
       .catch((err) => console.log(err));
   },
@@ -105,12 +108,14 @@ export default {
 .header__backdrop {
   width: 100%;
   height: 20rem;
-  background-color: var(--gray-500);
+  background-size: 100% auto;
+  opacity: 0.5;
+  /* background-color: var(--gray-500); */
   overflow: hidden;
 }
 
 .header__info {
-  padding: 2rem 6rem;
+  padding: 1.5rem 6rem;
   display: flex;
 }
 
@@ -118,6 +123,7 @@ export default {
   border: 1px solid var(--detail);
   width: 12rem;
   margin-top: -4rem;
+  z-index: 1;
 }
 
 .header__right {
@@ -184,5 +190,7 @@ export default {
 .info__score__num {
   font-size: 24px;
   font-weight: 700;
+  margin-left: 0.5rem;
+  letter-spacing: 0.1rem;
 }
 </style>
