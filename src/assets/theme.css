@@ -23,6 +23,9 @@
   --card-background: var(--white);
   --card-text: var(--gray-800);
 
+  /* MovieDetail */
+  --detail: var(--white);
+
   /* Community */
   --board-header: var(--gray-100);
   --board-header-text: var(--gray-600);
@@ -71,6 +74,9 @@
   /* Movie */
   --card-background: var(--gray-800);
   --card-text: var(--gray-100);
+
+  /* MovieDetail */
+  --detail: var(--gray-800);
 
   /* Community */
   --board-header: var(--gray-750);

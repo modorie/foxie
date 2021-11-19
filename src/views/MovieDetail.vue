@@ -1,46 +1,61 @@
 <template>
   <div>
-    <img
-      class="bg__img"
-      :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-    />
-
     <div class="container">
-      <img
-        class="poster"
-        :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
-      />
+      <div class="header">
+        <div class="header__backdrop">
+          <img
+            :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
+          />
+        </div>
+      </div>
 
-      <div class="info">
-        <h1 class="info__title">
-          {{ movie.title }} <span>(19금 {{ movie.adult ? "O" : "X" }})</span>
-        </h1>
+      <div class="header__info">
+        <img
+          class="header__info__poster"
+          :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+        />
 
-        <div class="info__sub">
-          <p class="info__time">{{ movie.runtime }} min</p>
+        <div class="header__right">
+          <div class="header__top">
+            <h1 class="info__title">
+              {{ movie.title }} <span>{{ movie.adult ? "⛔" : "" }}</span>
+            </h1>
 
-          <div class="info__score">
-            <icon-base viewBox="0 0 18 20" width="18" height="18">
-              <icon-star />
-            </icon-base>
+            <router-link to="#">
+              <div class="info__button">리뷰 쓰기</div>
+            </router-link>
+          </div>
 
-            <div class="info__score__num">
-              {{ movie.vote_average.toFixed(1) }}
+          <div class="info__sub">
+            <p class="info__time">{{ movie.runtime }}분</p>
+
+            <div class="info__genres">
+              <span
+                class="info__genre"
+                v-for="genre in movie.genres"
+                :key="genre.id"
+              >
+                {{ genre.name }}
+              </span>
             </div>
           </div>
 
-          <div class="info__genres">
-            <span
-              class="info__genre"
-              v-for="genre in movie.genres"
-              :key="genre.id"
-            >
-              [ {{ genre.name }} ]
-            </span>
+          <div class="info__release">
+            <p>{{ movie.release_date.replaceAll("-", ". ") }}</p>
           </div>
-        </div>
 
-        <p class="info__overview">{{ movie.overview }}</p>
+          <div class="info__score">
+            <icon-base viewBox="0 0 18 20" width="2rem" height="1.5rem">
+              <icon-star />
+            </icon-base>
+
+            <p class="info__score__num">
+              {{ movie.vote_average.toFixed(1) }}
+            </p>
+          </div>
+
+          <!-- <p class="info__overview">{{ movie.overview }}</p> -->
+        </div>
       </div>
     </div>
   </div>
@@ -81,48 +96,93 @@ export default {
 </script>
 
 <style scoped>
-.bg__img {
-  position: fixed;
-  /* 여백 : header, sidebar size */
-  top: 70px;
-  left: 100px;
-  width: 100%;
-  z-index: -1;
-  opacity: 0.3;
+.container {
+  min-width: 60rem;
+  background-color: var(--detail);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.05);
 }
 
-.container {
+.header__backdrop {
+  width: 100%;
+  height: 20rem;
+  background-color: var(--gray-500);
+  overflow: hidden;
+}
+
+.header__info {
+  padding: 2rem 6rem;
   display: flex;
 }
 
-.poster {
-  width: 40%;
-  height: 100%;
+.header__info__poster {
+  border: 1px solid var(--detail);
+  width: 12rem;
+  margin-top: -4rem;
 }
 
-.info {
+.header__right {
+  width: 100%;
   margin-left: 2rem;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info__title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.info__button {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  background-color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
 }
 
 .info__sub {
   display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-.info__title {
-  font-size: 24px;
+.info__time {
+  font-size: 20px;
+  margin-right: 2rem;
+}
+
+.info__genres {
+  display: flex;
+  align-items: center;
+}
+
+.info__genre {
+  margin-right: 0.8rem;
+  background-color: var(--profile-tag);
+  padding: 0.1rem 0.7rem;
+  border-radius: 1rem;
+  font-size: 16px;
+}
+
+.info__release {
+  font-size: 18px;
+  margin-bottom: 3rem;
 }
 
 .info__score {
   display: flex;
   align-items: center;
-  margin-left: 1rem;
 }
 
 .info__score__num {
-  margin-left: 0.2rem;
-}
-
-.info__overview {
-  margin-top: 2rem;
+  font-size: 24px;
+  font-weight: 700;
 }
 </style>
