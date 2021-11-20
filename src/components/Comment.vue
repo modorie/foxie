@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import IconBase from "./IconBase.vue";
-import IconAvatar from "./icons/IconAvatar.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconAvatar from "@/components/icons/IconAvatar.vue";
 
 export default {
   components: {

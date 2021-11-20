@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import IconBase from "./IconBase.vue";
-import IconStar from "./icons/IconStar.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconStar from "@/components/icons/IconStar.vue";
 
 export default {
   components: {

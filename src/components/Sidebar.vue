@@ -57,13 +57,13 @@
 </template>
 
 <script>
-import IconBase from "./IconBase.vue";
-import IconLogo from "./icons/IconLogo.vue";
-import IconHome from "./icons/IconHome.vue";
-import IconMovie from "./icons/IconMovie.vue";
-import IconCommunity from "./icons/IconCommunity.vue";
-import IconProfile from "./icons/IconProfile.vue";
-// import IconReview from "./icons/IconReview.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconLogo from "@/components/icons/IconLogo.vue";
+import IconHome from "@/components/icons/IconHome.vue";
+import IconMovie from "@/components/icons/IconMovie.vue";
+import IconCommunity from "@/components/icons/IconCommunity.vue";
+import IconProfile from "@/components/icons/IconProfile.vue";
+// import IconReview from "@/components/icons/IconReview.vue";
 
 export default {
   name: "Sidebar",

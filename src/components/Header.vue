@@ -67,13 +67,13 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { authComputed } from "../helper";
+import { authComputed } from "@/helper";
 
-import IconBase from "./IconBase.vue";
-import IconSearch from "./icons/IconSearch.vue";
-import IconBell from "./icons/IconBell.vue";
-import IconAvatar from "./icons/IconAvatar.vue";
-import Dropdown from "./Dropdown.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconSearch from "@/components/icons/IconSearch.vue";
+import IconBell from "@/components/icons/IconBell.vue";
+import IconAvatar from "@/components/icons/IconAvatar.vue";
+import Dropdown from "@/components/Dropdown.vue";
 
 export default Vue.extend({
   name: "Header",
@@ -149,7 +149,7 @@ export default Vue.extend({
   height: 70px;
   align-items: center;
   background-color: var(--header);
-  z-index: 1;
+  z-index: 100;
 }
 
 .header__search {

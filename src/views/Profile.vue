@@ -69,9 +69,9 @@
 </template>
 
 <script>
-import IconBase from "../components/IconBase.vue";
-import IconAvatar from "../components/icons/IconAvatar.vue";
-import IconFollow from "../components/icons/IconFollow.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconAvatar from "@/components/icons/IconAvatar.vue";
+import IconFollow from "@/components/icons/IconFollow.vue";
 
 export default {
   components: {
