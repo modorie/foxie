@@ -93,6 +93,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .login__text {
@@ -127,6 +128,7 @@ export default {
   width: 100%;
   height: 2.5rem;
   padding: 0.5rem;
+  outline: none;
 }
 
 .login__button {
