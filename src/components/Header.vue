@@ -154,7 +154,7 @@ export default Vue.extend({
   height: 70px;
   align-items: center;
   background-color: var(--header);
-  z-index: 1;
+  z-index: 100;
 }
 
 .header__search {

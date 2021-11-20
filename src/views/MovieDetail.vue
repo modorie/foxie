@@ -367,6 +367,7 @@ export default {
   padding-top: 6rem;
   font-size: 18px;
   font-weight: 800;
+  margin-bottom: 0.3rem;
 }
 
 .member__info__name {
