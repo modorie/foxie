@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import IconBase from "./IconBase.vue";
-import IconDown from "./icons/IconDown.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconDown from "@/components/icons/IconDown.vue";
 
 export default {
   components: {

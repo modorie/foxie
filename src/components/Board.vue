@@ -45,8 +45,8 @@
 import Vue from "vue";
 import axios from "axios";
 
-import BoardSearchBar from "./BoardSearchBar.vue";
-import Pagination from "./Pagination.vue";
+import BoardSearchBar from "@/components/BoardSearchBar.vue";
+import Pagination from "@/components/Pagination.vue";
 
 export default Vue.extend({
   data() {

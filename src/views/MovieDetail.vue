@@ -135,10 +135,10 @@
 <script>
 import axios from "axios";
 
-import IconBase from "../components/IconBase.vue";
-import IconStar from "../components/icons/IconStar.vue";
-import Comment from "../components/Comment.vue";
-import CommentWrite from "../components/CommentWrite.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconStar from "@/components/icons/IconStar.vue";
+import Comment from "@/components/Comment.vue";
+import CommentWrite from "@/components/CommentWrite.vue";
 
 export default {
   components: {

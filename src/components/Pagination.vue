@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import IconBase from "./IconBase.vue";
-import IconLeft from "./icons/IconLeft.vue";
-import IconRight from "./icons/IconRight.vue";
+import IconBase from "@/components/IconBase.vue";
+import IconLeft from "@/components/icons/IconLeft.vue";
+import IconRight from "@/components/icons/IconRight.vue";
 
 export default {
   props: {},
