@@ -14,7 +14,7 @@ import Login from "../views/accounts/Login.vue";
 
 Vue.use(Router);
 
-export default new Router({
+export const router = new Router({
   mode: "history",
 
   routes: [
@@ -69,5 +69,21 @@ export default new Router({
       name: "Login",
       component: Login,
     },
+
+    { path: "*", redirect: "/" },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ["/", "/login", "/signup", "/movie", "/community"];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem("user");
+
+  if (authRequired && !loggedIn) {
+    return next("/login");
+  }
+
+  next();
+});
+
+export default router;

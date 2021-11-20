@@ -67,6 +67,8 @@
 <script lang="ts">
 import Vue from "vue";
 
+import { authComputed } from "@/helper";
+
 import IconBase from "@/components/IconBase.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconBell from "@/components/icons/IconBell.vue";
@@ -86,18 +88,12 @@ export default Vue.extend({
     return {
       searchInput: "",
       active: false,
-      isLogin: false,
       isDropdownOpen: false,
       isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
     };
   },
 
   methods: {
-    logout() {
-      this.isLogin = false;
-      localStorage.removeItem("jwt");
-      this.$router.push({ name: "Login" });
-    },
     onToggleDarkMode() {
       // TODO : 코드 중복 제거 100% 가능! 근데 나중에 할래..
       if (window) {
@@ -125,12 +121,11 @@ export default Vue.extend({
       }
     },
   },
-  created() {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      this.isLogin = true;
-    }
+
+  computed: {
+    ...authComputed,
   },
+
   mounted() {
     if (window && this.isDark) {
       document.documentElement.classList.add("darkmode");
