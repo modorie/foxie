@@ -5,7 +5,7 @@
       <div class="banner__left" />
       <div class="banner__right">
         <div class="banner__right__brand">
-          <icon-base viewBox="0 0 43 54" width="42px" height="48px">
+          <icon-base viewBox="0 0 45 56" width="42px" height="48px">
             <icon-logo />
           </icon-base>
 
