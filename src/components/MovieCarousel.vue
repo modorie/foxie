@@ -1,50 +1,20 @@
 <template>
-  <div class="container">
-    <div class="tab">
-      <div class="tab__item active">Popular Movies</div>
-      <div class="tab__item">New Movies</div>
-      <div class="tab__item">Foxie's Pick</div>
-    </div>
-
-    <div class="body"><MovieCarouselList /></div>
-  </div>
+  <div class="carousel"></div>
 </template>
 
 <script>
 import axios from "axios";
-import MovieCarouselList from "@/components/MovieCarouselList.vue";
 
 export default {
-  components: {
-    MovieCarouselList,
-  },
+  props: {},
 };
 </script>
 
 <style scoped>
-.container {
-  margin-bottom: 4rem;
-}
-
-.tab {
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--header);
-  font-weight: 700;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
-}
-
-.tab__item {
-  display: flex;
-  justify-content: center;
+.carousel {
   width: 100%;
-  padding: 1rem;
-}
-
-.active {
-  background-color: var(--board-header);
-  border-bottom: 5px solid var(--coral);
-  color: var(--coral);
+  background-color: var(--gray-300);
+  height: 16rem;
+  border-radius: 0 0 8px 8px;
 }
 </style>

@@ -35,7 +35,7 @@
           <p class="left__subtitle">
             장르별 전문가들의 섬세한 리뷰들을 읽어보세요.
           </p>
-          <MovieCarousel />
+          <MovieCarouselHeader />
         </div>
 
         <div>
@@ -43,13 +43,13 @@
           <p class="left__subtitle">
             가장 인기 있는 리뷰들을 모아봤어. 즐겁게 봐줘 - 알겠어
           </p>
-          <MovieCarousel />
+          <MovieCarouselHeader />
         </div>
 
         <div>
           <h1 class="left__title mulish">Best Issues 🚀</h1>
           <p class="left__subtitle">가장 인기 있는 게시글들이야. 재밌게 봐줘</p>
-          <MovieCarousel />
+          <MovieCarouselHeader />
         </div>
       </div>
 
@@ -65,14 +65,14 @@
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
-import MovieCarousel from "@/components/MovieCarousel.vue";
+import MovieCarouselHeader from "@/components/MovieCarouselHeader.vue";
 
 export default {
   components: {
     IconBase,
     IconLogo,
     MovieRecommend,
-    MovieCarousel,
+    MovieCarouselHeader,
   },
 };
 </script>
