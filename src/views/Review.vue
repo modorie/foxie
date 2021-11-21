@@ -5,9 +5,9 @@
     <div class="body">
       <div class="left">
         <div class="tab">
-          <div class="tab__item active">Popular Movies</div>
-          <div class="tab__item">New Movies</div>
-          <div class="tab__item">Foxie's Pick</div>
+          <div class="tab__item active">Popular Reviews</div>
+          <div class="tab__item">New Reviews</div>
+          <div class="tab__item">My Reviews</div>
         </div>
 
         <div>

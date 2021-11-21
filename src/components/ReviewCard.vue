@@ -34,7 +34,23 @@
 
       <ReviewMovieCard />
 
-      <div>나는 이모티콘</div>
+      <div class="footer">
+        <div class="footer__item">
+          <icon-base viewBox="0 0 22 26" width="24" height="22">
+            <icon-heart class="footer__svg" />
+          </icon-base>
+
+          <p class="footer__item__count">17</p>
+        </div>
+
+        <div class="footer__item">
+          <icon-base viewBox="0 0 26 18" width="20" height="20">
+            <icon-comment class="footer__svg" />
+          </icon-base>
+
+          <p class="footer__item__count">17</p>
+        </div>
+      </div>
 
       <div class="comment">
         <div class="comment__avatar">
@@ -43,7 +59,7 @@
           </icon-base>
         </div>
 
-        <input type="text" />
+        <input class="footer__input" type="text" />
       </div>
     </div>
   </div>
@@ -54,12 +70,16 @@ import ReviewMovieCard from "@/components/ReviewMovieCard.vue";
 
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
+import IconHeart from "@/components/icons/IconHeart.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 
 export default {
   components: {
     ReviewMovieCard,
     IconBase,
     IconAvatar,
+    IconHeart,
+    IconComment,
   },
 };
 </script>
@@ -130,5 +150,33 @@ export default {
   justify-content: end;
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+.footer {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer__item {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  color: var(--recommend-text);
+}
+
+.footer__svg {
+  stroke: var(--recommend-text);
+}
+
+.footer__item__count {
+  margin-left: 0.2rem;
+}
+
+.footer__input {
+  background-color: var(--profile-tag);
+  margin-left: 1rem;
+  border-radius: 2rem;
+  width: 100%;
 }
 </style>
