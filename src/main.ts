@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 
+import "./assets/tailwind.css";
 import "./assets/theme.css";
 import "./assets/fds.css";
 
