@@ -1,20 +1,15 @@
 <template>
   <div class="dropdown">
     <div class="dropdown__list">
-      <!-- TODO: text-sm -->
-      <span class="dropdown__info text-sm">Signed in as</span>
-      <span class="dropdown__info text-sm font-600">example@example.com</span>
+      <p class="dropdown__info">Signed in as</p>
+      <b class="dropdown__info">example@example.com</b>
     </div>
     <div class="dropdown__list">
-      <a href="#" class="dropdown__item text-sm"> Profile </a>
-      <a href="#" class="dropdown__item text-sm"> Accounts settings </a>
+      <a href="#" class="dropdown__item">Profile</a>
+      <a href="#" class="dropdown__item">Accounts settings</a>
     </div>
     <div class="dropdown__list">
-      <router-link
-        @click.native="logout"
-        to="#"
-        class="dropdown__item block text-sm"
-      >
+      <router-link @click.native="logout" to="#" class="dropdown__item block">
         Log out
       </router-link>
     </div>
@@ -23,7 +18,6 @@
 
 <script>
 export default {
-  name: "Dropdown",
   methods: {
     logout() {
       this.$store.dispatch("logout");
@@ -39,16 +33,17 @@ export default {
   right: 10px;
   top: 60px;
   width: 14rem;
-  background-color: #fff;
+  background-color: var(--header);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
-  border: #f4f4f5 1px solid;
+  border: var(--board-header) 1px solid;
 }
 
 .dropdown__list {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #f4f4f5;
+  border-bottom: 1px solid var(--board-header);
+  font-size: 14px;
 }
 
 .dropdown__list:first-child {
@@ -67,7 +62,6 @@ export default {
 }
 
 .dropdown__item {
-  color: #3f3f46;
   display: block;
   padding-left: 1rem;
   padding-right: 1rem;
