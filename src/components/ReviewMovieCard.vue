@@ -10,7 +10,7 @@
       <div class="card__right__header">
         <div class="card__right__header__title">{{ movie.title }}</div>
         <div class="card__right__header__score">
-          <icon-base viewBox="0 0 18 20" width="22px" height="16px">
+          <icon-base viewBox="0 0 16 18" width="24px" height="16px">
             <icon-star />
           </icon-base>
           <p>{{ movie.vote_average.toFixed(1) }}</p>
@@ -27,7 +27,8 @@
         </span>
       </div>
 
-      <p class="card__right__text">소석진님 외 8명이 이 영화를 좋아합니다.</p>
+      <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
+      <p class="card__right__text">{{ movie.overview | truncate(100) }}</p>
     </div>
   </div>
 </template>
@@ -65,16 +66,20 @@ export default {
 
 <style scoped>
 .card {
-  width: 24rem;
+  width: 100%;
   display: flex;
   border-radius: 4px;
-  padding: 1rem 0rem;
-  border-bottom: 1px solid var(--recommend-boader);
+  padding: 1rem;
+  border: 1px solid var(--recommend-boader);
 }
 
 .card__left {
   width: 6rem;
   border-radius: 4px 0 0 4px;
+}
+
+.card__left__img {
+  border-radius: 4px;
 }
 
 .card__right {
@@ -94,7 +99,6 @@ export default {
 }
 
 .card__right__header__score {
-  font-size: 14px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -104,14 +108,15 @@ export default {
   margin-bottom: 1.5rem;
 }
 .card__right__genre {
-  font-size: 12px;
+  font-size: 14px;
   margin-right: 0.5rem;
+  padding: 0.2rem 0.5rem;
   background-color: var(--profile-tag);
-  padding: 0.1rem 0.5rem;
   border-radius: 1rem;
 }
 
 .card__right__text {
   color: var(--recommend-text);
+  font-size: 14px;
 }
 </style>
