@@ -46,9 +46,26 @@
         {{ post.body }}
       </p>
 
-      <router-link to="#">
-        <div class="post__button__like">좋은걸</div>
-      </router-link>
+      <div class="footer">
+        <router-link to="#">
+          <div class="post__button__like">
+            <icon-base viewBox="0 0 22 26" width="24" height="22">
+              <icon-heart class="like__svg" />
+            </icon-base>
+          </div>
+
+          <div class="post__button__like">
+            <icon-base
+              viewBox="0 0 22 26"
+              width="24"
+              height="22"
+              iconColor="white"
+            >
+              <icon-heart class="like__svg" />
+            </icon-base>
+          </div>
+        </router-link>
+      </div>
     </div>
 
     <div class="comment">
@@ -157,7 +174,15 @@ export default {
 .post__content {
 }
 
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
 .post__button__like {
+  display: flex;
+  justify-content: center;
+
   border-radius: 0.3rem;
   padding: 0.5rem;
   margin-top: 3rem;
@@ -170,6 +195,10 @@ export default {
   border: 1px solid var(--btn-primary);
   color: var(--white);
   font-weight: 600;
+}
+
+.like__svg {
+  stroke: var(--white);
 }
 
 .comment {
