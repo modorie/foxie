@@ -2,16 +2,16 @@
   <div>
     <h1 class="page__title">Movies</h1>
     <h1 class="movielist__title">최신 영화</h1>
-    <MovieList :movies="nowplaying_MovieList" />
+    <MovieCarousel :movies="nowplaying_MovieList" />
 
     <h1 class="movielist__title">인기 영화</h1>
-    <MovieList :movies="popular_MovieList" />
+    <MovieCarousel :movies="popular_MovieList" />
 
     <h1 class="movielist__title">역대 인기 영화</h1>
-    <MovieList :movies="toprated_MovieList" />
+    <MovieCarousel :movies="toprated_MovieList" />
 
     <h1 class="movielist__title">개봉 예정 영화</h1>
-    <MovieList :movies="upcoming_MovieList" />
+    <MovieCarousel :movies="upcoming_MovieList" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 import Vue from "vue";
 
 import axios from "axios";
-import MovieList from "@/components/MovieList.vue";
+import MovieCarousel from "@/components/MovieCarousel.vue";
 
 const MOVIE_DB_API_URL_POPULAR = "https://api.themoviedb.org/3/movie/popular";
 const MOVIE_DB_API_URL_UPCOMING = "https://api.themoviedb.org/3/movie/upcoming";
@@ -41,7 +41,7 @@ export default Vue.extend({
   },
   props: {},
   components: {
-    MovieList,
+    MovieCarousel,
   },
   created() {
     axios
