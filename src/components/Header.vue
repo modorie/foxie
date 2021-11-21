@@ -19,7 +19,7 @@
       {{ isDark ? "🌙" : "🌞" }}
     </button>
 
-    <div v-if="isLogin">
+    <div v-if="!isLogin">
       <div class="header__info">
         <div class="header-bell">
           <icon-base
@@ -44,10 +44,12 @@
         </div>
       </div>
 
-      <Dropdown
-        v-if="isDropdownOpen"
-        @close-dropdown="isDropdownOpen = false"
-      />
+      <transition name="fade">
+        <Dropdown
+          v-if="isDropdownOpen"
+          @close-dropdown="isDropdownOpen = false"
+        />
+      </transition>
     </div>
 
     <div v-else class="header__auth">
@@ -181,11 +183,13 @@ export default Vue.extend({
 
 .header-bell {
   margin-left: 2rem;
+  cursor: pointer;
 }
 
 .header__avatar {
   margin-left: 2rem;
   margin-right: 2rem;
+  cursor: pointer;
 }
 
 .header__auth {
@@ -215,5 +219,17 @@ export default Vue.extend({
   color: var(--btn-secondary-text);
   border: 1px solid var(--btn-secondary-border);
   font-weight: 600;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: transform 0.3s;
+  transform: translateY(0px);
+  transform: opacity 1;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
 }
 </style>
