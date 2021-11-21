@@ -37,13 +37,15 @@
         </p>
 
         <div>
-          <MovieCarouselHeader />
-
+          <div class="tab">
+            <div class="tab__item active">Popular Movies</div>
+            <div class="tab__item">New Movies</div>
+            <div class="tab__item">Foxie's Pick</div>
+          </div>
           <div class="carousel__container">
-            <MovieCarousel :movies="popular_MovieList" />
-            <!-- <MovieCarousel :movies="upcoming_MovieList" />
-            <MovieCarousel :movies="toprated_MovieList" />
-            <MovieCarousel :movies="nowplaying_MovieList" /> -->
+            <MovieCarousel :movies="nowplaying_MovieList" />
+            <!-- <MovieCarousel :movies="popular_MovieList" /> -->
+            <!-- <MovieCarousel :movies="toprated_MovieList" /> -->
           </div>
         </div>
       </div>
@@ -62,11 +64,9 @@ import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
-import MovieCarouselHeader from "@/components/MovieCarouselHeader.vue";
 import MovieCarousel from "@/components/MovieCarousel.vue";
 
 const MOVIE_DB_API_URL_POPULAR = "https://api.themoviedb.org/3/movie/popular";
-const MOVIE_DB_API_URL_UPCOMING = "https://api.themoviedb.org/3/movie/upcoming";
 const MOVIE_DB_API_URL_TOP_RATED =
   "https://api.themoviedb.org/3/movie/top_rated";
 const MOVIE_DB_API_URL_GET_NOW_PLAYING =
@@ -77,16 +77,13 @@ export default {
     IconBase,
     IconLogo,
     MovieRecommend,
-    MovieCarouselHeader,
     MovieCarousel,
   },
   data() {
     return {
-      popular_MovieList: [],
-      upcoming_MovieList: [],
-      toprated_MovieList: [],
       nowplaying_MovieList: [],
-      review_recommend: [],
+      popular_MovieList: [],
+      toprated_MovieList: [],
     };
   },
   created() {
@@ -101,19 +98,6 @@ export default {
       })
       .then((res) => {
         this.popular_MovieList = res.data.results;
-      })
-      .catch((err) => console.log(err));
-    axios
-      .get(MOVIE_DB_API_URL_UPCOMING, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-          page: 1,
-          region: "kr",
-        },
-      })
-      .then((res) => {
-        this.upcoming_MovieList = res.data.results;
       })
       .catch((err) => console.log(err));
     axios
@@ -215,6 +199,28 @@ export default {
   margin-right: 3rem;
 }
 
+.tab {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--header);
+  font-weight: 700;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+.tab__item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 5px solid var(--board-header);
+}
+
+.active {
+  background-color: var(--board-header);
+  border-bottom: 5px solid var(--coral);
+  color: var(--coral);
+}
 .carousel__container {
   background-color: var(--header);
   padding: 1rem 0.5rem;
