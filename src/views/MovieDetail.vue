@@ -335,7 +335,7 @@ export default {
 
 .body__info__video {
   width: 100%;
-  height: 32rem;
+  height: 50vw;
 }
 
 .body__info__members {

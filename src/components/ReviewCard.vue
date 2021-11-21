@@ -44,7 +44,7 @@
         </div>
 
         <div class="footer__item">
-          <icon-base viewBox="0 0 26 18" width="20" height="20">
+          <icon-base viewBox="0 0 24 18" width="20" height="20">
             <icon-comment class="footer__svg" />
           </icon-base>
 
