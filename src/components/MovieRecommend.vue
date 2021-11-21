@@ -5,8 +5,6 @@
     <MovieRecommendCard />
     <MovieRecommendCard />
     <MovieRecommendCard />
-
-    <div class="list__button">View All</div>
   </div>
 </template>
 
@@ -34,13 +32,8 @@ export default {
   color: var(--recommend-title);
 }
 
-.list__button {
-  width: 100%;
-  background-color: var(--recommend-button);
-  border: var(--recommend-button-border);
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 6px;
-  font-size: 14px;
+.card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 </style>
