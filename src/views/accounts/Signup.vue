@@ -94,6 +94,8 @@ export default {
   height: 100vh;
   z-index: 101;
   background-color: var(--background);
+  display: flex;
+  justify-content: center;
 }
 .container {
   display: flex;
