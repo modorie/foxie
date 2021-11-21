@@ -44,7 +44,7 @@
   --profile-tag: var(--gray-100);
 
   /* Recommend */
-  --recommend: var(--gray-50);
+  --recommend: var(--white);
   --recommend-title: #7b6161;
   --recommend-text: var(--gray-500);
   --recommend-boader: var(--gray-200);

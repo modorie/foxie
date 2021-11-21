@@ -221,6 +221,7 @@ export default {
   border-bottom: 5px solid var(--coral);
   color: var(--coral);
 }
+
 .carousel__container {
   background-color: var(--header);
   padding: 1rem 0.5rem;
