@@ -3,7 +3,7 @@
     <div class="container">
       <div class="logo">
         <router-link to="/">
-          <icon-base viewBox="0 0 43 54" width="6rem" height="6rem">
+          <icon-base viewBox="0 0 45 56" width="6rem" height="6rem">
             <icon-logo />
           </icon-base>
         </router-link>
@@ -31,6 +31,15 @@
           <router-link to="/">
             <div class="login__button mulish" @click="login">Log in</div>
           </router-link>
+
+          <router-link to="/">
+            <div class="google__button" @click="login">
+              <icon-base viewBox="0 0 32 32" width="20" height="20">
+                <icon-google />
+              </icon-base>
+              <p>Log in with Google</p>
+            </div>
+          </router-link>
         </form>
       </div>
 
@@ -38,7 +47,7 @@
         <p>
           아이디가 없으신가요?
           <span class="sign__up mulish">
-            <router-link to="/signup"> Sign up </router-link></span
+            <router-link to="/signup">Sign up</router-link></span
           >
         </p>
       </div>
@@ -49,11 +58,13 @@
 <script>
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
+import IconGoogle from "@/components/icons/IconGoogle.vue";
 
 export default {
   components: {
     IconBase,
     IconLogo,
+    IconGoogle,
   },
   data() {
     return {
@@ -143,6 +154,24 @@ export default {
   padding: 0.5rem;
   color: var(--white);
   font-weight: 700;
+}
+
+.google__button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  color: var(--gray-600);
+  font-weight: 700;
+}
+
+.google__button p {
+  margin-left: 3rem;
 }
 
 .sign__up {

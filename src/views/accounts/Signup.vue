@@ -3,7 +3,7 @@
     <div class="container">
       <div class="logo">
         <router-link to="/">
-          <icon-base viewBox="0 0 43 54" width="6rem" height="6rem">
+          <icon-base viewBox="0 0 45 56" width="6rem" height="6rem">
             <icon-logo />
           </icon-base>
         </router-link>
