@@ -30,26 +30,23 @@
 
     <div class="home__body">
       <div class="home__body__left">
-        <div>
-          <h1 class="left__title mulish">Best Movies 🚀</h1>
-          <p class="left__subtitle">
-            장르별 전문가들의 섬세한 리뷰들을 읽어보세요.
-          </p>
-          <MovieCarousel />
-        </div>
+        <h1 class="left__title mulish">Best Movies 🚀</h1>
+
+        <p class="left__subtitle">
+          장르별 전문가들의 섬세한 리뷰들을 읽어보세요.
+        </p>
 
         <div>
-          <h1 class="left__title mulish">Best Reviews 🚀</h1>
-          <p class="left__subtitle">
-            가장 인기 있는 리뷰들을 모아봤어. 즐겁게 봐줘 - 알겠어
-          </p>
-          <MovieCarousel />
-        </div>
-
-        <div>
-          <h1 class="left__title mulish">Best Issues 🚀</h1>
-          <p class="left__subtitle">가장 인기 있는 게시글들이야. 재밌게 봐줘</p>
-          <MovieCarousel />
+          <div class="tab">
+            <div class="tab__item active">Popular Movies</div>
+            <div class="tab__item">New Movies</div>
+            <div class="tab__item">Foxie's Pick</div>
+          </div>
+          <div class="carousel__container">
+            <MovieCarousel :movies="nowplaying_MovieList" />
+            <!-- <MovieCarousel :movies="popular_MovieList" /> -->
+            <!-- <MovieCarousel :movies="toprated_MovieList" /> -->
+          </div>
         </div>
       </div>
 
@@ -62,10 +59,18 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
 import MovieCarousel from "@/components/MovieCarousel.vue";
+
+const MOVIE_DB_API_URL_POPULAR = "https://api.themoviedb.org/3/movie/popular";
+const MOVIE_DB_API_URL_TOP_RATED =
+  "https://api.themoviedb.org/3/movie/top_rated";
+const MOVIE_DB_API_URL_GET_NOW_PLAYING =
+  "https://api.themoviedb.org/3/movie/now_playing";
 
 export default {
   components: {
@@ -73,6 +78,54 @@ export default {
     IconLogo,
     MovieRecommend,
     MovieCarousel,
+  },
+  data() {
+    return {
+      nowplaying_MovieList: [],
+      popular_MovieList: [],
+      toprated_MovieList: [],
+    };
+  },
+  created() {
+    axios
+      .get(MOVIE_DB_API_URL_POPULAR, {
+        params: {
+          api_key: process.env.VUE_APP_TMDB_API_KEY,
+          language: "ko-KR",
+          page: 1,
+          region: "kr",
+        },
+      })
+      .then((res) => {
+        this.popular_MovieList = res.data.results;
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get(MOVIE_DB_API_URL_TOP_RATED, {
+        params: {
+          api_key: process.env.VUE_APP_TMDB_API_KEY,
+          language: "ko-KR",
+          page: 1,
+          region: "kr",
+        },
+      })
+      .then((res) => {
+        this.toprated_MovieList = res.data.results;
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get(MOVIE_DB_API_URL_GET_NOW_PLAYING, {
+        params: {
+          api_key: process.env.VUE_APP_TMDB_API_KEY,
+          language: "ko-KR",
+          page: 1,
+          region: "kr",
+        },
+      })
+      .then((res) => {
+        this.nowplaying_MovieList = res.data.results;
+      })
+      .catch((err) => console.log(err));
   },
 };
 </script>
@@ -110,7 +163,7 @@ export default {
   font-size: 2rem;
   margin-left: 1rem;
   margin-bottom: 2rem;
-  color: #ed5656;
+  color: var(--coral);
   font-weight: 700;
 }
 
@@ -137,12 +190,41 @@ export default {
 }
 
 .home__body {
+  width: 100%;
   display: flex;
 }
 
 .home__body__left {
-  width: 100%;
+  width: calc(100% - 29rem);
   margin-right: 3rem;
+}
+
+.tab {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--header);
+  font-weight: 700;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+.tab__item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 5px solid var(--board-header);
+}
+
+.active {
+  background-color: var(--board-header);
+  border-bottom: 5px solid var(--coral);
+  color: var(--coral);
+}
+.carousel__container {
+  background-color: var(--header);
+  padding: 1rem 0.5rem;
+  border-radius: 8px 0px;
 }
 
 .left__title {

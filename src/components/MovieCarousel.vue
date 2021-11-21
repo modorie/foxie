@@ -1,50 +1,65 @@
 <template>
-  <div class="container">
-    <div class="tab">
-      <div class="tab__item active">Popular Movies</div>
-      <div class="tab__item">New Movies</div>
-      <div class="tab__item">Foxie's Pick</div>
-    </div>
-
-    <div class="body"><MovieCarouselList /></div>
+  <div>
+    <swiper class="swiper" :options="swiperOption">
+      <swiper-slide v-for="movie in movies" :key="movie.id">
+        <MovieCard :movie="movie" />
+      </swiper-slide>
+      <div class="swiper-button-prev" slot="button-prev"></div>
+      <div class="swiper-button-next" slot="button-next"></div>
+    </swiper>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import MovieCarouselList from "@/components/MovieCarouselList.vue";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
+
+import MovieCard from "@/components/MovieCard.vue";
 
 export default {
   components: {
-    MovieCarouselList,
+    MovieCard,
+    swiper,
+    swiperSlide,
   },
+  props: {
+    movies: {
+      type: Array,
+    },
+    group_title: {
+      type: String,
+    },
+  },
+  data() {
+    return {
+      swiperOption: {
+        slidesPerView: "auto",
+        spaceBetween: 10,
+        loopedSlides: "10",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      },
+    };
+  },
+  methods: {},
 };
 </script>
 
 <style scoped>
-.container {
-  margin-bottom: 4rem;
+/* TODO : 반응형이 이상하게 됨.. 공부해서 리팩토링 */
+.swiper {
 }
 
-.tab {
+.swiper-slide {
+  width: 12rem;
   display: flex;
-  justify-content: space-between;
-  background-color: var(--header);
-  font-weight: 700;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
 }
 
-.tab__item {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem;
-}
-
-.active {
-  background-color: var(--board-header);
-  border-bottom: 5px solid var(--coral);
-  color: var(--coral);
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--white);
+  opacity: 0.6;
 }
 </style>

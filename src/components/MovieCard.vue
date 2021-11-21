@@ -1,39 +1,25 @@
 <template>
   <div class="card">
     <router-link :to="`movie/${movie.id}`">
-      <!-- TODO : parameter를 data에서 미리 계산하면 if 분기 필요 X -->
       <img
-        v-if="movie.backdrop_path"
-        class="card__image"
-        :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-      />
-
-      <img
-        v-else-if="movie.poster_path"
+        v-if="movie.poster_path"
         class="card__image"
         :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
       />
 
-      <!-- 포스터도 없는 영화가 있음 -->
       <div v-else class="card__no__image mulish">No Poster</div>
 
       <div class="card__info">
-        <div class="card__info__left">
-          <p class="card__info__left__title">
-            {{ movie.title | truncate(19) }}
-          </p>
+        <p class="card__info__left__title">
+          {{ movie.title | truncate(16) }}
+        </p>
 
-          <div class="card__info__left__year">
-            ({{ movie.release_date.split("-")[0] }})
-          </div>
-        </div>
-
-        <div class="card__info__right">
-          <icon-base viewBox="0 0 18 20" width="18" height="18">
+        <div class="card__info__score">
+          <icon-base viewBox="0 0 18 20" width="14" height="14">
             <icon-star />
           </icon-base>
 
-          <div class="card__info__right__score">
+          <div class="card__info__score__num">
             {{ movie.vote_average.toFixed(1) }}
           </div>
         </div>
@@ -62,15 +48,17 @@ export default {
 <style scoped>
 /* radius 여러 개 둬서 모서리 그림자가 라운딩 */
 .card {
-  width: 20rem;
+  width: 12rem;
   border-radius: 8px;
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.05);
+  /* Swiper의 자체 overflow:hidden 때문에 하단 그림자가 사라짐.. 야매로 해결 */
+  margin-bottom: 0.1rem;
 }
 
 .card__image {
   border-radius: 8px 8px 0px 0px;
   width: 100%;
-  height: 12rem;
+  height: 18rem;
   object-fit: cover;
 }
 
@@ -86,29 +74,25 @@ export default {
 }
 
 .card__info {
-  display: flex;
-  justify-content: space-between;
   background-color: var(--card-background);
   color: var(--card-text);
   border-radius: 0px 0px 8px 8px;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 14px;
-  font-weight: 700;
 }
 
-.card__info__left {
-  display: flex;
-}
 .card__info__left__year {
   padding-left: 0.2rem;
 }
 
-.card__info__right {
+.card__info__score {
   display: flex;
   align-items: center;
 }
 
-.card__info__right__score {
+.card__info__score__num {
   padding-left: 0.2rem;
+  font-size: 14px;
+  font-weight: 600;
 }
 </style>
