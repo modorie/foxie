@@ -12,6 +12,9 @@
 
     <h1 class="movielist__title">개봉 예정 영화</h1>
     <MovieCarousel :movies="upcoming_MovieList" />
+
+    <h1 class="movielist__title">모든 영화</h1>
+    <MovieCarousel :movies="upcoming_MovieList" />
   </div>
 </template>
 
@@ -111,9 +114,9 @@ export default Vue.extend({
 }
 
 .movielist__title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 0.5rem;
 }
 </style>

@@ -205,7 +205,6 @@ export default {
 <style scoped>
 .container {
   min-width: 60rem;
-  margin-bottom: 8rem;
 }
 
 .header {
