@@ -35,7 +35,6 @@ export default {
       swiperOption: {
         slidesPerView: "auto",
         spaceBetween: 10,
-        loop: true,
         loopedSlides: "10",
         navigation: {
           nextEl: ".swiper-button-next",
@@ -50,17 +49,17 @@ export default {
 
 <style scoped>
 /* TODO : 반응형이 이상하게 됨.. 공부해서 리팩토링 */
-.container {
-  @apply grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-cols-6;
-  gap: 20px 20px;
-}
 .swiper {
-  min-width: 100%;
-  overflow: hidden;
 }
 
 .swiper-slide {
   width: 12rem;
   display: flex;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--white);
+  opacity: 0.6;
 }
 </style>

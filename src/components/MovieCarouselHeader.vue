@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import MovieCarousel from "@/components/MovieCarousel.vue";
 
 export default {
@@ -23,7 +22,6 @@ export default {
 
 <style scoped>
 .container {
-  margin-bottom: 4rem;
 }
 
 .tab {
@@ -40,6 +38,7 @@ export default {
   justify-content: center;
   width: 100%;
   padding: 1rem;
+  border-bottom: 5px solid var(--board-header);
 }
 
 .active {
