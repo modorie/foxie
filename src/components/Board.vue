@@ -154,6 +154,10 @@ export default Vue.extend({
   font-size: 14px;
 }
 
+th:nth-child(2) {
+  width: 100%;
+}
+
 .board__comment {
   color: var(--coral);
   padding-left: 0.5rem;
