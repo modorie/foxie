@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div class="container">
       <div class="header">
         <div
@@ -129,7 +129,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

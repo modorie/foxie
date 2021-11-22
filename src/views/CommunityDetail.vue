@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <h1 class="page__title mulish">Post</h1>
 
     <div class="post">
@@ -73,7 +73,7 @@
 
       <Comment v-for="index in 5" :key="index" />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

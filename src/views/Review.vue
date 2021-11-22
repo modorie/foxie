@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <h1 class="page__title">Review</h1>
 
     <div class="body">
@@ -21,7 +21,7 @@
         <MovieRecommend />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

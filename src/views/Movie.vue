@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <h1 class="page__title">Movies</h1>
     <h1 class="movielist__title">최신 영화</h1>
     <MovieCarousel :movies="nowplaying_MovieList" />
@@ -15,7 +15,7 @@
 
     <h1 class="movielist__title">모든 영화</h1>
     <MovieCarousel :movies="upcoming_MovieList" />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">

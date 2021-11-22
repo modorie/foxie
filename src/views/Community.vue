@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div class="header">
       <h1 class="page__title">Post</h1>
 
@@ -9,7 +9,7 @@
     </div>
 
     <Board />
-  </div>
+  </section>
 </template>
 
 <script>

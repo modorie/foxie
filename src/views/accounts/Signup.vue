@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed">
+  <section class="fixed">
     <div class="container">
       <div class="logo">
         <router-link to="/">
@@ -44,7 +44,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -90,7 +90,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  min-width: 100vw;
   height: 100vh;
   z-index: 101;
   background-color: var(--background);

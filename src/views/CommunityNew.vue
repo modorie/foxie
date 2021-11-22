@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <h1 class="page__title">New Post</h1>
 
     <div class="editor">
@@ -16,7 +16,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
