@@ -38,6 +38,7 @@ export default {
 
 .left {
   margin-right: 2rem;
+  width: 100%;
 }
 
 .right {
