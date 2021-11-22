@@ -2,26 +2,42 @@
   <div class="container">
     <div class="profile">
       <div class="profile__avatar">
-        <icon-base viewBox="0 0 64 64" width="40" height="40">
+        <icon-base viewBox="0 0 64 64" width="48" height="48">
           <icon-avatar />
         </icon-base>
       </div>
 
       <div class="profile__info">
-        <div class="profile__info__name">
+        <div class="profile__info__header">
           <p class="profile__nickname">4시의여우</p>
-          <p class="profile__id">@4foxy</p>
+          <p class="profile__time">9시간 전</p>
         </div>
 
-        <p class="profile__time">9시간 전</p>
+        <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
+        <div class="profile__score">
+          <icon-base viewBox="0 0 18 18" width="16" height="16">
+            <icon-star class="star__on" />
+          </icon-base>
+
+          <icon-base viewBox="0 0 18 18" width="16" height="16">
+            <icon-star class="star__on" />
+          </icon-base>
+
+          <icon-base viewBox="0 0 18 18" width="16" height="16">
+            <icon-star class="star__on" />
+          </icon-base>
+
+          <icon-base viewBox="0 0 18 18" width="16" height="16">
+            <icon-star-half class="star__half" />
+          </icon-base>
+
+          <icon-base viewBox="0 0 18 18" width="16" height="16">
+            <icon-star class="star__off" />
+          </icon-base>
+        </div>
       </div>
     </div>
     <div class="body">
-      <div class="body__header">
-        <div class="body__title">이터널스를 보고 느낀 점</div>
-        <div class="body__score">★★★★☆</div>
-      </div>
-
       <p class="body__content">
         언론 시사회에서 처음 이터널스를 보고 접하는 느낌은 딱 하나였다. "이
         영화는 마블판 스타워즈: 라스트 제다이(2017년)가 될 가능성이 클 것이다."
@@ -59,7 +75,11 @@
           </icon-base>
         </div>
 
-        <input class="footer__input" type="text" />
+        <input
+          class="footer__input"
+          placeholder="댓글을 입력하세요."
+          type="text"
+        />
       </div>
     </div>
   </div>
@@ -71,6 +91,8 @@ import ReviewMovieCard from "@/components/ReviewMovieCard.vue";
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
+import IconStar from "@/components/icons/IconStar.vue";
+import IconStarHalf from "@/components/icons/IconStarHalf.vue";
 import IconComment from "@/components/icons/IconComment.vue";
 
 export default {
@@ -80,6 +102,8 @@ export default {
     IconAvatar,
     IconHeart,
     IconComment,
+    IconStar,
+    IconStarHalf,
   },
 };
 </script>
@@ -95,24 +119,22 @@ export default {
 
 .profile {
   display: flex;
-  align-items: center;
 }
 
 .profile__info {
   margin-left: 1rem;
+  width: 100%;
 }
 
-.profile__info__name {
+.profile__info__header {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile__nickname {
   font-weight: 700;
-  margin-right: 0.5rem;
-}
-
-.profile__id {
-  color: var(--recommend-text);
+  font-size: 16px;
 }
 
 .profile__time {
@@ -127,19 +149,9 @@ export default {
   margin-top: 2rem;
 }
 
-.body__header {
+.profile__score {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.body__title {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.body__score {
+  margin-top: 0.2rem;
 }
 
 .body__content {
@@ -181,5 +193,18 @@ export default {
   margin-left: 1rem;
   border-radius: 2rem;
   width: 100%;
+  padding: 0rem 1rem;
+}
+
+.footer__input:focus {
+  outline: 1px solid gray;
+}
+
+.star__on {
+  fill: #ffac33;
+}
+
+.star__off {
+  fill: var(--gray-600);
 }
 </style>
