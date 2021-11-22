@@ -27,14 +27,14 @@
       </div>
     </router-link>
 
-    <!-- <router-link to="/review">
+    <router-link to="/review">
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-review class="sidebar__menu__icon" />
         </icon-base>
         <p class="sidebar__menu__title mulish">REVIEW</p>
       </div>
-    </router-link> -->
+    </router-link>
 
     <router-link to="/community">
       <div class="sidebar__menu">
@@ -63,7 +63,7 @@ import IconHome from "@/components/icons/IconHome.vue";
 import IconMovie from "@/components/icons/IconMovie.vue";
 import IconCommunity from "@/components/icons/IconCommunity.vue";
 import IconProfile from "@/components/icons/IconProfile.vue";
-// import IconReview from "@/components/icons/IconReview.vue";
+import IconReview from "@/components/icons/IconReview.vue";
 
 export default {
   name: "Sidebar",
@@ -74,7 +74,7 @@ export default {
     IconMovie,
     IconCommunity,
     IconProfile,
-    // IconReview,
+    IconReview,
   },
 };
 </script>

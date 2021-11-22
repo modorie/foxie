@@ -13,12 +13,12 @@
         </div>
 
         <p class="banner__right__text">
-          난 네게 아직 수십 만의 영화에 지나지 않아,<br />
-          너 역시 내게 수십 만의 아이들과 같은 어린아이일뿐이야<br />
+          "난 네게 아직 수십 만의 영화에 지나지 않아,<br />
+          너 역시 내게 수십 만의 아이들과 같은 어린아이일뿐이고.<br />
           하지만 네가 나를 길들인다면 나는 너에게 이 세상에 유일한 존재가
-          될거야<br />
+          될거야"<br />
           <br />
-          <b>널 길들이려면 어떻게 해야 하니?</b><br />
+          <b>"널 길들이려면 어떻게 해야 하니?"</b><br />
         </p>
         <div class="banner__footer">
           <router-link to="#">
@@ -221,6 +221,7 @@ export default {
   border-bottom: 5px solid var(--coral);
   color: var(--coral);
 }
+
 .carousel__container {
   background-color: var(--header);
   padding: 1rem 0.5rem;

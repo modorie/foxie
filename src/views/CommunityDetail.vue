@@ -23,9 +23,22 @@
         </div>
 
         <div class="post__right">
-          <div class="post__right__info">❤ 1</div>
-          <div class="post__right__info">💭 10</div>
-          <div class="post__right__info">👀 100</div>
+          <div class="right__item">
+            <icon-base viewBox="0 0 22 26" width="24" height="22">
+              <icon-heart class="right__svg" />
+            </icon-base>
+
+            <p class="right__item__count">17</p>
+          </div>
+
+          <div class="right__item">
+            <icon-base viewBox="0 0 24 18" width="20" height="20">
+              <icon-comment class="right__svg" />
+            </icon-base>
+
+            <p class="right__item__count">17</p>
+          </div>
+          <!-- <div class="post__right__info">👀 100</div> -->
         </div>
       </div>
 
@@ -33,9 +46,26 @@
         {{ post.body }}
       </p>
 
-      <router-link to="#">
-        <div class="post__button__like">좋은걸</div>
-      </router-link>
+      <div class="footer">
+        <router-link to="#">
+          <div class="post__button__like">
+            <icon-base viewBox="0 0 22 26" width="24" height="22">
+              <icon-heart class="like__svg" />
+            </icon-base>
+          </div>
+
+          <div class="post__button__like">
+            <icon-base
+              viewBox="0 0 22 26"
+              width="24"
+              height="22"
+              iconColor="white"
+            >
+              <icon-heart class="like__svg" />
+            </icon-base>
+          </div>
+        </router-link>
+      </div>
     </div>
 
     <div class="comment">
@@ -50,6 +80,8 @@
 import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
+import IconHeart from "@/components/icons/IconHeart.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 import Comment from "@/components/Comment.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
 
@@ -59,6 +91,8 @@ export default {
     IconAvatar,
     Comment,
     CommentWrite,
+    IconHeart,
+    IconComment,
   },
   data() {
     return {
@@ -105,6 +139,7 @@ export default {
 
 .post__sub {
   display: flex;
+  align-items: start;
   justify-content: space-between;
 }
 
@@ -139,7 +174,15 @@ export default {
 .post__content {
 }
 
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
 .post__button__like {
+  display: flex;
+  justify-content: center;
+
   border-radius: 0.3rem;
   padding: 0.5rem;
   margin-top: 3rem;
@@ -154,6 +197,10 @@ export default {
   font-weight: 600;
 }
 
+.like__svg {
+  stroke: var(--white);
+}
+
 .comment {
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1),
     0px 1px 2px 1px rgba(0, 0, 0, 0.06);
@@ -163,5 +210,20 @@ export default {
   color: var(--board-header-text);
   padding: 2rem;
   margin-bottom: 8rem;
+}
+
+.right__item {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  color: var(--recommend-text);
+}
+
+.right__svg {
+  stroke: var(--recommend-text);
+}
+
+.right__item__count {
+  margin-left: 0.2rem;
 }
 </style>
