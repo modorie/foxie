@@ -10,7 +10,7 @@
       <div class="card__right__header">
         <div class="card__right__header__title">{{ movie.title }}</div>
         <div class="card__right__header__score">
-          <icon-base viewBox="0 0 18 20" width="22px" height="16px">
+          <icon-base viewBox="0 0 16 18" width="24px" height="16px">
             <icon-star />
           </icon-base>
           <p>{{ movie.vote_average.toFixed(1) }}</p>
@@ -94,7 +94,6 @@ export default {
 }
 
 .card__right__header__score {
-  font-size: 14px;
   font-weight: 700;
   display: flex;
   align-items: center;
