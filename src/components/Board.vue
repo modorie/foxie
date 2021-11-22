@@ -8,14 +8,13 @@
             <th class="board__header__row">TITLE</th>
             <th class="board__header__row">NAME</th>
             <th class="board__header__row">DATE</th>
-            <!-- TODO: 서버에서 게시글 조회수 처리 시 살리기 -->
-            <!-- <th class="board__header__row">VIEWS</th> -->
-            <th class="board__header__row">LIKES</th>
+            <th class="board__header__row">VIEWS</th>
+            <th class="board__header__row">LIKE</th>
           </tr>
         </thead>
 
         <tbody
-          v-for="article in articles"
+          v-for="article in this.pageArticles"
           :key="article.id"
           class="board__body"
         >
@@ -24,30 +23,30 @@
             <router-link :to="`community/${article.id}`">
               <td class="board__body__row">
                 {{ article.title | truncate(50) }}
-                <span class="board__comment"
-                  >[{{ article.comments_count }}]</span
-                >
+                <span class="board__comment">[3]</span>
               </td>
             </router-link>
-            <td class="board__body__row">{{ article.author.username }}</td>
-            <td class="board__body__row">
-              <!-- TODO: 1시간 이내: 00분 전 / 24시간 이내 : 00시간 전 / else: 0일 전 -->
-              {{ article.created_at.slice(5, 10) }}
-            </td>
-            <!-- <td class="board__body__row">1234</td> -->
-            <td class="board__body__row">{{ article.likes_count }}</td>
+            <td class="board__body__row">{{ article.userId }}</td>
+            <td class="board__body__row">11.16</td>
+            <td class="board__body__row">1234</td>
+            <td class="board__body__row">12</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="board__pagination"><Pagination /></div>
+    <div class="board__pagination">
+      <Pagination
+        :pageSetting="pageDataSetting(total, limit, block, this.page)"
+        @paging="pagingMethod"
+      />
+    </div>
 
     <div class="board__search"><BoardSearchBar /></div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 import axios from "axios";
 
@@ -58,6 +57,12 @@ export default Vue.extend({
   data() {
     return {
       articles: [],
+      pageArticles: [],
+      total: 0,
+      page: 1,
+      limit: 10,
+      // 페이지에서 보여줄 숫자 개수
+      block: 5,
     };
   },
 
@@ -65,13 +70,48 @@ export default Vue.extend({
     BoardSearchBar,
     Pagination,
   },
+
   created() {
     axios
-      .get("api/v1/community")
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then((res) => {
         this.articles = res.data;
+        this.total = this.articles.length;
+        this.pagingMethod(this.page);
       })
       .catch((err) => console.log(err));
+  },
+
+  methods: {
+    pagingMethod(page) {
+      this.pageArticles = this.articles.slice(
+        (page - 1) * this.limit,
+        page * this.limit
+      );
+      this.page = page;
+      this.pageDataSetting(this.total, this.limit, this.block, page);
+    },
+
+    pageDataSetting(total, limit, block, page) {
+      const totalPage = Math.ceil(total / limit);
+
+      let currentPage = page;
+      const first =
+        currentPage > 1 ? parseInt(currentPage, 10) - parseInt(1, 10) : null;
+      const end =
+        totalPage !== currentPage
+          ? parseInt(currentPage, 10) + parseInt(1, 10)
+          : null;
+
+      let startIndex = (Math.ceil(currentPage / block) - 1) * block + 1;
+      let endIndex =
+        startIndex + block > totalPage ? totalPage : startIndex + block - 1;
+      let list = [];
+      for (let index = startIndex; index <= endIndex; index++) {
+        list.push(index);
+      }
+      return { first, end, list, currentPage };
+    },
   },
 });
 </script>
@@ -85,13 +125,7 @@ export default Vue.extend({
     0px 1px 2px 1px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   overflow: hidden;
-  width: 100%;
 }
-
-/* .board table thead th:nth-child(2) {
-  width: 100%;
-}
-*/
 
 .board__header {
   background-color: var(--board-header);
@@ -99,7 +133,6 @@ export default Vue.extend({
 }
 
 .board__header__row {
-  margin: 0rem 1rem;
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1.5rem;
@@ -123,6 +156,6 @@ export default Vue.extend({
 
 .board__comment {
   color: var(--coral);
-  padding-left: 0.2rem;
+  padding-left: 0.5rem;
 }
 </style>
