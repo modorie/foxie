@@ -64,13 +64,13 @@ export default {
 
 .card__no__image {
   width: 100%;
-  height: 12rem;
+  height: 18rem;
   background-color: var(--header);
   color: var(--header-search);
   text-align: center;
-  padding-top: 5rem;
+  padding-top: 8rem;
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .card__info {

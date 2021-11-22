@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <h1 class="page__title">Review</h1>
 
     <div class="body">
@@ -11,9 +11,17 @@
         </div>
 
         <div>
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
+          <div class="review__wrapper">
+            <ReviewCard />
+          </div>
+
+          <div class="review__wrapper">
+            <ReviewCard />
+          </div>
+
+          <div class="review__wrapper">
+            <ReviewCard />
+          </div>
         </div>
       </div>
       <div class="right">
@@ -21,7 +29,7 @@
         <MovieRecommend />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -80,5 +88,13 @@ export default {
   background-color: var(--board-header);
   border-bottom: 5px solid var(--coral);
   color: var(--coral);
+}
+
+.review__wrapper {
+  box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.05);
+  padding: 0rem 1.5rem;
+  background-color: var(--recommend);
+  margin-bottom: 1rem;
+  border-radius: 8px;
 }
 </style>

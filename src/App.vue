@@ -2,7 +2,9 @@
   <div id="app">
     <Header />
     <SideBar />
-    <router-view class="router__view" />
+    <section class="router__wrapper">
+      <router-view class="router__view" />
+    </section>
   </div>
 </template>
 
@@ -25,9 +27,17 @@ export default {
   padding-top: 70px;
 }
 
+.router__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .router__view {
   padding-top: 2rem;
   padding-left: 3rem;
   padding-right: 3rem;
+
+  min-width: 80rem;
+  max-width: 90rem;
 }
 </style>
