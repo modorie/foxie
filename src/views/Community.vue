@@ -1,28 +1,49 @@
 <template>
-  <section>
-    <div class="header">
-      <h1 class="page__title">Post</h1>
+  <section class="container">
+    <div class="left">
+      <div class="header">
+        <h1 class="page__title">Post</h1>
 
-      <router-link to="community/new">
-        <div class="mulish header__button">Create New Post</div>
-      </router-link>
+        <router-link to="community/new">
+          <div class="mulish header__button">Create New Post</div>
+        </router-link>
+      </div>
+
+      <Board />
     </div>
 
-    <Board />
+    <div class="right">
+      <MovieRecommend />
+      <MovieRecommend />
+    </div>
   </section>
 </template>
 
 <script>
 import Board from "@/components/Board.vue";
+import MovieRecommend from "@/components/MovieRecommend.vue";
 
 export default {
   components: {
     Board,
+    MovieRecommend,
   },
 };
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+}
+
+.left {
+  margin-right: 2rem;
+}
+
+.right {
+  margin-top: 68px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
