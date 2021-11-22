@@ -80,6 +80,7 @@
           placeholder="댓글을 입력하세요."
           type="text"
         />
+        <input class="footer__input" type="text" />
       </div>
     </div>
   </div>
@@ -115,10 +116,13 @@ export default {
   margin-bottom: 1rem;
   border-radius: 8px;
   padding: 1.5rem 0rem;
+  padding: 1.5rem;
+  box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .profile {
   display: flex;
+  align-items: center;
 }
 
 .profile__info {
@@ -132,9 +136,18 @@ export default {
   justify-content: space-between;
 }
 
+.profile__info__name {
+  display: flex;
+}
+
 .profile__nickname {
   font-weight: 700;
   font-size: 16px;
+  margin-right: 0.5rem;
+}
+
+.profile__id {
+  color: var(--recommend-text);
 }
 
 .profile__time {
@@ -156,6 +169,19 @@ export default {
 
 .body__content {
   font-size: 16px;
+.body__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.body__title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.body__score {
 }
 
 .body__more {
