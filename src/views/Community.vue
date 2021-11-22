@@ -1,28 +1,49 @@
 <template>
-  <div>
-    <div class="header">
-      <h1 class="page__title">Post</h1>
+  <div class="community container">
+    <!-- breadcrumb 들어갈 부분 -->
+    <div class="community__body">
+      <div class="community__body__left">
+        <div class="header">
+          <h1 class="page__title">Post</h1>
 
-      <router-link to="community/new">
-        <div class="mulish header__button">Create New Post</div>
-      </router-link>
+          <router-link to="community/new">
+            <div class="mulish header__button">Create New Post</div>
+          </router-link>
+        </div>
+
+        <Board />
+      </div>
+      <div class="community__body__right">
+        <MovieRecommend />
+        <MovieRecommend />
+      </div>
     </div>
-
-    <Board />
   </div>
 </template>
 
 <script>
 import Board from "@/components/Board.vue";
+import MovieRecommend from "@/components/MovieRecommend.vue";
 
 export default {
   components: {
     Board,
+    MovieRecommend,
   },
 };
 </script>
 
 <style scoped>
+.community__body {
+  width: 100%;
+  display: flex;
+}
+
+.community__body__left {
+  width: calc(100% - 29rem);
+  margin-right: 3rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +68,14 @@ export default {
 
   background-color: var(--btn-primary);
   border: 1px solid var(--btn-primary);
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.05),
+    0px 1px 2px 1px rgba(0, 0, 0, 0.05);
   color: var(--white);
   font-weight: 600;
+}
+
+.community__body__right {
+  /* TODO : 테이블이랑 사이드 컨텐츠 라인 맞추기 */
+  margin-top: 68px;
 }
 </style>

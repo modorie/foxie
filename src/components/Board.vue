@@ -8,8 +8,9 @@
             <th class="board__header__row">TITLE</th>
             <th class="board__header__row">NAME</th>
             <th class="board__header__row">DATE</th>
-            <th class="board__header__row">VIEWS</th>
-            <th class="board__header__row">LIKE</th>
+            <!-- TODO: 서버에서 게시글 조회수 처리 시 살리기 -->
+            <!-- <th class="board__header__row">VIEWS</th> -->
+            <th class="board__header__row">LIKES</th>
           </tr>
         </thead>
 
@@ -23,13 +24,18 @@
             <router-link :to="`community/${article.id}`">
               <td class="board__body__row">
                 {{ article.title | truncate(50) }}
-                <span class="board__comment">[3]</span>
+                <span class="board__comment"
+                  >[{{ article.comments_count }}]</span
+                >
               </td>
             </router-link>
-            <td class="board__body__row">{{ article.userId }}</td>
-            <td class="board__body__row">11.16</td>
-            <td class="board__body__row">1234</td>
-            <td class="board__body__row">12</td>
+            <td class="board__body__row">{{ article.author.username }}</td>
+            <td class="board__body__row">
+              <!-- TODO: 1시간 이내: 00분 전 / 24시간 이내 : 00시간 전 / else: 0일 전 -->
+              {{ article.created_at.slice(5, 10) }}
+            </td>
+            <!-- <td class="board__body__row">1234</td> -->
+            <td class="board__body__row">{{ article.likes_count }}</td>
           </tr>
         </tbody>
       </table>
@@ -61,7 +67,7 @@ export default Vue.extend({
   },
   created() {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("api/v1/community")
       .then((res) => {
         this.articles = res.data;
       })
@@ -79,7 +85,13 @@ export default Vue.extend({
     0px 1px 2px 1px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
 }
+
+/* .board table thead th:nth-child(2) {
+  width: 100%;
+}
+*/
 
 .board__header {
   background-color: var(--board-header);
@@ -87,6 +99,7 @@ export default Vue.extend({
 }
 
 .board__header__row {
+  margin: 0rem 1rem;
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1.5rem;
@@ -110,6 +123,6 @@ export default Vue.extend({
 
 .board__comment {
   color: var(--coral);
-  padding-left: 0.5rem;
+  padding-left: 0.2rem;
 }
 </style>
