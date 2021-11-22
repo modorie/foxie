@@ -14,7 +14,7 @@
     <MovieCarousel :movies="upcoming_MovieList" />
 
     <h1 class="movielist__title">모든 영화</h1>
-    <MovieCarousel :movies="upcoming_MovieList" />
+    <MovieCarousel :movies="MovieList" />
   </section>
 </template>
 
@@ -39,7 +39,7 @@ export default Vue.extend({
       upcoming_MovieList: [],
       toprated_MovieList: [],
       nowplaying_MovieList: [],
-      review_recommend: [],
+      MovieList: [] as any,
     };
   },
   props: {},
@@ -98,6 +98,51 @@ export default Vue.extend({
       .then((res) => {
         this.nowplaying_MovieList = res.data.results;
       })
+      .catch((err) => console.log(err));
+
+    axios
+      .all([
+        axios.get(MOVIE_DB_API_URL_GET_NOW_PLAYING, {
+          params: {
+            api_key: process.env.VUE_APP_TMDB_API_KEY,
+            language: "ko-KR",
+            page: 1,
+            region: "kr",
+          },
+        }),
+        axios.get(MOVIE_DB_API_URL_GET_NOW_PLAYING, {
+          params: {
+            api_key: process.env.VUE_APP_TMDB_API_KEY,
+            language: "ko-KR",
+            page: 2,
+            region: "kr",
+          },
+        }),
+        axios.get(MOVIE_DB_API_URL_GET_NOW_PLAYING, {
+          params: {
+            api_key: process.env.VUE_APP_TMDB_API_KEY,
+            language: "ko-KR",
+            page: 3,
+            region: "kr",
+          },
+        }),
+        axios.get(MOVIE_DB_API_URL_GET_NOW_PLAYING, {
+          params: {
+            api_key: process.env.VUE_APP_TMDB_API_KEY,
+            language: "ko-KR",
+            page: 4,
+            region: "kr",
+          },
+        }),
+      ])
+      .then(
+        axios.spread((...responses) => {
+          this.MovieList.push(...responses[0].data.results);
+          this.MovieList.push(...responses[1].data.results);
+          this.MovieList.push(...responses[2].data.results);
+          this.MovieList.push(...responses[3].data.results);
+        })
+      )
       .catch((err) => console.log(err));
   },
   methods: {},
