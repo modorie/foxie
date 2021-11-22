@@ -120,11 +120,11 @@
 
           <p class="body__info__content">
             <CommentWrite />
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
           </p>
         </div>
       </div>
@@ -137,14 +137,14 @@ import axios from "axios";
 
 import IconBase from "@/components/IconBase.vue";
 import IconStar from "@/components/icons/IconStar.vue";
-import Comment from "@/components/Comment.vue";
+import ReviewCard from "@/components/ReviewCard.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
 
 export default {
   components: {
     IconBase,
     IconStar,
-    Comment,
+    ReviewCard,
     CommentWrite,
   },
   data() {
@@ -335,7 +335,7 @@ export default {
 
 .body__info__video {
   width: 100%;
-  height: 32rem;
+  height: 50vw;
 }
 
 .body__info__members {
