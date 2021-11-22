@@ -1,132 +1,138 @@
 <template>
   <section>
-    <div class="container">
-      <div class="header">
-        <div
-          class="header__backdrop"
-          :style="{
-            'background-image': 'url(' + this.backdrop_path + ')',
-          }"
-        ></div>
+    <div class="wrapper">
+      <div class="left">
+        <div class="header">
+          <div
+            class="header__backdrop"
+            :style="{
+              'background-image': 'url(' + this.backdrop_path + ')',
+            }"
+          ></div>
 
-        <div class="header__info">
-          <img
-            class="header__info__poster"
-            :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
-          />
+          <div class="header__info">
+            <img
+              class="header__info__poster"
+              :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+            />
 
-          <div class="header__right">
-            <div class="header__top">
-              <div>
-                <p class="info__title">
-                  {{ movie.title }}
+            <div class="header__right">
+              <div class="header__top">
+                <div>
+                  <p class="info__title">
+                    {{ movie.title }}
+                  </p>
+
+                  <p class="info__title__en">{{ movie.original_title }}</p>
+                </div>
+
+                <router-link to="#">
+                  <div class="info__button">리뷰 쓰기</div>
+                </router-link>
+              </div>
+
+              <div class="info__sub">
+                <div class="info__release">
+                  <p>{{ movie.release_date.replaceAll("-", ". ") }}</p>
+                </div>
+
+                <p class="info__time">{{ movie.runtime }}분</p>
+
+                <div class="info__genres">
+                  <span
+                    class="info__genre"
+                    v-for="genre in movie.genres"
+                    :key="genre.id"
+                  >
+                    {{ genre.name }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="info__score">
+                <icon-base viewBox="0 0 18 20" width="1.5rem" height="1.5rem">
+                  <icon-star />
+                </icon-base>
+
+                <p class="info__score__num">
+                  {{ movie.vote_average.toFixed(1) }}
                 </p>
-
-                <p class="info__title__en">{{ movie.original_title }}</p>
               </div>
 
-              <router-link to="#">
-                <div class="info__button">리뷰 쓰기</div>
-              </router-link>
-            </div>
-
-            <div class="info__sub">
-              <div class="info__release">
-                <p>{{ movie.release_date.replaceAll("-", ". ") }}</p>
-              </div>
-
-              <p class="info__time">{{ movie.runtime }}분</p>
-
-              <div class="info__genres">
-                <span
-                  class="info__genre"
-                  v-for="genre in movie.genres"
-                  :key="genre.id"
-                >
-                  {{ genre.name }}
-                </span>
-              </div>
-            </div>
-
-            <div class="info__score">
-              <icon-base viewBox="0 0 18 20" width="1.5rem" height="1.5rem">
-                <icon-star />
-              </icon-base>
-
-              <p class="info__score__num">
-                {{ movie.vote_average.toFixed(1) }}
-              </p>
-            </div>
-
-            <!-- <p class="info__overview">{{ movie.overview }}</p> -->
-          </div>
-        </div>
-      </div>
-      <div class="body">
-        <div class="body__info">
-          <h2 class="body__info__title">줄거리</h2>
-
-          <p class="body__info__content">{{ movie.overview }}</p>
-        </div>
-
-        <div class="body__info">
-          <h2 class="body__info__title">예고편</h2>
-
-          <iframe
-            class="body__info__video"
-            encrypted-media
-            picture-in-picture
-            allowfullscreen
-            muted
-            :src="this.video_path"
-          ></iframe>
-        </div>
-
-        <div class="body__info">
-          <h2 class="body__info__title">출연진</h2>
-
-          <div class="body__info__members">
-            <div
-              v-for="actor in this.actors"
-              :key="actor.id"
-              class="body__info__member"
-            >
-              <img
-                v-if="actor.profile_path"
-                class="member__profile"
-                :src="`https://image.tmdb.org/t/p/original${actor.profile_path}`"
-              />
-
-              <!-- 프로필 없는 배우가 있음 -->
-              <div v-else class="member__no__profile mulish">No Profile</div>
-
-              <div class="member__info">
-                <p class="member__info__name">{{ actor.name }}</p>
-                <p class="member__info__character">{{ actor.character }}</p>
-              </div>
+              <!-- <p class="info__overview">{{ movie.overview }}</p> -->
             </div>
           </div>
         </div>
+        <div class="body">
+          <div class="body__info">
+            <h2 class="body__info__title">줄거리</h2>
 
-        <!-- TODO: Directing이면서 Popularity 가장 높은 사람을 메인 감독 -->
-        <!-- <div class="body__info">
+            <p class="body__info__content">{{ movie.overview }}</p>
+          </div>
+
+          <div class="body__info">
+            <h2 class="body__info__title">예고편</h2>
+
+            <iframe
+              class="body__info__video"
+              encrypted-media
+              picture-in-picture
+              allowfullscreen
+              muted
+              :src="this.video_path"
+            ></iframe>
+          </div>
+
+          <div class="body__info">
+            <h2 class="body__info__title">출연진</h2>
+
+            <div class="body__info__members">
+              <div
+                v-for="actor in this.actors"
+                :key="actor.id"
+                class="body__info__member"
+              >
+                <img
+                  v-if="actor.profile_path"
+                  class="member__profile"
+                  :src="`https://image.tmdb.org/t/p/original${actor.profile_path}`"
+                />
+
+                <!-- 프로필 없는 배우가 있음 -->
+                <div v-else class="member__no__profile mulish">No Profile</div>
+
+                <div class="member__info">
+                  <p class="member__info__name">{{ actor.name }}</p>
+                  <p class="member__info__character">{{ actor.character }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TODO: Directing이면서 Popularity 가장 높은 사람을 메인 감독 -->
+          <!-- <div class="body__info">
           <h2 class="body__info__title">감독 (임시)</h2>
 
           <div>{{ staffs[0] }}</div>
         </div> -->
 
-        <div class="body__info">
-          <h2 class="body__info__title">리뷰</h2>
+          <div class="body__info">
+            <h2 class="body__info__title">리뷰</h2>
 
-          <p class="body__info__content">
-            <CommentWrite />
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-          </p>
+            <p class="body__info__content">
+              <CommentWrite />
+              <ReviewCard />
+              <ReviewCard />
+              <ReviewCard />
+              <ReviewCard />
+              <ReviewCard />
+            </p>
+          </div>
         </div>
+      </div>
+      <div class="right">
+        <MovieRecommend />
+        <MovieRecommend />
       </div>
     </div>
   </section>
@@ -139,6 +145,7 @@ import IconBase from "@/components/IconBase.vue";
 import IconStar from "@/components/icons/IconStar.vue";
 import ReviewCard from "@/components/ReviewCard.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
+import MovieRecommend from "@/components/MovieRecommend.vue";
 
 export default {
   components: {
@@ -146,6 +153,7 @@ export default {
     IconStar,
     ReviewCard,
     CommentWrite,
+    MovieRecommend,
   },
   data() {
     return {
@@ -203,8 +211,16 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  min-width: 60rem;
+.wrapper {
+  display: flex;
+}
+
+.left {
+  width: 100%;
+  margin-right: 2rem;
+}
+
+.right {
 }
 
 .header {
@@ -335,7 +351,7 @@ export default {
 
 .body__info__video {
   width: 100%;
-  height: 50vw;
+  height: 24vw;
 }
 
 .body__info__members {
