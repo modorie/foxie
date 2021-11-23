@@ -25,23 +25,24 @@ export default {
     },
     deleteArticle() {
       const token = JSON.parse(localStorage.getItem("user")).access_token;
-
-      axios({
-        method: "delete",
-        url: `api/v1/community/${this.articleId}/edit/`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => {
-          console.log(res);
-          this.$router.push({
-            name: "Community",
-          });
+      if (confirm("정말 삭제하시겠습니까?")) {
+        axios({
+          method: "delete",
+          url: `api/v1/community/${this.articleId}/`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         })
-        .catch((err) => {
-          console.log(err);
-        });
+          .then((res) => {
+            console.log(res);
+            this.$router.push({
+              name: "Community",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
   },
 };

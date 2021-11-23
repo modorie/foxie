@@ -15,7 +15,10 @@
         type="text"
         v-model.trim="comment"
         @keyup.enter="createComment"
-        placeholder="댓글을 입력하세요."
+        :placeholder="
+          isLogined ? '댓글을 입력하세요.' : '댓글을 입력하려면 로그인하세요.'
+        "
+        :disabled="!isLogined"
       />
     </div>
   </div>
@@ -34,7 +37,12 @@ export default {
   data() {
     return {
       comment: null,
+      isLogined: null,
     };
+  },
+  created() {
+    const user = localStorage.getItem("user");
+    this.isLogined = !!user;
   },
   methods: {
     createComment() {
@@ -51,7 +59,7 @@ export default {
       if (commentData.content) {
         axios({
           method: "post",
-          url: `api/v1/community/${id}/comments/new/`,
+          url: `api/v1/community/${id}/comments/`,
           data: commentData,
           headers: {
             Authorization: `Bearer ${token}`,

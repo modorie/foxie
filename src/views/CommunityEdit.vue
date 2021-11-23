@@ -50,7 +50,7 @@ export default {
     this.userId = JSON.parse(localStorage.getItem("user")).user.id;
 
     axios
-      .get(`api/v1/community/${this.articleId}`)
+      .get(`api/v1/community/${this.articleId}/`)
       .then((res) => {
         this.post = res.data;
         this.$refs.remarkEditorRef.invoke("setMarkdown", this.post.content);
@@ -71,7 +71,7 @@ export default {
 
       axios({
         method: "put",
-        url: `api/v1/community/${this.articleId}/edit/`,
+        url: `api/v1/community/${this.articleId}/`,
         data: articleData,
         headers: {
           Authorization: `Bearer ${token}`,

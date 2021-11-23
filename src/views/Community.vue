@@ -4,9 +4,11 @@
       <div class="header">
         <h1 class="page__title">Post</h1>
 
-        <router-link to="community/new">
-          <div class="mulish header__button">Create New Post</div>
-        </router-link>
+        <div>
+          <button @click="createArticle" class="mulish header__button">
+            Create New Post
+          </button>
+        </div>
       </div>
 
       <Board />
@@ -27,6 +29,23 @@ export default {
   components: {
     Board,
     MovieRecommend,
+  },
+  methods: {
+    createArticle() {
+      const user = localStorage.getItem("user");
+
+      if (user) {
+        this.$router.push({
+          name: "CommunityNew",
+        });
+      } else {
+        if (confirm("새 글을 작성하려면 로그인하세요.")) {
+          this.$router.push({
+            name: "Login",
+          });
+        }
+      }
+    },
   },
 };
 </script>

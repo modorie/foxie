@@ -66,7 +66,7 @@
             <!-- {{ post.content }} -->
           </p>
           <div class="footer">
-            <div
+            <button
               :class="[isLike ? 'post__button__liked' : 'post__button__like']"
               @click="likeIt"
             >
@@ -81,7 +81,7 @@
               <span class="like__count">
                 {{ likeCount }}
               </span>
-            </div>
+            </button>
           </div>
         </div>
         <div class="comment">
@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       post: [],
-      userId: "",
+      userId: null,
       likeCount: 0,
       isLike: "",
       isDropdownOpen: false,
@@ -137,7 +137,10 @@ export default {
   created() {
     console.log(this.isLike);
     const { id } = this.$route.params;
-    this.userId = JSON.parse(localStorage.getItem("user")).user.id;
+    const user = localStorage.getItem("user");
+    if (user) {
+      this.userId = JSON.parse(localStorage.getItem("user")).user.id;
+    }
 
     axios
       .get(`api/v1/community/${id}`)
@@ -151,19 +154,23 @@ export default {
   methods: {
     likeIt() {
       const { id } = this.$route.params;
-      const token = JSON.parse(localStorage.getItem("user")).access_token;
-
-      axios({
-        method: "post",
-        url: `api/v1/community/${id}/likes/`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => {
-        this.likeCount = res.data.like_count;
-        this.isLike = res.data.is_liked;
-        // console.log(res);
-      });
+      const user = localStorage.getItem("user");
+      if (user) {
+        const token = JSON.parse(localStorage.getItem("user")).access_token;
+        axios({
+          method: "post",
+          url: `api/v1/community/${id}/likes/`,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then((res) => {
+          this.likeCount = res.data.like_count;
+          this.isLike = res.data.is_liked;
+          // console.log(res);
+        });
+      } else {
+        window.alert("좋아요를 누르려면 로그인 하세요.");
+      }
     },
   },
 };
