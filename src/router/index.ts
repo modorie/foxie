@@ -58,7 +58,6 @@ export const router = new Router({
       name: "Profile",
       component: Profile,
     },
-
     {
       path: "/signup",
       name: "Signup",
