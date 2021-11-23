@@ -1,25 +1,7 @@
 <template>
   <div>
     <div class="comment__score">
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__on" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__on" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__on" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star-half class="star__half" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__off" />
-      </icon-base>
+      <StarRatingInput size="36" />
     </div>
 
     <textarea class="comment__input" cols="30" rows="6"></textarea>
@@ -33,15 +15,11 @@
 </template>
 
 <script>
-import IconBase from "@/components/IconBase.vue";
-import IconStar from "@/components/icons/IconStar.vue";
-import IconStarHalf from "@/components/icons/IconStarHalf.vue";
+import StarRatingInput from "@/components/StarRatingInput.vue";
 
 export default {
   components: {
-    IconBase,
-    IconStar,
-    IconStarHalf,
+    StarRatingInput,
   },
 };
 </script>
@@ -59,14 +37,6 @@ export default {
   resize: none;
   padding: 1rem;
   outline: none;
-}
-
-.star__on {
-  fill: #ffac33;
-}
-
-.star__off {
-  fill: var(--gray-600);
 }
 
 .comment__button__wrapper {
