@@ -10,7 +10,7 @@
             <div v-if="post.author.id === userId" class="post__toggle">
               <button @click="isDropdownOpen = !isDropdownOpen">
                 <icon-base viewBox="0 0 22 26" width="24" height="22">
-                  <icon-dots class="dots__svg" />
+                  <icon-vertical-dots class="dots__svg" />
                 </icon-base>
               </button>
               <transition name="fade">
@@ -103,7 +103,7 @@ import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
-import IconDots from "@/components/icons/IconDots.vue";
+import IconVerticalDots from "@/components/icons/IconVerticalDots.vue";
 import IconComment from "@/components/icons/IconComment.vue";
 import Comment from "@/components/Comment.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
@@ -119,7 +119,7 @@ export default {
     Comment,
     CommentWrite,
     IconHeart,
-    IconDots,
+    IconVerticalDots,
     IconComment,
     MovieRecommend,
     CommunityDropdown,

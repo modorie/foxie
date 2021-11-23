@@ -92,4 +92,25 @@ export default {
   padding-left: 1.5rem;
   outline: none;
 }
+
+.comment__button__wrapper {
+  display: flex;
+  justify-content: end;
+}
+
+.comment__button {
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  width: 5rem;
+  font-size: 14px;
+  text-align: center;
+
+  background-color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
 </style>
