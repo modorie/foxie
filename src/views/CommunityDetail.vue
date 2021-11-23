@@ -1,77 +1,84 @@
 <template>
-  <div>
+  <div class="community container">
     <h1 class="page__title mulish">Post</h1>
 
-    <div class="post">
-      <h2 class="post__title">{{ post.title }}</h2>
+    <div class="community__body">
+      <div class="community__body__left">
+        <div class="post">
+          <h2 class="post__title">{{ post.title }}</h2>
 
-      <div class="post__sub">
-        <div class="post__left">
-          <div class="post__author">
-            <icon-base
-              viewBox="0 0 64 64"
-              width="32"
-              height="32"
-              class="post__author__avatar"
+          <div class="post__sub">
+            <div class="post__left">
+              <div class="post__author">
+                <icon-base
+                  viewBox="0 0 64 64"
+                  width="32"
+                  height="32"
+                  class="post__author__avatar"
+                >
+                  <icon-avatar />
+                </icon-base>
+                <div>
+                  <p>{{ post.author.profile.nickname }}</p>
+                  <p class="post__date">
+                    {{ post.created_at.slice(0, 10) }}
+                    {{ post.created_at.slice(11, 16) }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="post__right">
+              <div class="right__item">
+                <icon-base viewBox="0 0 22 26" width="24" height="22">
+                  <icon-heart class="right__svg" />
+                </icon-base>
+
+                <p class="right__item__count">{{ likeCount }}</p>
+              </div>
+
+              <div class="right__item">
+                <icon-base viewBox="0 0 24 18" width="20" height="20">
+                  <icon-comment class="right__svg" />
+                </icon-base>
+
+                <p class="right__item__count">{{ post.comments.length }}</p>
+              </div>
+              <!-- <div class="post__right__info">👀 100</div> -->
+            </div>
+          </div>
+          <p class="post__content">
+            {{ post.content }}
+          </p>
+          <div class="footer">
+            <div
+              :class="[isLike ? 'post__button__liked' : 'post__button__like']"
+              @click="likeIt"
             >
-              <icon-avatar />
-            </icon-base>
-
-            <p>소왕자{{ post.userId }}</p>
+              <icon-base
+                viewBox="0 0 22 26"
+                width="24"
+                height="22"
+                :iconColor="[isLike ? 'var(--heart-isliked)' : 'var(--heart)']"
+              >
+                <icon-heart :class="[isLike ? 'liked__svg' : 'like__svg']" />
+              </icon-base>
+              <span class="like__count">
+                {{ likeCount }}
+              </span>
+            </div>
           </div>
-          <p class="post__date">2021. 11. 17. 15:00</p>
         </div>
+        <div class="comment">
+          <CommentWrite />
 
-        <div class="post__right">
-          <div class="right__item">
-            <icon-base viewBox="0 0 22 26" width="24" height="22">
-              <icon-heart class="right__svg" />
-            </icon-base>
-
-            <p class="right__item__count">17</p>
-          </div>
-
-          <div class="right__item">
-            <icon-base viewBox="0 0 24 18" width="20" height="20">
-              <icon-comment class="right__svg" />
-            </icon-base>
-
-            <p class="right__item__count">17</p>
-          </div>
-          <!-- <div class="post__right__info">👀 100</div> -->
+          <Comment />
         </div>
       </div>
-
-      <p v-for="index in 10" :key="index" class="post__content">
-        {{ post.body }}
-      </p>
-
-      <div class="footer">
-        <router-link to="#">
-          <div class="post__button__like">
-            <icon-base viewBox="0 0 22 26" width="24" height="22">
-              <icon-heart class="like__svg" />
-            </icon-base>
-          </div>
-
-          <div class="post__button__like">
-            <icon-base
-              viewBox="0 0 22 26"
-              width="24"
-              height="22"
-              iconColor="white"
-            >
-              <icon-heart class="like__svg" />
-            </icon-base>
-          </div>
-        </router-link>
+      <div class="community__body__right">
+        <MovieRecommend />
+        <MovieRecommend />
       </div>
-    </div>
-
-    <div class="comment">
-      <CommentWrite />
-
-      <Comment v-for="index in 5" :key="index" />
     </div>
   </div>
 </template>
@@ -84,6 +91,7 @@ import IconHeart from "@/components/icons/IconHeart.vue";
 import IconComment from "@/components/icons/IconComment.vue";
 import Comment from "@/components/Comment.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
+import MovieRecommend from "@/components/MovieRecommend.vue";
 
 export default {
   components: {
@@ -93,26 +101,76 @@ export default {
     CommentWrite,
     IconHeart,
     IconComment,
+    MovieRecommend,
   },
   data() {
     return {
       post: [],
+      userId: "",
+      likeCount: 0,
+      isLike: "",
     };
   },
   created() {
+    console.log(this.isLike);
     const { id } = this.$route.params;
+    this.userId = JSON.parse(localStorage.getItem("user")).user.id;
 
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .get(`api/v1/community/${id}`)
       .then((res) => {
         this.post = res.data;
+        this.likeCount = res.data.like_users.length;
+        this.isLike = this.isLiked();
       })
       .catch((err) => console.log(err));
+  },
+  methods: {
+    isLiked() {
+      const { id } = this.$route.params;
+      const token = JSON.parse(localStorage.getItem("user")).access_token;
+      axios({
+        method: "get",
+        url: `api/v1/community/${id}/likes/`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => {
+        console.log(res.data.is_liked);
+        return res.data.is_liked;
+      });
+    },
+    likeIt() {
+      const { id } = this.$route.params;
+      const token = JSON.parse(localStorage.getItem("user")).access_token;
+
+      axios({
+        method: "post",
+        url: `api/v1/community/${id}/likes/`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => {
+        this.likeCount = res.data.like_count;
+        this.isLike = res.data.is_liked;
+        console.log(res);
+      });
+    },
   },
 };
 </script>
 
 <style scoped>
+.community__body {
+  width: 100%;
+  display: flex;
+}
+
+.community__body__left {
+  width: calc(100% - 29rem);
+  margin-right: 3rem;
+}
+
 .post {
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.1),
     0px 1px 2px 1px rgba(0, 0, 0, 0.06);
@@ -134,13 +192,15 @@ export default {
 .post__title {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .post__sub {
   display: flex;
   align-items: start;
   justify-content: space-between;
+  border-bottom: 1px solid var(--board-header);
 }
 
 .post__left {
@@ -151,16 +211,17 @@ export default {
   align-items: center;
   font-size: 16px;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .post__author__avatar {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
 }
 
 .post__date {
-  margin-bottom: 2rem;
   font-size: 14px;
+  font-weight: 500;
+  color: var(--recommend-text);
 }
 
 .post__right {
@@ -172,11 +233,11 @@ export default {
 }
 
 .post__content {
+  padding-top: 2rem;
 }
 
 .footer {
   display: flex;
-  justify-content: center;
 }
 
 .post__button__like {
@@ -185,9 +246,29 @@ export default {
 
   border-radius: 0.3rem;
   padding: 0.5rem;
+  padding-right: 0.7rem;
   margin-top: 3rem;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  width: 5rem;
+  width: 4rem;
+  font-size: 14px;
+  text-align: center;
+
+  background-color: var(--btn-secondary);
+  border: 1px solid var(--btn-secondary-border);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.post__button__liked {
+  display: flex;
+  justify-content: center;
+
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  padding-right: 0.7rem;
+  margin-top: 3rem;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  width: 4rem;
   font-size: 14px;
   text-align: center;
 
@@ -198,7 +279,15 @@ export default {
 }
 
 .like__svg {
+  stroke: var(--coral);
+}
+
+.liked__svg {
   stroke: var(--white);
+}
+
+.like__count {
+  margin-left: 0.3rem;
 }
 
 .comment {
