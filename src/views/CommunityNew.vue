@@ -59,7 +59,7 @@ export default {
 
       axios({
         method: "post",
-        url: `api/v1/community/new/`,
+        url: `api/v1/community/`,
         data: articleData,
         headers: {
           Authorization: `Bearer ${token}`,
