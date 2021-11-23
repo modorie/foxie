@@ -7,7 +7,7 @@
         <div class="post">
           <div class="post__header">
             <h2 class="post__title">{{ post.title }}</h2>
-            <div class="post__toggle">
+            <div v-if="post.author.id === userId" class="post__toggle">
               <button @click="isDropdownOpen = !isDropdownOpen">
                 <icon-base viewBox="0 0 22 26" width="24" height="22">
                   <icon-dots class="dots__svg" />
@@ -144,25 +144,11 @@ export default {
       .then((res) => {
         this.post = res.data;
         this.likeCount = res.data.like_users.length;
-        this.isLike = this.isLiked();
+        this.isLike = res.data.like_users.includes(this.userId);
       })
       .catch((err) => console.log(err));
   },
   methods: {
-    isLiked() {
-      const { id } = this.$route.params;
-      const token = JSON.parse(localStorage.getItem("user")).access_token;
-      axios({
-        method: "get",
-        url: `api/v1/community/${id}/likes/`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => {
-        console.log(res.data.is_liked);
-        return res.data.is_liked;
-      });
-    },
     likeIt() {
       const { id } = this.$route.params;
       const token = JSON.parse(localStorage.getItem("user")).access_token;
@@ -176,7 +162,7 @@ export default {
       }).then((res) => {
         this.likeCount = res.data.like_count;
         this.isLike = res.data.is_liked;
-        console.log(res);
+        // console.log(res);
       });
     },
   },
