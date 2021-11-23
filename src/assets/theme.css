@@ -10,6 +10,7 @@
   --scroll: var(--gray-100);
   --scroll-bar: var(--gray-300);
   --scroll-bar-hover: var(--gray-400);
+  --star-gray: var(--gray-300);
 
   /* Header */
   --header: var(--white);
@@ -71,6 +72,7 @@
   --scroll: var(--gray-700);
   --scroll-bar: var(--gray-500);
   --scroll-bar-hover: var(--gray-400);
+  --star-gray: var(--gray-600);
 
   /* Header */
   --header: #242427;

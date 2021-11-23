@@ -15,25 +15,7 @@
 
         <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
         <div class="profile__score">
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__on" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__on" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__on" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star-half class="star__half" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__off" />
-          </icon-base>
+          <StarRating size="24" score="9" />
         </div>
       </div>
     </div>
@@ -93,9 +75,8 @@ import ReviewMovieCard from "@/components/ReviewMovieCard.vue";
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
-import IconStar from "@/components/icons/IconStar.vue";
-import IconStarHalf from "@/components/icons/IconStarHalf.vue";
 import IconComment from "@/components/icons/IconComment.vue";
+import StarRating from "@/components/StarRating.vue";
 
 export default {
   components: {
@@ -104,8 +85,7 @@ export default {
     IconAvatar,
     IconHeart,
     IconComment,
-    IconStar,
-    IconStarHalf,
+    StarRating,
   },
   data() {
     return {
@@ -244,13 +224,5 @@ export default {
 
 .footer__input:focus {
   outline: 1px solid gray;
-}
-
-.star__on {
-  fill: #ffac33;
-}
-
-.star__off {
-  fill: var(--gray-600);
 }
 </style>
