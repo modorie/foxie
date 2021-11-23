@@ -67,7 +67,10 @@ export default {
       })
         .then((res) => {
           console.log(res);
-          this.$router.push({ path: "Community" });
+          this.$router.push({
+            name: "CommunityDetail",
+            params: { id: res.data.id },
+          });
         })
         .catch((err) => {
           console.log(err);
