@@ -78,7 +78,6 @@
               encrypted-media
               picture-in-picture
               allowfullscreen
-              muted
               :src="this.video_path"
             ></iframe>
           </div>
@@ -121,11 +120,11 @@
 
             <p class="body__info__content">
               <CommentWrite />
-              <ReviewCard />
-              <ReviewCard />
-              <ReviewCard />
-              <ReviewCard />
-              <ReviewCard />
+              <ReviewCardSimple />
+              <ReviewCardSimple />
+              <ReviewCardSimple />
+              <ReviewCardSimple />
+              <ReviewCardSimple />
             </p>
           </div>
         </div>
@@ -143,7 +142,7 @@ import axios from "axios";
 
 import IconBase from "@/components/IconBase.vue";
 import IconStar from "@/components/icons/IconStar.vue";
-import ReviewCard from "@/components/ReviewCard.vue";
+import ReviewCardSimple from "@/components/ReviewCardSimple.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
 
@@ -151,7 +150,7 @@ export default {
   components: {
     IconBase,
     IconStar,
-    ReviewCard,
+    ReviewCardSimple,
     CommentWrite,
     MovieRecommend,
   },
@@ -355,12 +354,13 @@ export default {
 
 .body__info__video {
   width: 100%;
-  height: 24vw;
+  height: 32vw;
 }
 
 .body__info__members {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  column-gap: 10px;
 }
 
 .body__info__member {
@@ -368,12 +368,13 @@ export default {
 }
 
 .member__profile {
-  width: 10rem;
-  height: 14rem;
+  width: 100%;
+  height: 80%;
   object-fit: cover;
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 0.3rem;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 .member__no__profile {
@@ -387,6 +388,7 @@ export default {
   font-size: 18px;
   font-weight: 800;
   margin-bottom: 0.3rem;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 .member__info__name {
