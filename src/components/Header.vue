@@ -3,7 +3,10 @@
     <div class="header__search">
       <div>
         <icon-base viewBox="0 0 24 24" width="24" height="24" icon-name="icon">
-          <icon-search :class="{ header__search__active: active }" />
+          <icon-search
+            class="header__search__svg"
+            :class="{ active: active }"
+          />
         </icon-base>
       </div>
       <input
@@ -161,8 +164,12 @@ export default Vue.extend({
   width: 100%;
 }
 
-.header__search__active {
-  stroke: #52525b;
+.header__search__svg {
+  stroke: var(--recommend-text);
+}
+
+.active {
+  stroke: var(--text);
 }
 
 .header__search input {
