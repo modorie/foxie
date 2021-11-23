@@ -55,6 +55,11 @@ export default {
   margin-bottom: 0.1rem;
 }
 
+.card:hover {
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
 .card__image {
   border-radius: 8px 8px 0px 0px;
   width: 100%;
