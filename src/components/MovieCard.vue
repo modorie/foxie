@@ -68,9 +68,10 @@ export default {
 }
 
 .card__no__image {
+  border-radius: 8px 8px 0px 0px;
   width: 100%;
   height: 18rem;
-  background-color: var(--header);
+  background-color: var(--board-header);
   color: var(--header-search);
   text-align: center;
   padding-top: 8rem;
