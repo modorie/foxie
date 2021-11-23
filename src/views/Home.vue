@@ -18,7 +18,8 @@
           하지만 네가 나를 길들인다면 나는 너에게 이 세상에 유일한 존재가
           될거야"<br />
           <br />
-          <b>"널 길들이려면 어떻게 해야 하니?"</b><br />
+          <b style="color: var(--coral)">"널 길들이려면 어떻게 해야 하니?"</b
+          ><br />
         </p>
         <div class="banner__footer">
           <router-link to="#">
@@ -136,9 +137,8 @@ export default {
   height: 20rem;
   border-radius: 8px;
   display: flex;
-  background: rgba(255, 255, 255, 0.65);
+  background-color: var(--banner);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(50px);
   margin-bottom: 2rem;
 }
 
@@ -168,8 +168,8 @@ export default {
 }
 
 .banner__right__text {
-  color: var(--gray-700);
-  font-size: 16px;
+  color: var(--banner-text);
+  font-size: 18px;
 }
 
 .banner__footer {

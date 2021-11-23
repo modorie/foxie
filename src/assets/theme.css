@@ -19,6 +19,10 @@
   --btn-secondary-text: var(--gray-600);
   --btn-secondary-border: var(--gray-300);
 
+  /* Home */
+  --banner: var(--white);
+  --banner-text: var(--gray-600);
+
   /* Movie */
   --card-background: var(--white);
   --card-text: var(--gray-800);
@@ -74,6 +78,10 @@
   --btn-secondary: var(--gray-700);
   --btn-secondary-text: var(--gray-50);
   --btn-secondary-border: var(--gray-500);
+
+  /* Home */
+  --banner: var(--gray-800);
+  --banner-text: var(--gray-300);
 
   /* Movie */
   --card-background: var(--gray-800);
