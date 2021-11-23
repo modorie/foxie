@@ -4,13 +4,13 @@
       <table>
         <thead class="board__header">
           <tr>
-            <th class="board__header__row">#</th>
-            <th class="board__header__row">TITLE</th>
-            <th class="board__header__row">NAME</th>
-            <th class="board__header__row">DATE</th>
+            <th class="board__header__row" style="width: 4rem">번호</th>
+            <th class="board__header__row" style="width: ">제목</th>
+            <th class="board__header__row" style="width: 10rem">글쓴이</th>
+            <th class="board__header__row" style="width: 6rem">조회</th>
             <!-- TODO: 서버에서 게시글 조회수 처리 시 살리기 -->
             <!-- <th class="board__header__row">VIEWS</th> -->
-            <th class="board__header__row">LIKES</th>
+            <th class="board__header__row" style="width: 4rem">추천</th>
           </tr>
         </thead>
 
@@ -66,7 +66,7 @@ export default Vue.extend({
       pageArticles: [],
       total: 0,
       page: 1,
-      limit: 10,
+      limit: 20,
       // 페이지에서 보여줄 숫자 개수
       block: 5,
     };
@@ -141,10 +141,8 @@ export default Vue.extend({
 
 .board__header__row {
   padding: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1.5rem;
-  text-align: left;
-  font-size: 12px;
+  text-align: center;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -156,9 +154,8 @@ export default Vue.extend({
 
 .board__body__row {
   padding: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 2rem;
   font-size: 14px;
+  text-align: center;
 }
 
 /* th:nth-child(2) {
@@ -167,6 +164,6 @@ export default Vue.extend({
 
 .board__comment {
   color: var(--coral);
-  padding-left: 0.5rem;
+  padding-left: 0.2rem;
 }
 </style>
