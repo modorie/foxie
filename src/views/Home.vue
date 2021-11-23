@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <section>
     <!-- TODO : Banner 컴포넌트로 빼기 -->
     <div class="banner">
       <div class="banner__left" />
@@ -55,7 +55,7 @@
         <MovieRecommend />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

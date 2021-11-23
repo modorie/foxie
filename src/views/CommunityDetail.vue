@@ -1,5 +1,5 @@
 <template>
-  <div class="community container">
+  <section class="community container">
     <h1 class="page__title mulish">Post</h1>
 
     <div class="community__body">
@@ -80,7 +80,7 @@
         <MovieRecommend />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

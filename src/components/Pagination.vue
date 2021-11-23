@@ -1,26 +1,42 @@
 <template>
   <div class="pagination">
-    <icon-base
-      viewBox="0 0 14 14"
-      width="20"
-      height="14"
-      class="pagination__arrow"
-    >
-      <icon-left class="pagination__arrow__svg" />
-    </icon-base>
-
-    <div v-for="index in 10" :key="index" class="pagination__index">
-      {{ index }}
+    <div @click="pageSetting.first !== null ? sendPage(pageSetting.first) : ''">
+      <icon-base
+        viewBox="0 0 16 16"
+        width="20"
+        height="16"
+        class="pagination__arrow"
+      >
+        <icon-left
+          class="pagination__arrow__svg"
+          :class="{ disactive: pageSetting.first == null }"
+        />
+      </icon-base>
     </div>
 
-    <icon-base
-      viewBox="0 0 14 14"
-      width="20"
-      height="14"
-      class="pagination__arrow"
+    <div
+      class="pagination__index"
+      :class="{ active: page === pageSetting.currentPage }"
+      v-for="page in pageSetting.list"
+      :key="page"
+      @click="sendPage(page)"
     >
-      <icon-right class="pagination__arrow__svg" />
-    </icon-base>
+      {{ page }}
+    </div>
+
+    <div @click="pageSetting.end !== null ? sendPage(pageSetting.end) : ''">
+      <icon-base
+        viewBox="0 0 16 16"
+        width="20"
+        height="16"
+        class="pagination__arrow"
+      >
+        <icon-right
+          class="pagination__arrow__svg"
+          :class="{ disactive: pageSetting.end == null }"
+        />
+      </icon-base>
+    </div>
   </div>
 </template>
 
@@ -30,13 +46,17 @@ import IconLeft from "@/components/icons/IconLeft.vue";
 import IconRight from "@/components/icons/IconRight.vue";
 
 export default {
-  props: {},
+  props: ["pageSetting"],
   components: {
     IconBase,
     IconLeft,
     IconRight,
   },
-  methods: {},
+  methods: {
+    sendPage(page) {
+      this.$emit("paging", page);
+    },
+  },
 };
 </script>
 
@@ -45,19 +65,31 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  margin: 2rem;
 }
 
 .pagination__arrow {
   margin: 0 1rem;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .pagination__arrow__svg {
-  fill: var(--board-body-text);
+  stroke: var(--board-body-text);
 }
 
 .pagination__index {
-  padding: 0.5rem;
+  width: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active {
+  font-weight: 700;
+  color: var(--coral);
+}
+
+.disactive {
+  stroke: none;
 }
 </style>

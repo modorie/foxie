@@ -1,24 +1,22 @@
 <template>
-  <div class="community container">
-    <!-- breadcrumb 들어갈 부분 -->
-    <div class="community__body">
-      <div class="community__body__left">
-        <div class="header">
-          <h1 class="page__title">Post</h1>
+  <section class="container">
+    <div class="left">
+      <div class="header">
+        <h1 class="page__title">Post</h1>
 
-          <router-link to="community/new">
-            <div class="mulish header__button">Create New Post</div>
-          </router-link>
-        </div>
+        <router-link to="community/new">
+          <div class="mulish header__button">Create New Post</div>
+        </router-link>
+      </div>
 
-        <Board />
-      </div>
-      <div class="community__body__right">
-        <MovieRecommend />
-        <MovieRecommend />
-      </div>
+      <Board />
     </div>
-  </div>
+
+    <div class="right">
+      <MovieRecommend />
+      <MovieRecommend />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -34,14 +32,17 @@ export default {
 </script>
 
 <style scoped>
-.community__body {
-  width: 100%;
+.container {
   display: flex;
 }
 
-.community__body__left {
-  width: calc(100% - 29rem);
-  margin-right: 3rem;
+.left {
+  margin-right: 2rem;
+  width: 100%;
+}
+
+.right {
+  margin-top: 68px;
 }
 
 .header {

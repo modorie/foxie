@@ -1,5 +1,5 @@
 <template>
-  <div class="profile">
+  <section>
     <div class="profile__header">
       <div class="profile__header__avatar">
         <icon-base viewBox="0 0 64 64" width="100%" height="160px">
@@ -65,7 +65,7 @@
       </div>
       <div class="profile__body__content">나는 컨텐츠야</div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -83,12 +83,6 @@ export default {
 </script>
 
 <style scoped>
-.profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .profile__header {
   width: 100%;
   max-width: 80rem;
