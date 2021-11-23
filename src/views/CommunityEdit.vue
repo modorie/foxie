@@ -5,7 +5,7 @@
     <div class="editor">
       <input
         type="text"
-        v-model="title"
+        v-model="post.title"
         class="title__input"
         placeholder="제목을 입력하세요."
       />
@@ -14,12 +14,12 @@
         height="32rem"
         initialEditType="wysiwyg"
         previewStyle="vertical"
-        ref="toastuiEditor"
+        ref="remarkEditorRef"
       />
 
       <div class="editor__footer">
-        <button class="editor__footer__button" @click="createArticle">
-          글 쓰기
+        <button class="editor__footer__button" @click="editArticle">
+          글 수정하기
         </button>
       </div>
     </div>
@@ -41,25 +41,37 @@ export default {
       editorOptions: {
         hideModeSwitch: true,
       },
-      title: null,
-      content: null,
+      post: [],
+      articleId: 0,
     };
   },
+  created() {
+    this.articleId = this.$route.params.id;
+    this.userId = JSON.parse(localStorage.getItem("user")).user.id;
+
+    axios
+      .get(`api/v1/community/${this.articleId}`)
+      .then((res) => {
+        this.post = res.data;
+        this.$refs.remarkEditorRef.invoke("setMarkdown", this.post.content);
+        console.log(this.post);
+      })
+      .catch((err) => console.log(err));
+  },
+
   methods: {
-    createArticle() {
-      const { id } = this.$route.params;
+    editArticle() {
       const token = JSON.parse(localStorage.getItem("user")).access_token;
-      const author = JSON.parse(localStorage.getItem("user")).user.id;
 
       const articleData = {
-        title: this.title,
-        content: this.$refs.toastuiEditor.invoke("getMarkdown"),
-        author: author,
+        title: this.post.title,
+        content: this.$refs.remarkEditorRef.invoke("getMarkdown"),
+        author: this.post.author.id,
       };
 
       axios({
-        method: "post",
-        url: `api/v1/community/new/`,
+        method: "put",
+        url: `api/v1/community/${this.articleId}/edit/`,
         data: articleData,
         headers: {
           Authorization: `Bearer ${token}`,
@@ -69,7 +81,7 @@ export default {
           console.log(res);
           this.$router.push({
             name: "CommunityDetail",
-            params: { id: res.data.id },
+            params: { id: this.articleId },
           });
         })
         .catch((err) => {
