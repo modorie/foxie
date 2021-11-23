@@ -18,6 +18,7 @@
   --btn-secondary: var(--white);
   --btn-secondary-text: var(--gray-600);
   --btn-secondary-border: var(--gray-300);
+  --search: #f4f4f588;
 
   /* Home
   --banner: #e6b1b1;
@@ -78,6 +79,7 @@
   --btn-secondary: var(--gray-700);
   --btn-secondary-text: var(--gray-50);
   --btn-secondary-border: var(--gray-500);
+  --search: #27272aaa;
 
   /* Home
   --banner: #252035;

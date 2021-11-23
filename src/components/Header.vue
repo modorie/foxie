@@ -1,5 +1,27 @@
 <template>
   <div class="header">
+    <div class="search__list" v-if="searchInput !== ''" @click="resetInput">
+      <h1 class="search__title">
+        <span class="search__keyword">{{ this.searchInput }}</span>
+        영화를 찾아봤어요
+      </h1>
+
+      <!-- FIXME : vue-router는 URL 변경은 하고 이동 안 시켜줌.. a tag로 임시 해결! -->
+      <!-- TODO : API가 영어 제목만 불러온다. 우리껀 한글로 해주자 -->
+      <a
+        v-for="movie in search_MovieList"
+        :key="movie.id"
+        :href="`/movie/${movie.id}`"
+      >
+        <p class="search__item__title">
+          {{ movie.title }}
+          <span class="search__item__release"
+            >({{ movie.release_date.split("-")[0] }})
+          </span>
+        </p>
+      </a>
+    </div>
+
     <div class="header__search">
       <div>
         <icon-base viewBox="0 0 24 24" width="24" height="24" icon-name="icon">
@@ -9,10 +31,11 @@
           />
         </icon-base>
       </div>
+
       <input
         type="text"
         placeholder="Search"
-        v-model.trim="searchInput"
+        @input="onSearch"
         @focus="active = true"
         @blur="active = false"
       />
@@ -72,6 +95,7 @@
 <script lang="ts">
 import Vue from "vue";
 
+import axios from "axios";
 import { authComputed } from "@/helper";
 
 import IconBase from "@/components/IconBase.vue";
@@ -79,6 +103,8 @@ import IconSearch from "@/components/icons/IconSearch.vue";
 import IconBell from "@/components/icons/IconBell.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import Dropdown from "@/components/Dropdown.vue";
+
+const MOVIE_DB_API_URL_SEARCH = "https://api.themoviedb.org/3/search/movie";
 
 export default Vue.extend({
   name: "Header",
@@ -91,6 +117,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      search_MovieList: [],
       searchInput: "",
       active: false,
       isDropdownOpen: false,
@@ -124,6 +151,28 @@ export default Vue.extend({
           }
         }
       }
+    },
+
+    onSearch(event: any) {
+      this.searchInput = event.target.value;
+
+      axios
+        .get(MOVIE_DB_API_URL_SEARCH, {
+          params: {
+            api_key: process.env.VUE_APP_TMDB_API_KEY,
+            query: this.searchInput,
+            region: "kr",
+          },
+        })
+        .then((res) => {
+          this.search_MovieList = res.data.results;
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    },
+
+    resetInput() {
+      this.searchInput = "";
     },
   },
 
@@ -181,6 +230,35 @@ export default Vue.extend({
 
 .header__search input:focus {
   outline: none;
+}
+
+.search__list {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 70px;
+  background-color: var(--search);
+  padding: 1rem;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.search__title {
+  font-size: 24px;
+  margin-bottom: 1rem;
+  font-weight: 200;
+}
+
+.search__keyword {
+  font-weight: 700;
+}
+
+.search__item__title {
+  font-size: 18px;
+}
+
+.search__item__release {
+  color: var(--recommend-text);
 }
 
 .header__info {
