@@ -83,7 +83,7 @@ import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 import IconComment from "@/components/icons/IconComment.vue";
 import Comment from "@/components/Comment.vue";
-import CommentWrite from "@/components/CommentWrite.vue";
+import CommentWrite from "@/components/ReviewWrite.vue";
 
 export default {
   components: {
