@@ -50,6 +50,10 @@
   --recommend-boader: var(--gray-200);
   --recommend-button: var(--white);
   --recommend-button-border: var(--gray-300);
+
+  /* Heart */
+  --heart: var(--white);
+  --heart-isliked: var(--white);
 }
 
 :root.darkmode {
@@ -102,4 +106,8 @@
   --recommend-boader: var(--gray-900);
   --recommend-button: var(--gray-700);
   --recommend-button-border: var(--gray-600);
+
+  /* Heart */
+  --heart: var(--gray-700);
+  --heart-isliked: var(--white);
 }
