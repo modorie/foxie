@@ -5,8 +5,22 @@
     <div class="community__body">
       <div class="community__body__left">
         <div class="post">
-          <h2 class="post__title">{{ post.title }}</h2>
-
+          <div class="post__header">
+            <h2 class="post__title">{{ post.title }}</h2>
+            <div class="post__toggle">
+              <button @click="isDropdownOpen = !isDropdownOpen">
+                <icon-base viewBox="0 0 22 26" width="24" height="22">
+                  <icon-dots class="dots__svg" />
+                </icon-base>
+              </button>
+              <transition name="fade">
+                <CommunityDropdown
+                  v-if="isDropdownOpen"
+                  @close-dropdown="isDropdownOpen = false"
+                />
+              </transition>
+            </div>
+          </div>
           <div class="post__sub">
             <div class="post__left">
               <div class="post__author">
@@ -19,7 +33,7 @@
                   <icon-avatar />
                 </icon-base>
                 <div>
-                  <p>{{ post.author.profile.nickname }}</p>
+                  <p>{{ post.author.username }}</p>
                   <p class="post__date">
                     {{ post.created_at.slice(0, 10) }}
                     {{ post.created_at.slice(11, 16) }}
@@ -48,7 +62,8 @@
             </div>
           </div>
           <p class="post__content">
-            {{ post.content }}
+            <Viewer v-if="post.content != null" :initialValue="post.content" />
+            <!-- {{ post.content }} -->
           </p>
           <div class="footer">
             <div
@@ -88,10 +103,14 @@ import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
+import IconDots from "@/components/icons/IconDots.vue";
 import IconComment from "@/components/icons/IconComment.vue";
 import Comment from "@/components/Comment.vue";
 import CommentWrite from "@/components/CommentWrite.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
+import CommunityDropdown from "@/components/CommunityDropdown.vue";
+// import "@toast-ui/editor/dist/toastui-editor.css";
+import { Viewer } from "@toast-ui/vue-editor";
 
 export default {
   components: {
@@ -100,8 +119,11 @@ export default {
     Comment,
     CommentWrite,
     IconHeart,
+    IconDots,
     IconComment,
     MovieRecommend,
+    CommunityDropdown,
+    Viewer,
   },
   data() {
     return {
@@ -109,6 +131,7 @@ export default {
       userId: "",
       likeCount: 0,
       isLike: "",
+      isDropdownOpen: false,
     };
   },
   created() {
@@ -189,11 +212,25 @@ export default {
   margin-bottom: 2rem;
 }
 
+.post__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .post__title {
   font-size: 20px;
   font-weight: 700;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+}
+
+.post__toggle {
+  position: relative;
+}
+
+.dots__svg {
+  stroke: var(--recommend-text);
 }
 
 .post__sub {
@@ -230,6 +267,13 @@ export default {
 
 .post__right__info {
   margin-left: 1rem;
+}
+
+.toastui-editor-contents {
+  font-size: 14px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif !important;
 }
 
 .post__content {
@@ -314,5 +358,17 @@ export default {
 
 .right__item__count {
   margin-left: 0.2rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: transform 0.3s;
+  transform: translateY(0px);
+  transform: opacity 1;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
 }
 </style>
