@@ -140,8 +140,8 @@ export default {
   height: 24rem;
   border-radius: 8px;
   display: flex;
-  background: linear-gradient(to right, #c082a2, #6a3d74, #380c72);
-  color: white;
+  background: linear-gradient(to right, #f0d3d3d0, #fdf8dccc);
+  color: var(--gray-600);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
 }
@@ -155,6 +155,7 @@ export default {
 
 .banner__right {
   padding: 2rem;
+  margin-left: -2rem;
   width: 100%;
 }
 
@@ -171,7 +172,7 @@ export default {
 }
 
 .banner__right__title span {
-  background: linear-gradient(to bottom, #ec6159, #ec6159, #fdaf88);
+  background: linear-gradient(to bottom, #ed5656, #ed5656, #ffa97e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
