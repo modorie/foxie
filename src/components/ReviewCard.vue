@@ -52,7 +52,7 @@
 
       <div class="footer">
         <div class="footer__item">
-          <icon-base viewBox="0 0 22 26" width="24" height="22">
+          <icon-base viewBox="0 0 22 25" width="24" height="22">
             <icon-heart class="footer__svg" />
           </icon-base>
 
@@ -115,7 +115,6 @@ export default {
   margin-bottom: 1rem;
   border-radius: 8px;
   padding: 1.5rem 0rem;
-  padding: 1.5rem;
   box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
@@ -221,6 +220,7 @@ export default {
   border-radius: 2rem;
   width: 100%;
   padding: 0rem 1rem;
+  font-size: 16px;
 }
 
 .footer__input:focus {

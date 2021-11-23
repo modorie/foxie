@@ -329,13 +329,17 @@ export default {
   border-radius: 8px;
   background-color: var(--detail);
   box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
+  padding: 2rem 2rem 0rem 2rem;
 }
 
 .body__info {
   border-bottom: 1px solid gray;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
+}
+.body__info:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .body__info__title {
