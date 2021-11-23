@@ -169,6 +169,8 @@ export default {
 
 .body__content {
   font-size: 16px;
+}
+
 .body__header {
   display: flex;
   justify-content: space-between;
