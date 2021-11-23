@@ -7,6 +7,7 @@ import MovieDetail from "../views/MovieDetail.vue";
 import Review from "../views/Review.vue";
 import Community from "../views/Community.vue";
 import CommunityNew from "../views/CommunityNew.vue";
+import CommunityEdit from "../views/CommunityEdit.vue";
 import CommunityDetail from "../views/CommunityDetail.vue";
 import Profile from "../views/Profile.vue";
 import Signup from "../views/accounts/Signup.vue";
@@ -54,11 +55,15 @@ export const router = new Router({
       component: CommunityDetail,
     },
     {
+      path: "/community/:id/edit",
+      name: "CommunityEdit",
+      component: CommunityEdit,
+    },
+    {
       path: "/profile",
       name: "Profile",
       component: Profile,
     },
-
     {
       path: "/signup",
       name: "Signup",

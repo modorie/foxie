@@ -50,8 +50,6 @@
         더보기
       </div>
 
-      <ReviewMovieCard />
-
       <div class="footer">
         <div class="footer__item">
           <icon-base viewBox="0 0 22 25" width="24" height="22">
@@ -88,8 +86,6 @@
 </template>
 
 <script>
-import ReviewMovieCard from "@/components/ReviewMovieCard.vue";
-
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
@@ -99,7 +95,6 @@ import IconComment from "@/components/icons/IconComment.vue";
 
 export default {
   components: {
-    ReviewMovieCard,
     IconBase,
     IconAvatar,
     IconHeart,
@@ -134,6 +129,7 @@ export default {
   background-color: var(--recommend);
   margin-bottom: 1rem;
   padding: 1.5rem 0rem;
+  border-bottom: 1px solid var(--profile-tag);
 }
 
 .profile {
@@ -185,7 +181,6 @@ export default {
 
 .body__content {
   font-size: 16px;
-  margin-bottom: 1rem;
 }
 
 .body__header {

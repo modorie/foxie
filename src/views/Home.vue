@@ -2,14 +2,17 @@
   <section>
     <!-- TODO : Banner 컴포넌트로 빼기 -->
     <div class="banner">
-      <div class="banner__left" />
+      <div class="banner__left">
+        <img src="@/assets/banner-blur.png" alt="" />
+        <!-- <img src="@/assets/banner.png" alt="" /> -->
+      </div>
       <div class="banner__right">
         <div class="banner__right__brand">
-          <icon-base viewBox="0 0 45 56" width="42px" height="48px">
+          <icon-base viewBox="0 0 45 56" width="4rem" height="4rem">
             <icon-logo />
           </icon-base>
 
-          <p class="banner__right__title mulish">Foxie</p>
+          <p class="banner__right__title mulish"><span>Foxie</span></p>
         </div>
 
         <p class="banner__right__text">
@@ -18,7 +21,8 @@
           하지만 네가 나를 길들인다면 나는 너에게 이 세상에 유일한 존재가
           될거야"<br />
           <br />
-          <b>"널 길들이려면 어떻게 해야 하니?"</b><br />
+          <b style="color: var(--coral)">"널 길들이려면 어떻게 해야 하니?"</b
+          ><br />
         </p>
         <div class="banner__footer">
           <router-link to="#">
@@ -133,20 +137,19 @@ export default {
 <style scoped>
 .banner {
   width: 100%;
-  height: 20rem;
+  height: 24rem;
   border-radius: 8px;
   display: flex;
-  background: rgba(255, 255, 255, 0.65);
+  background: linear-gradient(to right, #c082a2, #6a3d74, #380c72);
+  color: white;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(50px);
   margin-bottom: 2rem;
 }
 
-.banner__left {
-  background-image: url("https://ae01.alicdn.com/kf/H9da62382ce944506bfe2ee949239bc67K.jpg");
-  background-size: 100%;
-  width: 18rem;
+.banner__left img {
+  width: 38rem;
   height: 100%;
+  opacity: 0.7;
   border-radius: 8px 0 0 8px;
 }
 
@@ -160,16 +163,23 @@ export default {
 }
 
 .banner__right__title {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 1rem;
   margin-bottom: 2rem;
   color: var(--coral);
   font-weight: 700;
 }
 
+.banner__right__title span {
+  background: linear-gradient(to bottom, #ec6159, #ec6159, #fdaf88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .banner__right__text {
-  color: var(--gray-700);
-  font-size: 16px;
+  color: var(--banner-text);
+  font-size: 18px;
+  line-height: 2rem;
 }
 
 .banner__footer {

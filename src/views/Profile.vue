@@ -1,69 +1,72 @@
 <template>
-  <section>
-    <div class="profile__header">
-      <div class="profile__header__avatar">
-        <icon-base viewBox="0 0 64 64" width="100%" height="160px">
-          <icon-avatar />
-        </icon-base>
-      </div>
+  <!-- FIXME : 프로필 진짜 말 안들음.. 이걸로 해결함 -->
+  <section style="width: 100%">
+    <div class="profile">
+      <div class="profile__header">
+        <div class="profile__header__avatar">
+          <icon-base viewBox="0 0 64 64" width="100%" height="160px">
+            <icon-avatar />
+          </icon-base>
+        </div>
 
-      <!-- TODO: SCSS 도입 -->
-      <div class="profile__header__info">
-        <h1 class="profile__header__info__name">뿅뿅이여우</h1>
+        <!-- TODO: SCSS 도입 -->
+        <div class="profile__header__info">
+          <h1 class="profile__header__info__name">뿅뿅이여우</h1>
 
-        <div class="profile__header__info__status">
-          <div>
-            <p class="status__num">{{ (1046).toLocaleString("ko-kr") }}</p>
-            <p class="status__label">Reviews</p>
+          <div class="profile__header__info__status">
+            <div>
+              <p class="status__num">{{ (1046).toLocaleString("ko-kr") }}</p>
+              <p class="status__label">Reviews</p>
+            </div>
+
+            <div>
+              <p class="status__num">{{ (4206).toLocaleString("ko-kr") }}</p>
+              <p class="status__label">Followers</p>
+            </div>
+
+            <div>
+              <p class="status__num">{{ (236).toLocaleString("ko-kr") }}</p>
+              <p class="status__label">Follwings</p>
+            </div>
           </div>
 
-          <div>
-            <p class="status__num">{{ (4206).toLocaleString("ko-kr") }}</p>
-            <p class="status__label">Followers</p>
-          </div>
+          <p class="profile__text">
+            만약에 네가 오후 4시에 온다면, 난 3시부터 행복해지기 시작할 거야. 🦊
+          </p>
 
-          <div>
-            <p class="status__num">{{ (236).toLocaleString("ko-kr") }}</p>
-            <p class="status__label">Follwings</p>
+          <div class="profile__tags">
+            <p class="profile__tag">액션</p>
+            <p class="profile__tag">스릴러</p>
+            <p class="profile__tag">어린왕자</p>
           </div>
         </div>
 
-        <p class="profile__text">
-          만약에 네가 오후 4시에 온다면, 난 3시부터 행복해지기 시작할 거야. 🦊
-        </p>
+        <div class="follow__container">
+          <router-link to="#">
+            <div class="follow__button mulish">
+              <icon-base
+                viewBox="0 0 20 20"
+                width="20px"
+                height="20px"
+                class="comment__author__avatar"
+              >
+                <icon-follow />
+              </icon-base>
 
-        <div class="profile__tags">
-          <p class="profile__tag">액션</p>
-          <p class="profile__tag">스릴러</p>
-          <p class="profile__tag">어린왕자</p>
+              <span class="follow__button__text">Follow</span>
+            </div>
+          </router-link>
         </div>
       </div>
-
-      <div class="follow__container">
-        <router-link to="#">
-          <div class="follow__button mulish">
-            <icon-base
-              viewBox="0 0 20 20"
-              width="20px"
-              height="20px"
-              class="comment__author__avatar"
-            >
-              <icon-follow />
-            </icon-base>
-
-            <span class="follow__button__text">Follow</span>
-          </div>
-        </router-link>
+      <div class="profile__body">
+        <div class="profile__body__sidebar">
+          <p>나는 메뉴 1</p>
+          <p>나는 메뉴 2</p>
+          <p>나는 메뉴 3</p>
+          <p>나는 메뉴 4</p>
+        </div>
+        <div class="profile__body__content">나는 컨텐츠야</div>
       </div>
-    </div>
-    <div class="profile__body">
-      <div class="profile__body__sidebar">
-        <p>나는 메뉴 1</p>
-        <p>나는 메뉴 2</p>
-        <p>나는 메뉴 3</p>
-        <p>나는 메뉴 4</p>
-      </div>
-      <div class="profile__body__content">나는 컨텐츠야</div>
     </div>
   </section>
 </template>
@@ -83,10 +86,10 @@ export default {
 </script>
 
 <style scoped>
+.profile {
+}
+
 .profile__header {
-  width: 100%;
-  max-width: 80rem;
-  min-width: 50rem;
   height: 16rem;
   border-radius: 8px 8px 0px 0px;
   padding: 3rem 3rem;
@@ -173,10 +176,7 @@ export default {
 }
 
 .profile__body {
-  width: 100%;
-  max-width: 80rem;
-  min-width: 50rem;
-  height: 30rem;
+  height: 34rem;
   border-radius: 0px 0px 8px 8px;
   padding: 3rem 3rem;
   background-color: var(--profile-body);
