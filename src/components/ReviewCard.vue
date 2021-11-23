@@ -80,7 +80,6 @@
           placeholder="댓글을 입력하세요."
           type="text"
         />
-        <input class="footer__input" type="text" />
       </div>
     </div>
   </div>
@@ -169,6 +168,8 @@ export default {
 
 .body__content {
   font-size: 16px;
+}
+
 .body__header {
   display: flex;
   justify-content: space-between;
@@ -188,7 +189,7 @@ export default {
   font-size: 14px;
   color: var(--recommend-text);
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 1rem;
   margin-bottom: 2rem;
 }

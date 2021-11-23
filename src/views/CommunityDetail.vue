@@ -139,7 +139,7 @@ export default {
 
 .post__sub {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
