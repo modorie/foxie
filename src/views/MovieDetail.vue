@@ -50,7 +50,7 @@
               </div>
 
               <div class="info__score">
-                <icon-base viewBox="0 0 18 20" width="1.5rem" height="1.5rem">
+                <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
                   <icon-star />
                 </icon-base>
 
@@ -239,7 +239,7 @@ export default {
 }
 
 .header__info {
-  padding: 1.5rem 6rem;
+  padding: 1.5rem;
   display: flex;
 }
 
