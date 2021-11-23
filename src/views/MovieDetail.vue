@@ -119,7 +119,7 @@
             <h2 class="body__info__title">리뷰</h2>
 
             <p class="body__info__content">
-              <CommentWrite />
+              <ReviewWrite />
               <ReviewCardSimple />
               <ReviewCardSimple />
               <ReviewCardSimple />
@@ -143,7 +143,7 @@ import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconStar from "@/components/icons/IconStar.vue";
 import ReviewCardSimple from "@/components/ReviewCardSimple.vue";
-import CommentWrite from "@/components/CommentWrite.vue";
+import ReviewWrite from "@/components/ReviewWrite.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
 
 export default {
@@ -151,7 +151,7 @@ export default {
     IconBase,
     IconStar,
     ReviewCardSimple,
-    CommentWrite,
+    ReviewWrite,
     MovieRecommend,
   },
   data() {

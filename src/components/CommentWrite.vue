@@ -3,9 +3,11 @@
     <p class="comment__title mulish">Comment</p>
     <textarea class="comment__input" cols="30" rows="6"></textarea>
 
-    <router-link to="#">
-      <div class="comment__button mulish">Write</div>
-    </router-link>
+    <div class="comment__button__wrapper">
+      <router-link to="#">
+        <div class="comment__button mulish">Write</div>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -27,6 +29,11 @@ export default {};
   resize: none;
   padding: 1rem;
   outline: none;
+}
+
+.comment__button__wrapper {
+  display: flex;
+  justify-content: end;
 }
 
 .comment__button {
