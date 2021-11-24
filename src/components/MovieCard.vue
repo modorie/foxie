@@ -1,6 +1,13 @@
 <template>
   <div class="card">
-    <router-link :to="`movie/${movie.id}`">
+    <router-link
+      :to="{
+        name: 'MovieDetail',
+        params: {
+          id: movie.id,
+        },
+      }"
+    >
       <img
         v-if="movie.poster_path"
         class="card__image"
@@ -39,7 +46,7 @@ export default {
   },
   props: {
     movie: {
-      type: Array,
+      type: Object,
     },
   },
 };

@@ -143,6 +143,7 @@
                 v-for="review in reviews"
                 :key="review.id"
                 :reviewId="review.id"
+                :movieId="movie.id"
               />
             </p>
           </div>
