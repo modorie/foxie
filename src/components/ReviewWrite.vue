@@ -22,17 +22,24 @@
       </icon-base>
     </div>
 
-    <textarea class="comment__input" cols="30" rows="6"></textarea>
+    <input type="number" class="review__rank" min="1" max="10" v-model="rank" />
+    <textarea
+      class="review__input"
+      cols="30"
+      rows="6"
+      placeholder="리뷰를 입력하세요."
+      v-model="content"
+    ></textarea>
 
     <div class="comment__button__wrapper">
-      <router-link to="#">
-        <div class="comment__button mulish">Write</div>
-      </router-link>
+      <button class="comment__button" @click="createReview">리뷰 등록</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 import IconBase from "@/components/IconBase.vue";
 import IconStar from "@/components/icons/IconStar.vue";
 import IconStarHalf from "@/components/icons/IconStarHalf.vue";
@@ -43,6 +50,44 @@ export default {
     IconStar,
     IconStarHalf,
   },
+  data() {
+    return {
+      content: null,
+      rank: null,
+    };
+  },
+  methods: {
+    createReview() {
+      const { id } = this.$route.params;
+      const token = JSON.parse(localStorage.getItem("user")).access_token;
+      const author = JSON.parse(localStorage.getItem("user")).user.id;
+
+      const reviewData = {
+        content: this.content,
+        rank: this.rank,
+        author: author,
+        movie: id,
+      };
+
+      console.log(reviewData);
+
+      axios({
+        method: "post",
+        url: `api/v1/movies/${id}/reviews/`,
+        data: reviewData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          console.log(res);
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
@@ -52,7 +97,16 @@ export default {
   margin-bottom: 1rem;
 }
 
-.comment__input {
+.review__rank {
+  background-color: var(--board-header);
+  border-radius: 8px;
+  resize: none;
+  padding: 1rem;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+.review__input {
   width: 100%;
   background-color: var(--board-header);
   border-radius: 8px;
