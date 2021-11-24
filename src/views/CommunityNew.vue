@@ -11,17 +11,8 @@
       />
       <!-- FIXME : 모드에 맞게 toast 테마 변화.. 엄청 무식하게 일단 구현 (토글해도 안 바뀜) -->
       <Editor
-        v-if="!isDark"
         :options="editorOptions"
-        height="32rem"
-        initialEditType="wysiwyg"
-        previewStyle="vertical"
-        ref="toastuiEditor"
-      />
-
-      <Editor
-        v-else
-        :options="DarkEditorOptions"
+        class="toast-ui-custom"
         height="32rem"
         initialEditType="wysiwyg"
         previewStyle="vertical"
@@ -50,15 +41,8 @@ export default {
   },
   data() {
     return {
-      isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
-
       editorOptions: {
         hideModeSwitch: true,
-      },
-
-      DarkEditorOptions: {
-        hideModeSwitch: true,
-        theme: "dark",
       },
       title: null,
       content: null,
@@ -117,8 +101,8 @@ export default {
 
 .title__input {
   width: 100%;
-  border: 1px solid var(--recommend-border);
-  background-color: var(--header);
+  border: 1px solid var(--toast-border);
+  background-color: var(--background);
   border-radius: 4px;
   padding: 0.6rem;
   margin-right: 0.5rem;
