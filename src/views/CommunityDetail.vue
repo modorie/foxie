@@ -91,7 +91,11 @@
         <div class="comment">
           <CommentWrite />
 
-          <Comment />
+          <Comment
+            v-for="comment in comments"
+            :key="comment.id"
+            :commentId="comment.id"
+          />
         </div>
       </div>
       <div class="community__body__right">
@@ -132,6 +136,7 @@ export default {
   data() {
     return {
       post: [],
+      comments: [],
       userId: null,
       likeCount: 0,
       isLike: "",
@@ -152,6 +157,7 @@ export default {
         this.post = res.data;
         this.likeCount = res.data.like_users.length;
         this.isLike = res.data.like_users.includes(this.userId);
+        this.comments = res.data.comments;
       })
       .catch((err) => console.log(err));
   },

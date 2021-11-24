@@ -1,37 +1,35 @@
 <template>
-  <div>
-    <div v-for="comment in comments" :key="comment.id" class="container">
-      <div class="comment__left">
-        <div class="comment__author">
-          <icon-base
-            viewBox="0 0 64 64"
-            width="32"
-            height="32"
-            class="comment__author__avatar"
-          >
-            <icon-avatar />
-          </icon-base>
-          <div>
-            <p class="comment__author__name">
-              {{ comment.author.username }}
-            </p>
-            <p class="comment__date">
-              {{
-                comment.created_at
-                  .slice(0, 16)
-                  .replaceAll("-", ".")
-                  .replace("T", " ")
-              }}
-            </p>
-          </div>
+  <div class="container">
+    <div class="comment__left">
+      <div class="comment__author">
+        <icon-base
+          viewBox="0 0 64 64"
+          width="32"
+          height="32"
+          class="comment__author__avatar"
+        >
+          <icon-avatar />
+        </icon-base>
+        <div>
+          <p class="comment__author__name">
+            {{ comment.author.username }}
+          </p>
+          <p class="comment__date">
+            {{
+              comment.created_at
+                .slice(0, 16)
+                .replaceAll("-", ".")
+                .replace("T", " ")
+            }}
+          </p>
         </div>
-
-        <p class="comment__body">
-          {{ comment.content }}
-        </p>
       </div>
-      <div class="comment__right"></div>
+
+      <p class="comment__body">
+        {{ comment.content }}
+      </p>
     </div>
+    <div class="comment__right"></div>
   </div>
 </template>
 
@@ -47,17 +45,20 @@ export default {
   },
   data() {
     return {
-      comments: [],
+      comment: {},
     };
+  },
+  props: {
+    commentId: Number,
   },
   created() {
     const { id } = this.$route.params;
     this.userId = JSON.parse(localStorage.getItem("user")).user.id;
 
     axios
-      .get(`api/v1/community/${id}/comments/`)
+      .get(`api/v1/community/${id}/comments/${this.commentId}/`)
       .then((res) => {
-        this.comments = res.data;
+        this.comment = res.data;
       })
       .catch((err) => console.log(err));
   },
