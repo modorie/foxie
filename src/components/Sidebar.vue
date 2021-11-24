@@ -44,19 +44,19 @@
         <p class="sidebar__menu__title mulish">COMMUNITY</p>
       </div>
     </router-link>
-
-    <router-link to="/profile">
+    <div @click="getProfile">
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 32 36" width="32" height="32" icon-name="icon">
           <icon-profile class="sidebar__menu__icon" />
         </icon-base>
         <p class="sidebar__menu__title mulish">PROFILE</p>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconLogo from "@/components/icons/IconLogo.vue";
 import IconHome from "@/components/icons/IconHome.vue";
@@ -75,6 +75,37 @@ export default {
     IconCommunity,
     IconProfile,
     IconReview,
+  },
+  data() {
+    return {
+      username: null,
+    };
+  },
+  methods: {
+    getProfile() {
+      const user = localStorage.getItem("user");
+      if (user) {
+        this.username = JSON.parse(localStorage.getItem("user")).user.username;
+        axios({
+          method: "get",
+          url: `accounts/${this.username}`,
+        })
+          .then(() => {
+            this.$router.push({
+              name: "Profile",
+              params: { username: this.username },
+            });
+          })
+          .catch(() => {
+            window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
+            this.$router.push({
+              name: "ProfileNew",
+            });
+          });
+      } else {
+        window.alert("프로필을 보시려면 로그인하세요.");
+      }
+    },
   },
 };
 </script>
