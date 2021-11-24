@@ -8,7 +8,9 @@
     </div>
     <div class="card__right">
       <div class="card__right__header">
-        <div class="card__right__header__title">{{ movie.title }}</div>
+        <div class="card__right__header__title">
+          {{ movie.title }}
+        </div>
         <div class="card__right__header__score">
           <icon-base viewBox="0 0 16 18" width="24px" height="16px">
             <icon-star />
@@ -20,14 +22,17 @@
       <div class="card__right__genres">
         <span
           class="card__right__genre"
-          v-for="genre in movie.genres"
+          v-for="genre in movie.genre_ids"
           :key="genre.id"
         >
           {{ genre.name }}
         </span>
       </div>
 
-      <p class="card__right__text">소석진님 외 8명이 이 영화를 좋아합니다.</p>
+      <p class="card__right__text">
+        {{ recommData.target_movie.title }}
+        영화가 재밌으셨다면, 이 영화는 어떠세요?
+      </p>
     </div>
   </div>
 </template>
@@ -45,20 +50,32 @@ export default {
   data() {
     return {
       movie: [],
+      recommData: {},
     };
   },
   created() {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/580489`, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-        },
-      })
+    axios({
+      method: "get",
+      url: `api/v1/movies/recommendations/preview`,
+    })
       .then((res) => {
-        this.movie = res.data;
+        this.recommData = res.data;
+        console.log(this.recommData);
+        this.getMovieData();
       })
       .catch((err) => console.log(err));
+  },
+  methods: {
+    getMovieData() {
+      axios
+        .get(`api/v1/movies/${this.recommData.recommendation}`)
+        .then((res) => {
+          this.movie = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
@@ -112,5 +129,14 @@ export default {
 
 .card__right__text {
   color: var(--recommend-text);
+}
+
+.card__right__text__link {
+  font-weight: 700;
+}
+
+.card__right__text__link:hover {
+  color: var(--dropdown-text);
+  font-weight: 700;
 }
 </style>

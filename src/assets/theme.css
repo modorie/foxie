@@ -65,6 +65,7 @@
   --recommend-border: var(--gray-200);
   --recommend-button: var(--white);
   --recommend-button-border: var(--gray-300);
+  --preview: #ffffff88;
 
   /* Heart */
   --heart: var(--white);
