@@ -35,13 +35,13 @@
                 <div class="info__release">
                   <p>{{ movie.release_date.replaceAll("-", ". ") }}</p>
                 </div>
-
-                <p class="info__time">{{ movie.runtime }}분</p>
-
+                <div class="info__divide"></div>
+                <p class="info__time">{{ movie.runtime }}157 분</p>
+                <div class="info__divide"></div>
                 <div class="info__genres">
                   <span
                     class="info__genre"
-                    v-for="genre in movie.genres"
+                    v-for="genre in movie.genre_ids"
                     :key="genre.id"
                   >
                     {{ genre.name }}
@@ -50,7 +50,7 @@
               </div>
 
               <div class="info__score">
-                <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
+                <icon-base viewBox="0 0 18 18" width="1.2rem" height="1.2rem">
                   <icon-star />
                 </icon-base>
 
@@ -81,28 +81,47 @@
               :src="this.video_path"
             ></iframe>
           </div>
+          <div class="body__info">
+            <h2 class="body__info__title">감독</h2>
 
+            <div class="body__info__members">
+              <div v-for="director in this.directors" :key="director.id">
+                <img
+                  v-if="director.profile_path"
+                  class="member__profile"
+                  :src="`https://image.tmdb.org/t/p/original${director.profile_path}`"
+                />
+                <div v-else class="member__no__profile mulish">No Profile</div>
+
+                <div class="member__info">
+                  <p class="member__info__name">{{ director.name }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="body__info">
             <h2 class="body__info__title">출연진</h2>
 
             <div class="body__info__members">
               <div
-                v-for="actor in this.actors"
-                :key="actor.id"
+                v-for="casting in this.castings"
+                :key="casting.id"
                 class="body__info__member"
               >
                 <img
-                  v-if="actor.profile_path"
+                  v-if="casting.actor.profile_path"
                   class="member__profile"
-                  :src="`https://image.tmdb.org/t/p/original${actor.profile_path}`"
+                  :src="`https://image.tmdb.org/t/p/original${casting.actor.profile_path}`"
                 />
 
                 <!-- 프로필 없는 배우가 있음 -->
                 <div v-else class="member__no__profile mulish">No Profile</div>
 
                 <div class="member__info">
-                  <p class="member__info__name">{{ actor.name }}</p>
-                  <p class="member__info__character">{{ actor.character }}</p>
+                  <p class="member__info__name">{{ casting.actor.name }}</p>
+                  <p class="member__info__character">
+                    {{ casting.character }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -120,11 +139,11 @@
 
             <p class="body__info__content">
               <ReviewWrite />
-              <ReviewCardSimple />
-              <ReviewCardSimple />
-              <ReviewCardSimple />
-              <ReviewCardSimple />
-              <ReviewCardSimple />
+              <ReviewCardSimple
+                v-for="review in reviews"
+                :key="review.id"
+                :reviewId="review.id"
+              />
             </p>
           </div>
         </div>
@@ -158,8 +177,9 @@ export default {
     return {
       movie: [],
       staffs: [],
-      actors: [],
+      castings: [],
       videos: [],
+      reviews: [],
       backdrop_path: "",
       video_path: "",
     };
@@ -168,43 +188,20 @@ export default {
     const { id } = this.$route.params;
 
     axios
-      .get(`https://api.themoviedb.org/3/movie/${id}`, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-        },
-      })
+      .get(`api/v1/movies/${id}`)
       .then((res) => {
         this.movie = res.data;
         this.backdrop_path = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`;
-      })
-      .catch((err) => console.log(err));
-
-    axios
-      .get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-        },
-      })
-      .then((res) => {
-        this.videos = res.data.results;
+        this.videos = res.data.videos;
         this.video_path = `https://www.youtube.com/embed/${this.videos[0].key}`;
+        this.castings = res.data.castings;
+        this.directors = res.data.directors;
       })
       .catch((err) => console.log(err));
 
-    axios
-      .get(`https://api.themoviedb.org/3/movie/${id}/credits`, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-        },
-      })
-      .then((res) => {
-        this.actors = res.data.cast.slice(0, 10);
-        this.staffs = res.data.crew;
-      })
-      .catch((err) => console.log(err));
+    axios.get(`api/v1/movies/${id}/reviews`).then((res) => {
+      this.reviews = res.data;
+    });
   },
 };
 </script>
@@ -235,6 +232,7 @@ export default {
   background-size: 100% auto;
   opacity: 0.5;
   overflow: hidden;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .header__info {
@@ -260,7 +258,7 @@ export default {
 }
 
 .info__title {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   margin-bottom: 0rem;
 }
@@ -288,13 +286,27 @@ export default {
 }
 
 .info__release {
-  font-size: 18px;
-  margin-right: 2rem;
+  font-size: 16px;
+  margin-right: 1rem;
+}
+
+.info__time::before {
+  content: "\2022";
+  font-size: 1.1em;
+  margin-right: 1rem;
+  color: var(--gray-400);
 }
 
 .info__time {
-  font-size: 18px;
-  margin-right: 2rem;
+  font-size: 16px;
+  margin-right: 1rem;
+}
+
+.info__genres::before {
+  content: "\2022";
+  font-size: 1.1em;
+  margin-right: 1rem;
+  color: var(--gray-400);
 }
 
 .info__genres {
@@ -305,6 +317,7 @@ export default {
 .info__genre {
   margin-right: 0.8rem;
   background-color: var(--profile-tag);
+
   padding: 0.1rem 0.5rem;
   border-radius: 1rem;
   font-size: 14px;
@@ -317,7 +330,7 @@ export default {
 }
 
 .info__score__num {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   margin-left: 0.2rem;
   letter-spacing: 0.1rem;
@@ -336,19 +349,21 @@ export default {
   padding-bottom: 2rem;
   margin-bottom: 2rem;
 }
-.body__info:last-child {
+
+.body__info:last-child,
+.body__info:nth-child(3) {
   border-bottom: none;
   padding-bottom: 0;
 }
 
 .body__info__title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .body__info__content {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
 }
 
