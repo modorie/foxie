@@ -378,9 +378,9 @@ export default {
 }
 
 .member__no__profile {
-  width: 10rem;
-  height: 14rem;
-  background-color: var(--coral);
+  width: 100%;
+  height: 80%;
+  background-color: var(--board-header);
   border-radius: 8px;
   color: var(--header-search);
   text-align: center;
