@@ -25,10 +25,6 @@
 
                   <p class="info__title__en">{{ movie.original_title }}</p>
                 </div>
-
-                <router-link to="#">
-                  <div class="info__button">리뷰 쓰기</div>
-                </router-link>
               </div>
 
               <div class="info__sub">
@@ -49,14 +45,20 @@
                 </div>
               </div>
 
-              <div class="info__score">
-                <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-                  <icon-star />
-                </icon-base>
+              <div class="info__footer">
+                <div class="info__score">
+                  <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
+                    <icon-star />
+                  </icon-base>
 
-                <p class="info__score__num">
-                  {{ movie.vote_average.toFixed(1) }}
-                </p>
+                  <p class="info__score__num">
+                    {{ movie.vote_average.toFixed(1) }}
+                  </p>
+                </div>
+
+                <router-link to="#">
+                  <div class="info__button">리뷰 쓰기</div>
+                </router-link>
               </div>
 
               <!-- <p class="info__overview">{{ movie.overview }}</p> -->
@@ -260,13 +262,14 @@ export default {
 }
 
 .info__title {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 0rem;
+  margin-bottom: -0.2rem;
 }
 
 .info__title__en {
-  opacity: 0.6;
+  font-size: 14px;
+  color: var(--recommend-text);
   margin-bottom: 1rem;
 }
 
@@ -284,16 +287,14 @@ export default {
 .info__sub {
   display: flex;
   align-items: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 5rem;
 }
 
 .info__release {
-  font-size: 18px;
   margin-right: 2rem;
 }
 
 .info__time {
-  font-size: 18px;
   margin-right: 2rem;
 }
 
@@ -309,6 +310,11 @@ export default {
   border-radius: 1rem;
   font-size: 14px;
   font-weight: 500;
+}
+
+.info__footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .info__score {
