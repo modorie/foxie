@@ -70,7 +70,7 @@ export default {
   display: flex;
   border-radius: 4px;
   padding: 1rem;
-  border: 1px solid var(--recommend-boader);
+  border: 1px solid var(--recommend-border);
 }
 
 .card__left {

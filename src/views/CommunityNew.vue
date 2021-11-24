@@ -9,8 +9,10 @@
         class="title__input"
         placeholder="제목을 입력하세요."
       />
+      <!-- FIXME : 모드에 맞게 toast 테마 변화.. 엄청 무식하게 일단 구현 (토글해도 안 바뀜) -->
       <Editor
         :options="editorOptions"
+        class="toast-ui-custom"
         height="32rem"
         initialEditType="wysiwyg"
         previewStyle="vertical"
@@ -29,6 +31,7 @@
 <script>
 import axios from "axios";
 import "@toast-ui/editor/dist/toastui-editor.css";
+import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 
 import { Editor } from "@toast-ui/vue-editor";
 
@@ -98,7 +101,9 @@ export default {
 
 .title__input {
   width: 100%;
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--toast-border);
+  background-color: var(--background);
+  border-radius: 4px;
   padding: 0.6rem;
   margin-right: 0.5rem;
   margin-bottom: 2rem;
@@ -125,5 +130,9 @@ export default {
   border: 1px solid var(--btn-primary);
   color: var(--white);
   font-weight: 600;
+}
+
+.toastui-editor-contents {
+  color: var(--text) !important;
 }
 </style>

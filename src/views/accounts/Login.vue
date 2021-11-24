@@ -14,18 +14,24 @@
       <div class="card">
         <form @submit.prevent="login">
           <div>
-            <p class="login__label mulish">E-mail</p>
+            <p class="login__label">이메일</p>
             <input class="login__input" type="text" v-model="email" />
+            <p class="login__guide">이메일을 입력해주세요.</p>
           </div>
 
           <div>
-            <p class="login__label mulish">Password</p>
+            <p class="login__label">비밀번호</p>
             <input
               class="login__input"
               type="password"
               v-model="password"
               @keyup.enter="login"
             />
+            <p class="login__guide">
+              <span class="guide__bold">숫자</span>와
+              <span class="guide__bold">문자</span>를 포함해
+              <span class="guide__bold">8자리</span> 이상이 필요해요.
+            </p>
           </div>
 
           <router-link to="/">
@@ -128,20 +134,28 @@ export default {
 
 .login__label {
   margin-bottom: 0.2rem;
-  font-weight: 200;
   padding-left: 0.3rem;
-  font-size: 14px;
 }
 
 .login__input {
   background-color: var(--background);
   border: 1px solid var(--board-header);
-  margin-bottom: 1.5rem;
   border-radius: 4px;
   width: 100%;
   height: 2.5rem;
   padding: 0.5rem;
   outline: none;
+}
+
+.login__guide {
+  margin: 0.3rem 0rem 1.5rem 0.3rem;
+  font-size: 14px;
+  color: var(--recommend-text);
+  font-weight: 300;
+}
+
+.guide__bold {
+  font-weight: 700;
 }
 
 .login__button {

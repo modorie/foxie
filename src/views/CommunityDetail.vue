@@ -62,7 +62,11 @@
             </div>
           </div>
           <p class="post__content">
-            <Viewer v-if="post.content != null" :initialValue="post.content" />
+            <Viewer
+              class="toast-ui-custom"
+              v-if="post.content != null"
+              :initialValue="post.content"
+            />
             <!-- {{ post.content }} -->
           </p>
           <div class="footer">

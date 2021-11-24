@@ -64,10 +64,10 @@ export default {
   methods: {
     getPos(event) {
       const left = this.$refs.score.getBoundingClientRect().left;
-      const right = this.$refs.score.getBoundingClientRect().top;
+      const right = this.$refs.score.getBoundingClientRect().right;
       const now = event.clientX;
 
-      const score = Math.round(((now - left) / (right - left)) * 20);
+      const score = Math.round(((now - left) / (right - left)) * 10);
       this.score = score;
 
       this.yellow = parseInt(this.score / 2);

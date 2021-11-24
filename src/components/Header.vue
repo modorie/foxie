@@ -42,7 +42,18 @@
     </div>
 
     <button type="button" @click="onToggleDarkMode">
-      {{ isDark ? "🌙" : "🌞" }}
+      <icon-base
+        v-if="isDark"
+        viewBox="0 0 16 16"
+        width="1.5rem"
+        height="1.5rem"
+      >
+        <icon-moon />
+      </icon-base>
+
+      <icon-base v-else viewBox="0 0 16 16" width="1.5rem" height="1.5rem">
+        <icon-sun />
+      </icon-base>
     </button>
 
     <div v-if="!isLogin">
@@ -98,22 +109,26 @@ import Vue from "vue";
 import axios from "axios";
 import { authComputed } from "@/helper";
 
+import Dropdown from "@/components/Dropdown.vue";
 import IconBase from "@/components/IconBase.vue";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconBell from "@/components/icons/IconBell.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
-import Dropdown from "@/components/Dropdown.vue";
+import IconMoon from "@/components/icons/IconMoon.vue";
+import IconSun from "@/components/icons/IconSun.vue";
 
 const MOVIE_DB_API_URL_SEARCH = "https://api.themoviedb.org/3/search/movie";
 
 export default Vue.extend({
   name: "Header",
   components: {
+    Dropdown,
     IconBase,
     IconSearch,
     IconBell,
     IconAvatar,
-    Dropdown,
+    IconMoon,
+    IconSun,
   },
   data() {
     return {
