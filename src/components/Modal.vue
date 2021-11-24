@@ -47,7 +47,7 @@ export default {
   top: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 103;
+  z-index: 101;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;

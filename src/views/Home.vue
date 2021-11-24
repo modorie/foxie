@@ -1,39 +1,29 @@
 <template>
   <section>
-    <!-- TODO : Banner 컴포넌트로 빼기 -->
-    <div class="banner">
-      <div class="banner__left">
-        <img src="@/assets/banner-blur.png" alt="" />
-        <!-- <img src="@/assets/banner.png" alt="" /> -->
-      </div>
-      <div class="banner__right">
-        <div class="banner__right__brand">
-          <icon-base viewBox="0 0 45 56" width="4rem" height="4rem">
-            <icon-logo />
-          </icon-base>
+    <div class="wrapper">
+      <div class="left">
+        <!-- TODO : Banner 컴포넌트로 빼기 -->
+        <div class="banner">
+          <div class="banner__left">
+            <img src="@/assets/banner.png" alt="" />
+            <!-- <img src="@/assets/banner.png" alt="" /> -->
+          </div>
+          <div class="banner__right">
+            <p class="banner__right__fox">
+              난 네게 아직 수십 만의 영화에 지나지 않아<br />
+              너 역시 내게 수십 만의 아이들과 같은 어린아이일 뿐이고<br />
+              하지만 네가 날 길들인다면, 나는 너에게 이 세상에 유일한 존재가 될
+              거야
+            </p>
 
-          <p class="banner__right__title mulish"><span>Foxie</span></p>
+            <p class="banner__right__prince">널 길들이려면 어떻게 해야 하니?</p>
+
+            <p class="banner__right__fox">
+              그건 간단해, 나에 대한 네 생각을 들려줘
+            </p>
+          </div>
         </div>
 
-        <p class="banner__right__text">
-          "난 네게 아직 수십 만의 영화에 지나지 않아,<br />
-          너 역시 내게 수십 만의 아이들과 같은 어린아이일뿐이고.<br />
-          하지만 네가 나를 길들인다면 나는 너에게 이 세상에 유일한 존재가
-          될거야"<br />
-          <br />
-          <b style="color: var(--coral)">"널 길들이려면 어떻게 해야 하니?"</b
-          ><br />
-        </p>
-        <div class="banner__footer">
-          <router-link to="#">
-            <div class="banner__footer__button">네 이야기를 들려주렴</div>
-          </router-link>
-        </div>
-      </div>
-    </div>
-
-    <div class="home__body">
-      <div class="home__body__left">
         <h1 class="left__title mulish">Best Movies 🚀</h1>
 
         <p class="left__subtitle">
@@ -54,7 +44,7 @@
         </div>
       </div>
 
-      <div class="home__body__right">
+      <div class="right">
         <MovieRecommend />
         <MovieRecommend />
       </div>
@@ -65,8 +55,6 @@
 <script>
 import axios from "axios";
 
-import IconBase from "@/components/IconBase.vue";
-import IconLogo from "@/components/icons/IconLogo.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
 import MovieCarousel from "@/components/MovieCarousel.vue";
 
@@ -78,8 +66,6 @@ const MOVIE_DB_API_URL_GET_NOW_PLAYING =
 
 export default {
   components: {
-    IconBase,
-    IconLogo,
     MovieRecommend,
     MovieCarousel,
   },
@@ -135,52 +121,58 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+}
+
+.left {
+  margin-right: 2rem;
+}
+
+.right {
+}
+
 .banner {
-  width: 100%;
-  height: 24rem;
+  height: 20rem;
   border-radius: 8px;
   display: flex;
-  background: linear-gradient(to right, #f0d3d3d0, #fdf8dccc);
-  color: var(--gray-600);
+  background: linear-gradient(
+    to right,
+    var(--banner-left),
+    var(--banner-right)
+  );
+  color: var(--banner-text);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
 }
 
 .banner__left img {
-  width: 38rem;
-  height: 100%;
-  opacity: 0.7;
+  width: 28rem;
+  margin-top: 0.5rem;
+  opacity: 0.6;
   border-radius: 8px 0 0 8px;
+  -webkit-user-drag: none;
 }
 
 .banner__right {
-  padding: 2rem;
+  padding: 3rem 2rem 2rem 0rem;
   margin-left: -2rem;
   width: 100%;
 }
 
-.banner__right__brand {
-  display: flex;
-}
-
-.banner__right__title {
-  font-size: 3rem;
-  margin-left: 1rem;
-  margin-bottom: 2rem;
-  color: var(--coral);
-  font-weight: 700;
-}
-
-.banner__right__title span {
-  background: linear-gradient(to bottom, #ed5656, #ed5656, #ffa97e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.banner__right__text {
-  color: var(--banner-text);
-  font-size: 18px;
+.banner__right__fox {
+  font-weight: 500;
+  color: var(--banner-fox);
+  font-size: 20px;
   line-height: 2rem;
+  margin-bottom: 2rem;
+}
+
+.banner__right__prince {
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--banner-prince);
+  margin-bottom: 2rem;
 }
 
 .banner__footer {
@@ -188,26 +180,6 @@ export default {
   display: flex;
   flex-direction: row-reverse;
   margin-top: 1rem;
-}
-
-.banner__footer__button {
-  align-items: center;
-  text-align: center;
-  background-color: var(--btn-primary);
-  border: 1px solid var(--btn-primary);
-  color: var(--white);
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-}
-
-.home__body {
-  width: 100%;
-  display: flex;
-}
-
-.home__body__left {
-  width: calc(100% - 29rem);
-  margin-right: 3rem;
 }
 
 .tab {
@@ -234,6 +206,8 @@ export default {
 }
 
 .carousel__container {
+  /* FIXME - 완전 하드코딩.. 라이브러리 컨트롤이 어렵다*/
+  max-width: 56rem;
   background-color: var(--header);
   padding: 1rem 0.5rem;
   border-radius: 8px 0px;

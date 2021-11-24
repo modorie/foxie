@@ -22,9 +22,11 @@
   --btn-secondary-border: var(--gray-300);
   --search: #f4f4f588;
 
-  /* Home
-  --banner: #e6b1b1;
-  --banner-text: var(--gray-600); */
+  /* Home */
+  --banner-left: #ebc3c3d7;
+  --banner-right: #f5eddebe;
+  --banner-fox: #7c6767b6;
+  --banner-prince: #cc76ccad;
 
   /* Movie */
   --card-background: var(--white);
@@ -93,9 +95,11 @@
   --btn-secondary-border: var(--gray-500);
   --search: #27272aaa;
 
-  /* Home
-  --banner: #252035;
-  --banner-text: var(--gray-300); */
+  /* Home */
+  --banner-left: #86758a;
+  --banner-right: #80624e;
+  --banner-fox: #ffffff9a;
+  --banner-prince: #e9b1e9c2;
 
   /* Movie */
   --card-background: var(--gray-800);
