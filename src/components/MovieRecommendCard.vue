@@ -69,7 +69,7 @@ export default {
   display: flex;
   border-radius: 4px;
   padding: 1rem 0rem;
-  border-bottom: 1px solid var(--recommend-boader);
+  border-bottom: 1px solid var(--recommend-border);
 }
 
 .card__left {

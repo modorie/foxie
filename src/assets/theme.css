@@ -53,7 +53,7 @@
   --recommend: var(--white);
   --recommend-title: #7b6161;
   --recommend-text: var(--gray-500);
-  --recommend-boader: var(--gray-200);
+  --recommend-border: var(--gray-200);
   --recommend-button: var(--white);
   --recommend-button-border: var(--gray-300);
 
@@ -115,7 +115,7 @@
   --recommend: var(--gray-800);
   --recommend-title: var(--coral);
   --recommend-text: var(--gray-400);
-  --recommend-boader: var(--gray-900);
+  --recommend-border: var(--gray-900);
   --recommend-button: var(--gray-700);
   --recommend-button-border: var(--gray-600);
 
