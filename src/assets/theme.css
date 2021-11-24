@@ -10,6 +10,7 @@
   --scroll: var(--gray-100);
   --scroll-bar: var(--gray-300);
   --scroll-bar-hover: var(--gray-400);
+  --star-gray: var(--gray-300);
 
   /* Header */
   --header: var(--white);
@@ -18,6 +19,7 @@
   --btn-secondary: var(--white);
   --btn-secondary-text: var(--gray-600);
   --btn-secondary-border: var(--gray-300);
+  --search: #f4f4f588;
 
   /* Home
   --banner: #e6b1b1;
@@ -70,6 +72,7 @@
   --scroll: var(--gray-700);
   --scroll-bar: var(--gray-500);
   --scroll-bar-hover: var(--gray-400);
+  --star-gray: var(--gray-600);
 
   /* Header */
   --header: #242427;
@@ -78,6 +81,7 @@
   --btn-secondary: var(--gray-700);
   --btn-secondary-text: var(--gray-50);
   --btn-secondary-border: var(--gray-500);
+  --search: #27272aaa;
 
   /* Home
   --banner: #252035;

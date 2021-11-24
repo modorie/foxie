@@ -1,25 +1,7 @@
 <template>
   <div>
     <div class="comment__score">
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__on" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__on" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__on" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star-half class="star__half" />
-      </icon-base>
-
-      <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
-        <icon-star class="star__off" />
-      </icon-base>
+      <StarRatingInput size="36" />
     </div>
 
     <input type="number" class="review__rank" min="1" max="10" v-model="rank" />
@@ -39,16 +21,11 @@
 
 <script>
 import axios from "axios";
-
-import IconBase from "@/components/IconBase.vue";
-import IconStar from "@/components/icons/IconStar.vue";
-import IconStarHalf from "@/components/icons/IconStarHalf.vue";
+import StarRatingInput from "@/components/StarRatingInput.vue";
 
 export default {
   components: {
-    IconBase,
-    IconStar,
-    IconStarHalf,
+    StarRatingInput,
   },
   data() {
     return {
@@ -113,14 +90,6 @@ export default {
   resize: none;
   padding: 1rem;
   outline: none;
-}
-
-.star__on {
-  fill: #ffac33;
-}
-
-.star__off {
-  fill: var(--gray-600);
 }
 
 .comment__button__wrapper {
