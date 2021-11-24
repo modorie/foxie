@@ -87,6 +87,7 @@ export default {
         })
         .then(() => {
           this.$router.push({ name: "Home" });
+          location.reload();
         })
         .catch((err) => {
           console.log(err);
