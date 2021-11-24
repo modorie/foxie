@@ -10,6 +10,7 @@ import CommunityNew from "../views/CommunityNew.vue";
 import CommunityEdit from "../views/CommunityEdit.vue";
 import CommunityDetail from "../views/CommunityDetail.vue";
 import Profile from "../views/Profile.vue";
+import ProfileNew from "../views/ProfileNew.vue";
 import Signup from "../views/accounts/Signup.vue";
 import Login from "../views/accounts/Login.vue";
 
@@ -60,7 +61,12 @@ export const router = new Router({
       component: CommunityEdit,
     },
     {
-      path: "/profile",
+      path: "/profile/",
+      name: "ProfileNew",
+      component: ProfileNew,
+    },
+    {
+      path: "/profile/:username",
       name: "Profile",
       component: Profile,
     },

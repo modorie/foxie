@@ -1,16 +1,39 @@
 <template>
   <div class="container">
     <div class="profile">
-      <div class="profile__avatar">
-        <icon-base viewBox="0 0 64 64" width="48" height="48">
-          <icon-avatar />
-        </icon-base>
-      </div>
-
+      <router-link
+        :to="{ name: 'Profile', params: { username: review.author.username } }"
+      >
+        <div class="profile__avatar">
+          <img
+            v-if="review.author.profile.avatar"
+            :src="review.author.profile.avatar"
+            style="height: 48px; width: 48px"
+            class="settings__form__photo__thumbnail"
+          />
+          <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
+            <icon-avatar />
+          </icon-base>
+        </div>
+      </router-link>
       <div class="profile__info">
         <div class="profile__info__header">
           <p>
-            <span class="profile__nickname">{{ review.author.username }}</span>
+            <router-link
+              :to="{
+                name: 'Profile',
+                params: { username: review.author.username },
+              }"
+            >
+              <span
+                class="profile__nickname"
+                v-text="
+                  review.author.profile.nickname
+                    ? review.author.profile.nickname
+                    : review.author.username
+                "
+              ></span>
+            </router-link>
             <span class="profile__time">
               {{ review.created_at.slice(0, 10) }}
             </span>
@@ -168,18 +191,17 @@ export default {
     };
   },
   props: {
+    movieId: Number,
     reviewId: Number,
   },
   created() {
-    const { id } = this.$route.params;
-
     const user = localStorage.getItem("user");
     if (user) {
       this.userId = JSON.parse(localStorage.getItem("user")).user.id;
     }
 
     axios
-      .get(`api/v1/movies/${id}/reviews/${this.reviewId}`)
+      .get(`api/v1/movies/${this.movieId}/reviews/${this.reviewId}`)
       .then((res) => {
         this.review = res.data;
         this.likeCount = res.data.like_users.length;
@@ -189,13 +211,12 @@ export default {
   },
   methods: {
     likeIt(reviewId) {
-      const { id } = this.$route.params;
       const user = localStorage.getItem("user");
       if (user) {
         const token = JSON.parse(localStorage.getItem("user")).access_token;
         axios({
           method: "post",
-          url: `api/v1/movies/${id}/reviews/${reviewId}/likes/`,
+          url: `api/v1/movies/${this.movieId}/reviews/${reviewId}/likes/`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
