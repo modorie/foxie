@@ -49,6 +49,14 @@
   --profile-label: var(--gray-500);
   --profile-tag: var(--gray-100);
 
+  /* Profile Settings */
+  --profile-settings-header: var(--gray-900);
+  --profile-settings-description: var(--gray-500);
+  --profile-settings-body: var(--white);
+  --profile-settings-form-label: var(--gray-900);
+  --profile-settings-form-input: var(--white);
+  --profile-settings-form-input-border: var(--gray-300);
+
   /* Recommend */
   --recommend: var(--white);
   --recommend-title: #7b6161;
@@ -107,9 +115,17 @@
 
   /* Profile */
   --profile-header: var(--gray-800);
-  --profile-body: var(--gray-750);
+  --profile-body: var(--gray-850);
   --profile-label: var(--gray-400);
   --profile-tag: var(--gray-700);
+
+  /* Profile Settings */
+  --profile-settings-header: var(--gray-50);
+  --profile-settings-description: var(--gray-400);
+  --profile-settings-body: var(--gray-800);
+  --profile-settings-form-label: var(--gray-50);
+  --profile-settings-form-input: var(--gray-850);
+  --profile-settings-form-input-border: var(--gray-750);
 
   /* Recommend */
   --recommend: var(--gray-800);
