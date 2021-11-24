@@ -14,6 +14,14 @@
       <Board />
     </div>
 
+    <Modal
+      v-if="modal"
+      @close="closeModal"
+      title="어이어이 잠깐 멈춰방"
+      content="글을 쓰려면 로그인을 해"
+      buttonText="로그인"
+    />
+
     <div class="right">
       <MovieRecommend />
       <MovieRecommend />
@@ -24,13 +32,27 @@
 <script>
 import Board from "@/components/Board.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
+import Modal from "@/components/Modal.vue";
 
 export default {
+  data() {
+    return {
+      modal: false,
+    };
+  },
   components: {
     Board,
     MovieRecommend,
+    Modal,
   },
   methods: {
+    openModal() {
+      this.modal = true;
+    },
+    closeModal() {
+      this.modal = false;
+    },
+
     createArticle() {
       const user = localStorage.getItem("user");
 
@@ -39,11 +61,12 @@ export default {
           name: "CommunityNew",
         });
       } else {
-        if (confirm("새 글을 작성하려면 로그인하세요.")) {
-          this.$router.push({
-            name: "Login",
-          });
-        }
+        // if (confirm("새 글을 작성하려면 로그인하세요.")) {
+        //   this.$router.push({
+        //     name: "Login",
+        //   });
+        // }
+        this.openModal();
       }
     },
   },
