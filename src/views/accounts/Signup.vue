@@ -14,28 +14,36 @@
       <div class="card">
         <form @submit.prevent="signup">
           <div>
-            <p class="signup__label mulish">E-mail</p>
+            <p class="signup__label">이메일</p>
             <input class="signup__input" type="text" v-model="email" />
+            <p class="signup__guide">로그인 시 사용할 이메일을 입력해주세요.</p>
           </div>
 
           <div>
-            <p class="signup__label mulish">User name</p>
+            <p class="signup__label">사용자 이름</p>
             <input class="signup__input" type="text" v-model="username" />
+            <p class="signup__guide">사용자 이름을 만들어보세요.</p>
           </div>
 
           <div>
-            <p class="signup__label mulish">Password</p>
+            <p class="signup__label">비밀번호</p>
             <input class="signup__input" type="password" v-model="password1" />
+            <p class="signup__guide">
+              <span class="guide__bold">숫자</span>와
+              <span class="guide__bold">문자</span>를 포함해
+              <span class="guide__bold">8자리</span> 이상이 필요해요.
+            </p>
           </div>
 
           <div>
-            <p class="signup__label mulish">Password confirm</p>
+            <p class="signup__label">비밀번호 확인</p>
             <input
               class="signup__input"
               type="password"
               v-model="password2"
               @keyup.enter="signup"
             />
+            <p class="signup__guide">비밀번호를 한 번 더 입력해주세요.</p>
           </div>
 
           <router-link to="/">
@@ -123,20 +131,28 @@ export default {
 
 .signup__label {
   margin-bottom: 0.2rem;
-  font-weight: 200;
   padding-left: 0.3rem;
-  font-size: 14px;
 }
 
 .signup__input {
   background-color: var(--background);
   border: 1px solid var(--board-header);
-  margin-bottom: 1.5rem;
   border-radius: 4px;
   width: 100%;
   height: 2.5rem;
   padding: 0.5rem;
   outline: none;
+}
+
+.signup__guide {
+  margin: 0.3rem 0rem 1.5rem 0.3rem;
+  font-size: 14px;
+  color: var(--recommend-text);
+  font-weight: 300;
+}
+
+.guide__bold {
+  font-weight: 700;
 }
 
 .signup__button {

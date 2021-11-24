@@ -54,8 +54,7 @@ export default {
     },
 
     createArticle() {
-      // const user = localStorage.getItem("user");
-      const user = true;
+      const user = localStorage.getItem("user");
 
       if (user) {
         this.$router.push({
