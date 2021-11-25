@@ -178,7 +178,7 @@ export default Vue.extend({
           params: {
             api_key: process.env.VUE_APP_TMDB_API_KEY,
             query: this.searchInput,
-            region: "kr",
+            language: "ko-KR",
           },
         })
         .then((res) => {
