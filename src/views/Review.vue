@@ -1,6 +1,7 @@
 <template>
   <section>
     <h1 class="page__title">Review</h1>
+    <p class="page__subtitle">영화에 대한 유저들의 리뷰들을 모아봤어요</p>
 
     <div class="body">
       <div class="left">
@@ -51,10 +52,15 @@ export default {
   color: var(--page-title);
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 2rem;
+}
+
+.page__subtitle {
+  font-size: 14px;
+  color: var(--profile-settings-description);
 }
 
 .body {
+  margin-top: 3rem;
   display: flex;
 }
 

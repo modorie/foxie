@@ -2,6 +2,10 @@
   <section>
     <h1 class="page__title">New Post</h1>
 
+    <p class="page__subtitle">
+      새로운 게시글을 작성 해보세요. 사진도 맘껏 넣을 수 있어요!
+    </p>
+
     <div class="editor">
       <input
         type="text"
@@ -90,7 +94,12 @@ export default {
   color: var(--page-title);
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 2rem;
+}
+
+.page__subtitle {
+  font-size: 14px;
+  color: var(--profile-settings-description);
+  margin-bottom: 3rem;
 }
 
 .editor {

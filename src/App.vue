@@ -77,18 +77,15 @@ export default {
 .toast-ui-custom .toastui-editor-defaultUI-toolbar {
   border-bottom: 1px solid var(--toast-border) !important;
   background: var(--background) !important;
-  border-radius: 8px !important;
   overflow: hidden;
 }
 
 .toast-ui-custom .ProseMirror.toastui-editor-contents {
   background: var(--background) !important;
-  border: 1px solid var(--toast-border) !important;
   overflow: hidden;
 }
 
 .toast-ui-custom button {
-  /* background: var(--background) !important; */
   border: none !important;
 }
 
