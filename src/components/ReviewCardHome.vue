@@ -16,7 +16,7 @@
                 v-if="review.author.profile.avatar"
                 :src="review.author.profile.avatar"
                 style="height: 36px; width: 36px"
-                class="settings__form__photo__thumbnail"
+                class="profile__avatar__img"
               />
               <icon-base v-else viewBox="0 0 64 64" width="36" height="36">
                 <icon-avatar />
@@ -187,6 +187,11 @@ export default {
 
 .profile__info__name {
   display: flex;
+}
+
+.profile__avatar__img {
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profile__nickname {
