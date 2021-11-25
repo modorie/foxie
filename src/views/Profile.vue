@@ -357,7 +357,7 @@ export default {
 }
 
 .profile__body {
-  /* height: 34rem; */
+  min-height: 30rem;
   border-radius: 0px 0px 8px 8px;
   padding: 3rem 3rem;
   margin-bottom: 5rem;
