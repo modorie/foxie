@@ -191,6 +191,7 @@ export default {
 .profile {
   display: flex;
   align-items: center;
+  width: 10rem;
 }
 
 .profile__name {
