@@ -31,7 +31,6 @@
             </router-link>
             <td class="board__body__row">{{ article.author.username }}</td>
             <td class="board__body__row">
-              <!-- TODO: 1시간 이내: 00분 전 / 24시간 이내 : 00시간 전 / else: 0일 전 -->
               {{ article.created_at | time() }}
             </td>
             <!-- <td class="board__body__row">1234</td> -->

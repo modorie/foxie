@@ -67,19 +67,24 @@ export default {
   color: var(--text) !important;
 }
 
-.toast-ui-custom div {
-  background: var(--background) !important;
-}
-
-.toast-ui-custom > div {
-  background: var(--background) !important;
+.toast-ui-custom .toastui-editor-defaultUI {
   border: 1px solid var(--toast-border) !important;
+  background: var(--background) !important;
   border-radius: 8px !important;
   overflow: hidden;
 }
 
-.toast-ui-custom div .toastui-editor-defaultUI-toolbar {
+.toast-ui-custom .toastui-editor-defaultUI-toolbar {
   border-bottom: 1px solid var(--toast-border) !important;
+  background: var(--background) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.toast-ui-custom .ProseMirror.toastui-editor-contents {
+  background: var(--background) !important;
+  border: 1px solid var(--toast-border) !important;
+  overflow: hidden;
 }
 
 .toast-ui-custom button {
