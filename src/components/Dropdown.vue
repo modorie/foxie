@@ -35,6 +35,7 @@ export default {
     const username = JSON.parse(localStorage.getItem("user")).user.username;
     axios.get(`accounts/${username}`).then((res) => {
       this.user = res.data;
+      this.$emit("user-avatar", this.user.avatar);
     });
   },
   methods: {
