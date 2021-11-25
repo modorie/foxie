@@ -3,37 +3,60 @@
     <div class="card__left">
       <img
         class="card__left__img"
-        :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+        :src="`https://image.tmdb.org/t/p/original${moviePoster}`"
       />
     </div>
 
     <div class="card__right">
-      <div class="profile">
-        <div class="profile__avatar">
-          <icon-base viewBox="0 0 64 64" width="42" height="42">
-            <icon-avatar />
-          </icon-base>
+      <div>
+        <div class="profile">
+          <div class="profile__avatar">
+            <img
+              v-if="review.author.profile.avatar"
+              :src="review.author.profile.avatar"
+              style="height: 48px; width: 48px"
+              class="settings__form__photo__thumbnail"
+            />
+            <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
+              <icon-avatar />
+            </icon-base>
+          </div>
+
+          <div class="profile__info">
+            <div class="profile__info__header">
+              <p
+                class="profile__nickname"
+                v-text="
+                  review.author.profile.nickname
+                    ? review.author.profile.nickname
+                    : review.author.username
+                "
+              ></p>
+              <p class="profile__time">{{ review.created_at | time }}</p>
+            </div>
+
+            <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
+            <div class="profile__score">
+              <StarRating size="18" score="9" />
+            </div>
+          </div>
         </div>
 
-        <div class="profile__info">
-          <div class="profile__info__header">
-            <p class="profile__nickname">4시의여우</p>
-            <p class="profile__time">9시간 전</p>
-          </div>
+        <div class="card__right__title">{{ movieTitle }}</div>
 
-          <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
-          <div class="profile__score">
-            <StarRating size="18" score="9" />
-          </div>
+        <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
+        <p class="card__right__text">{{ review.content | truncate(170) }}</p>
+      </div>
+      <div class="footer">
+        <div class="footer__item">
+          <icon-base viewBox="0 0 22 25" width="24" height="22">
+            <icon-heart class="footer__svg" />
+          </icon-base>
+          <p class="footer__item__count">
+            {{ review.like_users.length }}
+          </p>
         </div>
       </div>
-
-      <div class="card__right__title">{{ movie.title }}</div>
-
-      <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
-      <p class="card__right__text">{{ movie.overview | truncate(170) }}</p>
-
-      <div class="footer"></div>
     </div>
   </div>
 </template>
@@ -44,30 +67,47 @@ import StarRating from "@/components/StarRating.vue";
 
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
+import IconHeart from "@/components/icons/IconHeart.vue";
 
 export default {
   components: {
     IconBase,
     IconAvatar,
+    IconHeart,
     StarRating,
   },
   data() {
     return {
-      movie: [],
+      review: [],
+      movieId: null,
+      movieTitle: null,
+      moviePoster: null,
     };
+  },
+  props: {
+    propReview: Object,
   },
   created() {
     axios
-      .get(`https://api.themoviedb.org/3/movie/580489`, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-        },
-      })
+      .get(
+        `api/v1/movies/${this.propReview.movie}/reviews/${this.propReview.id}`
+      )
       .then((res) => {
-        this.movie = res.data;
+        this.review = res.data;
+        this.movieId = res.data.movie;
+        this.getMovieData();
+        // this.likeCount = res.data.like_users.length;
+        // this.isLike = res.data.like_users.includes(this.userId);
       })
       .catch((err) => console.log(err));
+  },
+  methods: {
+    getMovieData() {
+      axios.get(`api/v1/movies/${this.movieId}`).then((res) => {
+        this.movieTitle = res.data.title;
+        this.moviePoster = res.data.poster_path;
+      });
+    },
   },
 };
 </script>
@@ -90,6 +130,9 @@ export default {
 }
 
 .card__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   padding: 1.5rem 2rem;
 }
@@ -102,8 +145,22 @@ export default {
 }
 
 .footer {
+  margin-top: 0.2rem;
+}
+
+.footer__item {
   display: flex;
   align-items: center;
+  margin-right: 1.5rem;
+  color: var(--recommend-text);
+}
+
+.footer__svg {
+  stroke: var(--recommend-text);
+}
+
+.footer__item__count {
+  margin-left: 0.2rem;
 }
 
 .header {
@@ -116,7 +173,7 @@ export default {
 }
 
 .profile__info {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   width: 100%;
 }
 
