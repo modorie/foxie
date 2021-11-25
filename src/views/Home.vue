@@ -23,32 +23,88 @@
           </div>
         </div>
 
-        <div class="left__title">
-          <div>
-            <p>요즘 인기 영화</p>
+        <section>
+          <div class="left__title">
+            <div>
+              <p>요즘 핫한 영화</p>
 
-            <p class="left__subtitle">
-              장르별 전문가들의 섬세한 리뷰들을 읽어보세요.
-            </p>
+              <p class="left__subtitle">
+                요즘 가장 인기 있는 영화들을 모아봤어요!
+              </p>
+            </div>
+
+            <router-link to="/movie">
+              <icon-base
+                viewBox="-4 0 18 18"
+                width="1.5rem"
+                height="1.5rem"
+                class="more__svg"
+              >
+                <icon-right />
+              </icon-base>
+            </router-link>
           </div>
 
-          <router-link to="/movie">
-            <icon-base
-              viewBox="-4 0 18 18"
-              width="2rem"
-              height="2rem"
-              class="more__svg"
-            >
-              <icon-right />
-            </icon-base>
-          </router-link>
-        </div>
+          <div class="left__container">
+            <MovieCarousel :movies="popular_MovieList" />
+          </div>
+        </section>
 
-        <div class="carousel__container">
-          <MovieCarousel :movies="nowplaying_MovieList" />
-          <!-- <MovieCarousel :movies="popular_MovieList" /> -->
-          <!-- <MovieCarousel :movies="toprated_MovieList" /> -->
-        </div>
+        <section>
+          <div class="left__title">
+            <div>
+              <p>베스트 리뷰</p>
+
+              <p class="left__subtitle">
+                가장 많은 추천을 받은 리뷰는 무엇일까요
+              </p>
+            </div>
+
+            <router-link to="/movie">
+              <icon-base
+                viewBox="-4 0 18 18"
+                width="1.5rem"
+                height="1.5rem"
+                class="more__svg"
+              >
+                <icon-right />
+              </icon-base>
+            </router-link>
+          </div>
+
+          <ReviewCardHome />
+          <ReviewCardHome />
+          <ReviewCardHome />
+        </section>
+
+        <section>
+          <div class="left__title">
+            <div>
+              <p>인기 게시글</p>
+
+              <p class="left__subtitle">
+                유저들이 가장 많이 본 게시글을 보여줄게요.
+              </p>
+            </div>
+
+            <router-link to="/movie">
+              <icon-base
+                viewBox="-4 0 18 18"
+                width="1.5rem"
+                height="1.5rem"
+                class="more__svg"
+              >
+                <icon-right />
+              </icon-base>
+            </router-link>
+          </div>
+
+          <div>
+            <CommunityCardHome />
+            <CommunityCardHome />
+            <CommunityCardHome />
+          </div>
+        </section>
       </div>
 
       <div class="right">
@@ -64,6 +120,8 @@ import axios from "axios";
 
 import MovieRecommend from "@/components/MovieRecommend.vue";
 import MovieCarousel from "@/components/MovieCarousel.vue";
+import ReviewCardHome from "@/components/ReviewCardHome.vue";
+import CommunityCardHome from "@/components/CommunityCardHome.vue";
 
 import IconBase from "@/components/IconBase.vue";
 import IconRight from "@/components/icons/IconRight.vue";
@@ -80,6 +138,8 @@ export default {
     MovieCarousel,
     IconBase,
     IconRight,
+    ReviewCardHome,
+    CommunityCardHome,
   },
   data() {
     return {
@@ -155,7 +215,6 @@ export default {
   );
   color: var(--banner-text);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
 }
 
 .banner__left img {
@@ -187,7 +246,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.carousel__container {
+.left__container {
   /* FIXME - 완전 하드코딩.. 라이브러리 컨트롤이 어렵다*/
   max-width: 56rem;
   background-color: var(--header);
@@ -199,8 +258,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 24px;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
