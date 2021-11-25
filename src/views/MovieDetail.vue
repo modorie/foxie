@@ -146,7 +146,6 @@
       </div>
       <div class="right">
         <MovieRecommend />
-        <MovieRecommend />
       </div>
     </div>
   </section>

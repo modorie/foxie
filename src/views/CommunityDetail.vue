@@ -101,7 +101,6 @@
       </div>
       <div class="community__body__right">
         <MovieRecommend />
-        <MovieRecommend />
       </div>
     </div>
   </section>

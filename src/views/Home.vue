@@ -72,9 +72,13 @@
             </router-link>
           </div>
 
-          <ReviewCardHome />
-          <ReviewCardHome />
-          <ReviewCardHome />
+          <router-link to="/movie/">
+            <ReviewCardHome
+              v-for="review in popularReviews"
+              :key="review.id"
+              :propReview="review"
+            />
+          </router-link>
         </section>
 
         <section>
@@ -106,7 +110,6 @@
       </div>
 
       <div class="right">
-        <MovieRecommend />
         <MovieRecommend />
       </div>
     </div>
@@ -144,6 +147,7 @@ export default {
       nowplaying_MovieList: [],
       popular_MovieList: [],
       toprated_MovieList: [],
+      popularReviews: [],
     };
   },
   created() {
@@ -184,6 +188,12 @@ export default {
       })
       .then((res) => {
         this.nowplaying_MovieList = res.data.results;
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get(`api/v1/movies/reviews/popular`)
+      .then((res) => {
+        this.popularReviews = res.data.slice(0, 3);
       })
       .catch((err) => console.log(err));
   },

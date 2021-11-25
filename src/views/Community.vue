@@ -29,7 +29,6 @@
 
     <div class="right">
       <MovieRecommend />
-      <MovieRecommend />
     </div>
   </section>
 </template>
