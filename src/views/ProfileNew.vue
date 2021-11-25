@@ -1,5 +1,5 @@
 <template>
-  <div class="settings">
+  <div class="settings" v-if="haveProfile">
     <div class="settings__header">
       <p class="settings__header__title mulish">New Profile</p>
       <p class="settings__header__description">
@@ -95,10 +95,36 @@ export default {
       nickname: null,
       content: null,
       avatar: null,
+      haveProfile: false,
     };
   },
   created() {
     const user = localStorage.getItem("user");
+    if (user) {
+      this.username = JSON.parse(localStorage.getItem("user")).user.username;
+      axios({
+        method: "get",
+        url: `accounts/${this.username}`,
+      })
+        .then(() => {
+          this.$router.push({
+            name: "Profile",
+            params: { username: this.username },
+          });
+          this.haveProfile = true;
+        })
+        .catch(() => {
+          window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
+          this.$router.push({
+            name: "ProfileNew",
+          });
+          this.haveProfile = true;
+        });
+    } else {
+      window.alert("프로필을 보시려면 로그인하세요.");
+    }
+
+    // const user = localStorage.getItem("user");
     if (user) {
       this.userid = JSON.parse(localStorage.getItem("user")).user.id;
       this.username = JSON.parse(localStorage.getItem("user")).user.username;

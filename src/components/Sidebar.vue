@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="sidebar__logo">
-      <router-link to="/" exact="">
+      <router-link to="/" exact>
         <!-- TODO : for문으로 리팩토링 -->
         <icon-base viewBox="0 0 45 56" width="42" height="42" icon-name="icon">
           <icon-logo />
@@ -10,7 +10,7 @@
       </router-link>
     </div>
 
-    <router-link to="/" exact="">
+    <router-link to="/" exact>
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 29 32" width="32" height="32" icon-name="icon">
           <icon-home class="sidebar__menu__icon" />
@@ -46,14 +46,18 @@
       </div>
     </router-link>
 
-    <div @click="getProfile">
+    <router-link
+      :to="{
+        name: 'ProfileNew',
+      }"
+    >
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 32 36" width="32" height="32" icon-name="icon">
           <icon-profile class="sidebar__menu__icon" />
         </icon-base>
         <p class="sidebar__menu__title mulish">PROFILE</p>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
