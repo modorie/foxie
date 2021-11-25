@@ -15,10 +15,10 @@
               <img
                 v-if="review.author.profile.avatar"
                 :src="review.author.profile.avatar"
-                style="height: 48px; width: 48px"
+                style="height: 36px; width: 36px"
                 class="settings__form__photo__thumbnail"
               />
-              <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
+              <icon-base v-else viewBox="0 0 64 64" width="36" height="36">
                 <icon-avatar />
               </icon-base>
             </div>

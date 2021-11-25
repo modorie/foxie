@@ -3,10 +3,9 @@
     <div class="wrapper">
       <div class="left">
         <!-- TODO : Banner 컴포넌트로 빼기 -->
-        <div class="banner">
+        <!-- <div class="banner">
           <div class="banner__left">
             <img src="@/assets/banner.png" alt="" />
-            <!-- <img src="@/assets/banner.png" alt="" /> -->
           </div>
           <div class="banner__right">
             <p class="banner__right__fox">
@@ -21,10 +20,10 @@
               그건 간단해, 나에 대한 네 생각을 들려줘
             </p>
           </div>
-        </div>
+        </div> -->
 
         <section>
-          <div class="left__title">
+          <div class="left__title__temporary">
             <div>
               <p>요즘 핫한 영화</p>
 
@@ -268,6 +267,16 @@ export default {
   font-weight: 700;
   font-size: 24px;
   margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.left__title__temporary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 0rem;
   margin-bottom: 1rem;
 }
 

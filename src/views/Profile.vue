@@ -138,6 +138,9 @@
               class="profile__body__reviews__cards"
             />
           </div>
+          <div v-show="currentTab == 'myDashboard'">
+            <profile-dashboard :profile="profile"></profile-dashboard>
+          </div>
           <div v-show="currentTab == 'mySettings'">
             <profile-settings :profile="profile"></profile-settings>
           </div>
@@ -155,6 +158,7 @@ import IconFollow from "@/components/icons/IconFollow.vue";
 import MovieCard from "@/components/MovieCard.vue";
 import ReviewCardSimple from "@/components/ReviewCardSimple.vue";
 import ProfileSettings from "@/components/ProfileSettings.vue";
+import ProfileDashboard from "@/components/ProfileDashbaord.vue";
 
 export default {
   components: {
@@ -164,6 +168,7 @@ export default {
     MovieCard,
     ReviewCardSimple,
     ProfileSettings,
+    ProfileDashboard,
   },
   data() {
     return {
