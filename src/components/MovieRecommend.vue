@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <section class="move">
     <div v-if="isLogin" class="list">
       <h1 class="title">이 영화 어때요</h1>
 
-      <MovieRecommendMovies />
-      <MovieRecommendFollowings />
-      <MovieRecommendActors />
-      <div v-if="noData">데이터 없어</div>
+      <MovieRecommendMovies @no-data="noData1 = true" />
+      <MovieRecommendFollowings @no-data="noData2 = true" />
+      <MovieRecommendActors @no-data="noData3 = true" />
+      <div class="no__data" v-if="this.noData1 & this.noData2 & this.noData3">
+        리뷰와 점수를 많이 남겨주세요 <br />
+        당신이 좋아할 만한 영화를 추천해 줄게요!
+      </div>
     </div>
     <div v-if="!isLogin" class="recommend__preview">
       <div class="recommend__preview__shadow">
@@ -28,7 +31,7 @@
         <MovieRecommendPreview />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -46,7 +49,9 @@ export default {
   },
   data() {
     return {
-      noData: false,
+      noData1: false,
+      noData2: false,
+      noData3: false,
       isLogin: true,
     };
   },
@@ -56,16 +61,13 @@ export default {
       this.isLogin = false;
     }
   },
-  methods: {
-    isNoData() {
-      this.noData = true;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style scoped>
 .list {
+  width: 26rem;
   padding: 1rem;
   background-color: var(--recommend);
   margin-bottom: 2rem;
@@ -76,6 +78,11 @@ export default {
   font-size: 18px;
   font-weight: 700;
   color: var(--recommend-title);
+}
+
+.move {
+  position: sticky;
+  top: 6rem;
 }
 
 .recommend__preview {
@@ -118,5 +125,11 @@ export default {
 .card:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+.no__data {
+  width: 100%;
+  padding: 4rem 0rem;
+  text-align: center;
 }
 </style>

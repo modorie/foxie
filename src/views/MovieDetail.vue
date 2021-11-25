@@ -47,7 +47,7 @@
 
               <div class="info__footer">
                 <div class="info__score">
-                  <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
+                  <icon-base viewBox="0 0 18 18" width="1.3rem" height="1.3rem">
                     <icon-star />
                   </icon-base>
 
@@ -56,9 +56,9 @@
                   </p>
                 </div>
 
-                <router-link to="#">
-                  <div class="info__button">리뷰 쓰기</div>
-                </router-link>
+                <div class="info__button hover" @click="scrollMeTo('review')">
+                  리뷰 쓰기
+                </div>
               </div>
 
               <!-- <p class="info__overview">{{ movie.overview }}</p> -->
@@ -87,7 +87,11 @@
             <h2 class="body__info__title">감독</h2>
 
             <div class="body__info__members">
-              <div v-for="director in this.directors" :key="director.id">
+              <div
+                v-for="director in this.directors"
+                :key="director.id"
+                class="body__info__member"
+              >
                 <img
                   v-if="director.profile_path"
                   class="member__profile"
@@ -129,7 +133,7 @@
             </div>
           </div>
 
-          <div class="body__info">
+          <div class="body__info" ref="review">
             <h2 class="body__info__title">리뷰</h2>
 
             <p class="body__info__content">
@@ -145,7 +149,6 @@
         </div>
       </div>
       <div class="right">
-        <MovieRecommend />
         <MovieRecommend />
       </div>
     </div>
@@ -198,6 +201,14 @@ export default {
     axios.get(`api/v1/movies/${id}/reviews`).then((res) => {
       this.reviews = res.data;
     });
+  },
+  methods: {
+    scrollMeTo(ref) {
+      var element = this.$refs[ref];
+      var top = element.offsetTop;
+
+      window.scrollTo(0, top);
+    },
   },
 };
 </script>
@@ -274,6 +285,7 @@ export default {
   color: var(--white);
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .info__sub {
@@ -283,7 +295,7 @@ export default {
 }
 
 .info__release {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .info__time::before {
@@ -400,7 +412,7 @@ export default {
   border-radius: 8px;
   color: var(--header-search);
   text-align: center;
-  padding-top: 6rem;
+  padding: 6rem 0rem 6rem 0rem;
   font-size: 18px;
   font-weight: 800;
   margin-bottom: 0.3rem;

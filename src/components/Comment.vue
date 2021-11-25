@@ -1,26 +1,52 @@
 <template>
   <div class="container">
     <div class="comment__left">
-      <div class="comment__author">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="32"
-          height="32"
-          class="comment__author__avatar"
-        >
-          <icon-avatar />
+      <div class="modal__exit" @click="$emit('close')">
+        <icon-base class="hover" viewBox="0 0 18 18" width="16" height="16">
+          <icon-x />
         </icon-base>
-        <div>
-          <p class="comment__author__name">
-            {{ comment.author.username }}
-          </p>
+      </div>
+
+      <div class="comment__author">
+        <router-link
+          :to="{
+            name: 'Profile',
+            params: { username: comment.author.username },
+          }"
+        >
+          <img
+            v-if="comment.author.profile.avatar"
+            :src="comment.author.profile.avatar"
+            style="height: 32px; width: 32px"
+            class="comment__author__avatar hover"
+          />
+          <icon-base
+            class="hover"
+            v-else
+            viewBox="0 0 64 64"
+            width="32"
+            height="32"
+          >
+            <icon-avatar />
+          </icon-base>
+        </router-link>
+        <div class="comment__author__right">
+          <router-link
+            :to="{
+              name: 'Profile',
+              params: { username: comment.author.username },
+            }"
+          >
+            <p class="comment__author__name hover">
+              {{
+                comment.author.profile.nickname
+                  ? comment.author.profile.nickname
+                  : comment.author.username
+              }}
+            </p>
+          </router-link>
           <p class="comment__date">
-            {{
-              comment.created_at
-                .slice(0, 16)
-                .replaceAll("-", ".")
-                .replace("T", " ")
-            }}
+            {{ comment.created_at | time() }}
           </p>
         </div>
       </div>
@@ -37,11 +63,13 @@
 import axios from "axios";
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
+import IconX from "@/components/icons/IconX.vue";
 
 export default {
   components: {
     IconBase,
     IconAvatar,
+    IconX,
   },
   data() {
     return {
@@ -71,6 +99,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--board-header);
+  position: relative;
 }
 
 .container:last-child {
@@ -85,7 +114,13 @@ export default {
 }
 
 .comment__author__avatar {
-  margin-right: 1rem;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+  object-fit: cover;
+}
+
+.comment__author__right {
+  margin-left: 1rem;
 }
 
 .comment__author__name {
@@ -119,5 +154,14 @@ export default {
 
 .like__count {
   margin-left: 0.3rem;
+}
+
+.modal__exit {
+  position: absolute;
+  right: 0rem;
+  top: 1rem;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
 }
 </style>

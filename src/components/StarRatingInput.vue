@@ -62,6 +62,7 @@ export default {
     size: Number,
   },
   methods: {
+    // TODO : Debouncing
     getPos(event) {
       const left = this.$refs.score.getBoundingClientRect().left;
       const right = this.$refs.score.getBoundingClientRect().right;
@@ -73,6 +74,8 @@ export default {
       this.yellow = parseInt(this.score / 2);
       this.half = this.score % 2;
       this.gray = parseInt((10 - this.score) / 2);
+
+      this.$emit("score", this.score);
     },
   },
 };
@@ -82,6 +85,7 @@ export default {
 .container {
   display: flex;
   cursor: pointer;
+  padding: 1rem 0rem;
 }
 
 .star__on {

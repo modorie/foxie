@@ -33,6 +33,7 @@
 <script>
 import axios from "axios";
 import "@toast-ui/editor/dist/toastui-editor.css";
+import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 
 import { Editor } from "@toast-ui/vue-editor";
 

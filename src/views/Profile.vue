@@ -60,6 +60,7 @@
         <div class="follow__container">
           <div>
             <button
+              v-if="!isMyProfile"
               class="follow__button mulish"
               @click="follow"
               :class="[
@@ -89,28 +90,28 @@
       <div class="tab">
         <button
           @click="currentTab = 'myMovies'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'myMovies' ? 'active' : '']"
         >
           My Movies
         </button>
         <button
           @click="currentTab = 'myReviews'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'myReviews' ? 'active' : '']"
         >
           My Reviews
         </button>
         <button
           @click="currentTab = 'myDashboard'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'myDashboard' ? 'active' : '']"
         >
           Dashboard
         </button>
         <button
           @click="currentTab = 'mySettings'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'mySettings' ? 'active' : '']"
         >
           Settings
@@ -129,13 +130,15 @@
             v-show="currentTab == 'myReviews'"
             class="profile__body__reviews"
           >
-            <ReviewCardSimple
+            <ReviewCard
               v-for="review in reviews"
               :key="review.id"
-              :reviewId="review.id"
-              :movieId="review.movie_id"
+              :propReview="review"
               class="profile__body__reviews__cards"
             />
+          </div>
+          <div v-show="currentTab == 'myDashboard'">
+            <profile-dashboard :profile="profile"></profile-dashboard>
           </div>
           <div v-show="currentTab == 'mySettings'">
             <profile-settings :profile="profile"></profile-settings>
@@ -152,8 +155,9 @@ import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconFollow from "@/components/icons/IconFollow.vue";
 import MovieCard from "@/components/MovieCard.vue";
-import ReviewCardSimple from "@/components/ReviewCardSimple.vue";
+import ReviewCard from "@/components/ReviewCard.vue";
 import ProfileSettings from "@/components/ProfileSettings.vue";
+import ProfileDashboard from "@/components/ProfileDashboard.vue";
 
 export default {
   components: {
@@ -161,8 +165,9 @@ export default {
     IconAvatar,
     IconFollow,
     MovieCard,
-    ReviewCardSimple,
+    ReviewCard,
     ProfileSettings,
+    ProfileDashboard,
   },
   data() {
     return {
@@ -172,6 +177,7 @@ export default {
       currentTab: "myMovies",
       username: "",
       userId: null,
+      isMyProfile: false,
       followCount: 0,
       isFollowed: false,
     };
@@ -181,6 +187,9 @@ export default {
     if (user) {
       this.userId = JSON.parse(localStorage.getItem("user")).user.id;
       this.username = this.$route.params.username;
+      this.isMyProfile =
+        this.username ===
+        JSON.parse(localStorage.getItem("user")).user.username;
     }
 
     axios.get(`accounts/${this.username}`).then((res) => {
@@ -236,6 +245,7 @@ export default {
 
 .profile__header__avatar__image {
   border-radius: 190px;
+  object-fit: cover;
 }
 
 .profile__header__info {
@@ -352,7 +362,7 @@ export default {
 }
 
 .profile__body {
-  /* height: 34rem; */
+  min-height: 30rem;
   border-radius: 0px 0px 8px 8px;
   padding: 3rem 3rem;
   margin-bottom: 5rem;

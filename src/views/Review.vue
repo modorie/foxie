@@ -1,79 +1,79 @@
 <template>
   <section>
-    <h1 class="page__title">Review</h1>
-    <p class="page__subtitle">영화에 대한 유저들의 리뷰들을 모아봤어요</p>
+    <div>
+      <h1 class="page__title">Review</h1>
+      <p class="page__subtitle">영화에 대한 유저들의 리뷰들을 모아봤어요</p>
 
-    <div class="body">
-      <div class="left">
-        <!-- <div class="tab">
+      <div class="body">
+        <div class="left">
+          <!-- <div class="tab">
           <div class="tab__item active">Popular Reviews</div>
           <div class="tab__item">New Reviews</div>
           <div class="tab__item">My Reviews</div>
         </div> -->
-        <div class="tab">
-          <button
-            @click="currentTab = 'newReviews'"
-            class="tab__item mulish"
-            :class="[currentTab === 'newReviews' ? 'active' : '']"
-          >
-            New Reviews
-          </button>
-          <button
-            @click="currentTab = 'popularReviews'"
-            class="tab__item mulish"
-            :class="[currentTab === 'popularReviews' ? 'active' : '']"
-          >
-            Popular Reviews
-          </button>
-          <button
-            @click="currentTab = 'myFollowings'"
-            class="tab__item mulish"
-            :class="[currentTab === 'myFollowings' ? 'active' : '']"
-          >
-            My Followings
-          </button>
-        </div>
-        <div>
-          <div v-show="currentTab === 'newReviews'">
-            <ReviewCard
-              v-for="review in newReviews"
-              :key="review.id"
-              :propReview="review"
-              class="review__wrapper"
-            />
+          <div class="tab">
+            <button
+              @click="currentTab = 'popularReviews'"
+              class="tab__item mulish hover"
+              :class="[currentTab === 'popularReviews' ? 'active' : '']"
+            >
+              Popular Reviews
+            </button>
+            <button
+              @click="currentTab = 'newReviews'"
+              class="tab__item mulish hover"
+              :class="[currentTab === 'newReviews' ? 'active' : '']"
+            >
+              New Reviews
+            </button>
+            <button
+              @click="currentTab = 'myFollowings'"
+              class="tab__item mulish hover"
+              :class="[currentTab === 'myFollowings' ? 'active' : '']"
+            >
+              My Followings
+            </button>
           </div>
+          <div>
+            <div v-show="currentTab === 'popularReviews'">
+              <ReviewCard
+                v-for="review in popularReviews"
+                :key="review.id"
+                :propReview="review"
+                class="review__wrapper"
+              />
+            </div>
 
-          <div v-show="currentTab === 'popularReviews'">
-            <ReviewCard
-              v-for="review in popularReviews"
-              :key="review.id"
-              :propReview="review"
-              class="review__wrapper"
-            />
-          </div>
-
-          <div v-if="user" v-show="currentTab === 'myFollowings'">
-            <ReviewCard
-              v-for="review in followingsReviews"
-              :key="review.id"
-              :propReview="review"
-              class="review__wrapper"
-            />
-          </div>
-          <div
-            v-else
-            v-show="currentTab === 'myFollowings'"
-            class="review__wrapper card"
-          >
-            <p class="message">
-              팔로잉 하는 사람들의 리뷰 피드를 보려면 로그인 하세요.
-            </p>
+            <div v-show="currentTab === 'newReviews'">
+              <ReviewCard
+                v-for="review in newReviews"
+                :key="review.id"
+                :propReview="review"
+                class="review__wrapper"
+              />
+            </div>
+            <div v-if="user" v-show="currentTab === 'myFollowings'">
+              <ReviewCard
+                v-for="review in followingsReviews"
+                :key="review.id"
+                :propReview="review"
+                class="review__wrapper"
+              />
+            </div>
+            <div
+              v-else
+              v-show="currentTab === 'myFollowings'"
+              class="review__wrapper card"
+            >
+              <p class="message">
+                팔로잉 하는 사람들의 리뷰 피드를 보려면 로그인 하세요.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="right">
-        <MovieRecommend />
-        <MovieRecommend />
+        <div class="right">
+          <MovieRecommend />
+        </div>
       </div>
     </div>
   </section>
@@ -91,7 +91,7 @@ export default {
   },
   data() {
     return {
-      currentTab: "newReviews",
+      currentTab: "popularReviews",
       newReviews: [],
       popularReviews: [],
       followingsReviews: [],
@@ -102,16 +102,16 @@ export default {
     this.user = localStorage.getItem("user");
 
     axios
-      .get(`api/v1/movies/reviews/new`)
+      .get(`api/v1/movies/reviews/popular`)
       .then((res) => {
-        this.newReviews = res.data;
+        this.popularReviews = res.data;
       })
       .catch((err) => console.log(err));
 
     axios
-      .get(`api/v1/movies/reviews/popular`)
+      .get(`api/v1/movies/reviews/new`)
       .then((res) => {
-        this.popularReviews = res.data;
+        this.newReviews = res.data;
       })
       .catch((err) => console.log(err));
 
@@ -153,7 +153,9 @@ export default {
 }
 
 .left {
+  /* TODO : Review 페이지 대기 중에 헤더 너비가 이상함 */
   width: 100%;
+  max-width: 56rem;
   margin-right: 2rem;
 }
 
@@ -171,7 +173,7 @@ export default {
 }
 
 .tab__item {
-  justify-content: center;
+  /* justify-content: center; */
   border-bottom: 3px solid var(--profile-settings-form-input-border);
   width: 100%;
   padding: 1rem;

@@ -1,36 +1,38 @@
 <template>
-  <div class="card">
-    <div class="card__left">
-      <img
-        class="card__left__img"
-        :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
-      />
-    </div>
-    <div class="card__right">
-      <div class="card__right__header">
-        <div class="card__right__header__title">{{ movie.title }}</div>
-        <div class="card__right__header__score">
-          <icon-base viewBox="0 0 16 18" width="24px" height="16px">
-            <icon-star />
-          </icon-base>
-          <p>{{ movie.vote_average.toFixed(1) }}</p>
+  <router-link :to="{ name: 'MovieDetail', params: { id: movieId } }">
+    <div class="card hover">
+      <div class="card__left">
+        <img
+          class="card__left__img"
+          :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+        />
+      </div>
+      <div class="card__right">
+        <div class="card__right__header">
+          <div class="card__right__header__title">{{ movie.title }}</div>
+          <div class="card__right__header__score">
+            <icon-base viewBox="0 0 16 18" width="24px" height="16px">
+              <icon-star />
+            </icon-base>
+            <p>{{ movie.vote_average.toFixed(1) }}</p>
+          </div>
         </div>
-      </div>
 
-      <div class="card__right__genres">
-        <span
-          class="card__right__genre"
-          v-for="genre in movie.genre_ids"
-          :key="genre.id"
-        >
-          {{ genre.name }}
-        </span>
-      </div>
+        <div class="card__right__genres">
+          <span
+            class="card__right__genre"
+            v-for="genre in movie.genre_ids"
+            :key="genre.id"
+          >
+            {{ genre.name }}
+          </span>
+        </div>
 
-      <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
-      <p class="card__right__text">{{ movie.overview | truncate(100) }}</p>
+        <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
+        <p class="card__right__text">{{ movie.overview | truncate(100) }}</p>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -70,6 +72,7 @@ export default {
   padding: 1rem;
   border: 1px solid var(--recommend-border);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
 .card__left {

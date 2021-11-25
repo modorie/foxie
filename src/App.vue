@@ -33,9 +33,10 @@ export default {
 }
 
 .router__view {
-  padding-top: 2rem;
+  padding-top: 5rem;
   padding-left: 3rem;
   padding-right: 3rem;
+  padding-bottom: 5rem;
 
   min-width: 80rem;
   max-width: 90rem;

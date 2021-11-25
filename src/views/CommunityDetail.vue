@@ -25,19 +25,45 @@
           <div class="post__sub">
             <div class="post__left">
               <div class="post__author">
-                <icon-base
-                  viewBox="0 0 64 64"
-                  width="32"
-                  height="32"
-                  class="post__author__avatar"
+                <router-link
+                  :to="{
+                    name: 'Profile',
+                    params: { username: post.author.username },
+                  }"
                 >
-                  <icon-avatar />
-                </icon-base>
+                  <img
+                    v-if="post.author.profile.avatar"
+                    :src="post.author.profile.avatar"
+                    style="height: 32px; width: 32px"
+                    class="post__author__avatar hover"
+                  />
+                  <icon-base
+                    v-else
+                    viewBox="0 0 64 64"
+                    width="32"
+                    height="32"
+                    class="post__author__avatar hover"
+                  >
+                    <icon-avatar />
+                  </icon-base>
+                </router-link>
                 <div>
-                  <p>{{ post.author.username }}</p>
+                  <router-link
+                    :to="{
+                      name: 'Profile',
+                      params: { username: post.author.username },
+                    }"
+                  >
+                    <p class="hover">
+                      {{
+                        post.author.profile.nickname
+                          ? post.author.profile.nickname
+                          : post.author.username
+                      }}
+                    </p></router-link
+                  >
                   <p class="post__date">
-                    {{ post.created_at.slice(0, 10) }}
-                    {{ post.created_at.slice(11, 16) }}
+                    {{ post.created_at | time() }}
                   </p>
                 </div>
               </div>
@@ -100,7 +126,6 @@
         </div>
       </div>
       <div class="community__body__right">
-        <MovieRecommend />
         <MovieRecommend />
       </div>
     </div>
@@ -263,6 +288,7 @@ export default {
 }
 
 .post__author__avatar {
+  border-radius: 50%;
   margin-right: 1rem;
 }
 

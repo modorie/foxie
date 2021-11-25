@@ -175,13 +175,13 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: var(--white);
-  border: 1px solid var(--gray-200);
+  background-color: var(--btn-secondary);
+  border: 1px solid var(--btn-secondary-border);
   border-radius: 8px;
   text-align: center;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  color: var(--gray-600);
+  color: var(--btn-secondary-text);
   font-weight: 700;
 }
 .google__button p {

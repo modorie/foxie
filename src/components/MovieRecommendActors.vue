@@ -8,14 +8,14 @@
         }"
       >
         <img
-          class="card__left__img"
+          class="card__left__img hover"
           :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
         />
       </router-link>
     </div>
     <div class="card__right">
       <div class="card__right__header">
-        <div class="card__right__header__title">
+        <div class="card__right__header__title hover">
           <router-link
             :to="{
               name: 'MovieDetail',
@@ -51,7 +51,7 @@
           class="card__right__text__link"
           >{{ recommData.target_movie.title }}</router-link
         >
-        영화의 {{ actorName }} 배우가 출연하는 다른 영화를 만나보세요.
+        영화의 <b>{{ actorName }}</b> 배우가 출연했어요
       </p>
     </div>
   </div>
@@ -161,6 +161,8 @@ export default {
 }
 
 .card__right__text {
+  font-size: 14px;
+  line-height: 1.1rem;
   color: var(--recommend-text);
 }
 

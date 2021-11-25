@@ -13,7 +13,7 @@
         :key="movie.id"
         :href="`/movie/${movie.id}`"
       >
-        <p class="search__item__title">
+        <p class="search__item__title hover">
           {{ movie.title }}
           <span class="search__item__release"
             >({{ movie.release_date.split("-")[0] }})
@@ -48,15 +48,15 @@
         width="1.5rem"
         height="1.5rem"
       >
-        <icon-moon />
+        <icon-moon class="hover" />
       </icon-base>
 
       <icon-base v-else viewBox="0 0 16 16" width="1.5rem" height="1.5rem">
-        <icon-sun />
+        <icon-sun class="hover" />
       </icon-base>
     </button>
 
-    <div v-if="!isLogin">
+    <div v-if="isLogin">
       <div class="header__info">
         <div class="header-bell">
           <icon-base
@@ -70,12 +70,8 @@
         </div>
 
         <div class="header__avatar" @click="isDropdownOpen = !isDropdownOpen">
-          <icon-base
-            viewBox="0 0 64 64"
-            width="32"
-            height="32"
-            icon-name="icon"
-          >
+          <img v-if="avatar" :src="avatar" class="header__avatar__img" />
+          <icon-base v-else viewBox="0 0 64 64" width="32" height="32">
             <icon-avatar />
           </icon-base>
         </div>
@@ -83,8 +79,9 @@
 
       <transition name="fade">
         <Dropdown
-          v-if="isDropdownOpen"
+          v-show="isDropdownOpen"
           @close-dropdown="isDropdownOpen = false"
+          @user-avatar="getAvater"
         />
       </transition>
     </div>
@@ -135,8 +132,10 @@ export default Vue.extend({
       search_MovieList: [],
       searchInput: "",
       active: false,
+      isLogin: false,
       isDropdownOpen: false,
       isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
+      avatar: null,
     };
   },
 
@@ -167,6 +166,9 @@ export default Vue.extend({
         }
       }
     },
+    getAvater(data) {
+      this.avatar = data;
+    },
 
     onSearch(event: any) {
       this.searchInput = event.target.value;
@@ -176,7 +178,7 @@ export default Vue.extend({
           params: {
             api_key: process.env.VUE_APP_TMDB_API_KEY,
             query: this.searchInput,
-            region: "kr",
+            language: "ko-KR",
           },
         })
         .then((res) => {
@@ -193,6 +195,13 @@ export default Vue.extend({
 
   computed: {
     ...authComputed,
+  },
+
+  created() {
+    const token = localStorage.getItem("user");
+    if (token) {
+      this.isLogin = true;
+    }
   },
 
   mounted() {
@@ -273,7 +282,9 @@ export default Vue.extend({
 }
 
 .search__item__release {
-  color: var(--recommend-text);
+  color: var(--text);
+  font-size: 16px;
+  opacity: 0.5;
 }
 
 .header__info {
@@ -287,9 +298,17 @@ export default Vue.extend({
 }
 
 .header__avatar {
-  margin-left: 2rem;
-  margin-right: 2rem;
   cursor: pointer;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.header__avatar__img {
+  /* margin-left: 2rem; */
+  object-fit: cover;
+  border-radius: 50%;
+  min-width: 32px;
+  height: 32px;
 }
 
 .header__auth {

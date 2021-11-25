@@ -2,7 +2,7 @@
   <transition name="modal" appear>
     <div class="outside" @click.self="$emit('close')">
       <div class="inside">
-        <div class="modal__exit" @click="$emit('close')">
+        <div class="modal__exit hover" @click="$emit('close')">
           <icon-base viewBox="0 0 18 18" width="16" height="16">
             <icon-x />
           </icon-base>
@@ -14,8 +14,10 @@
         </p>
 
         <div v-if="buttonText" class="modal__button__wrapper">
-          <router-link to="#">
-            <div class="modal__button">{{ buttonText }}</div>
+          <router-link to="/login">
+            <div @click="$emit('close')" class="modal__button hover">
+              {{ buttonText }}
+            </div>
           </router-link>
         </div>
       </div>
@@ -83,6 +85,7 @@ export default {
 .modal__content {
   text-align: center;
   color: var(--recommend-text);
+  margin-bottom: 2rem;
 }
 
 .modal__button__wrapper {
@@ -95,7 +98,6 @@ export default {
   padding: 0.5rem 1rem;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   text-align: center;
-  margin-top: 2rem;
   background-color: var(--btn-primary);
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.05),
     0px 1px 2px 1px rgba(0, 0, 0, 0.05);

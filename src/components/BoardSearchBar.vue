@@ -23,7 +23,7 @@
     <input type="text" class="search__input" />
 
     <router-link to="#">
-      <div class="search__button">검색</div>
+      <div class="search__button hover">검색</div>
     </router-link>
   </div>
 </template>

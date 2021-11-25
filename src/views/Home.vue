@@ -3,10 +3,9 @@
     <div class="wrapper">
       <div class="left">
         <!-- TODO : Banner 컴포넌트로 빼기 -->
-        <div class="banner">
+        <!-- <div class="banner">
           <div class="banner__left">
             <img src="@/assets/banner.png" alt="" />
-            <!-- <img src="@/assets/banner.png" alt="" /> -->
           </div>
           <div class="banner__right">
             <p class="banner__right__fox">
@@ -21,10 +20,10 @@
               그건 간단해, 나에 대한 네 생각을 들려줘
             </p>
           </div>
-        </div>
+        </div> -->
 
         <section>
-          <div class="left__title">
+          <div class="left__title__temporary">
             <div>
               <p>요즘 핫한 영화</p>
 
@@ -72,9 +71,11 @@
             </router-link>
           </div>
 
-          <ReviewCardHome />
-          <ReviewCardHome />
-          <ReviewCardHome />
+          <ReviewCardHome
+            v-for="review in popularReviews"
+            :key="review.id"
+            :propReview="review"
+          />
         </section>
 
         <section>
@@ -106,7 +107,6 @@
       </div>
 
       <div class="right">
-        <MovieRecommend />
         <MovieRecommend />
       </div>
     </div>
@@ -144,6 +144,7 @@ export default {
       nowplaying_MovieList: [],
       popular_MovieList: [],
       toprated_MovieList: [],
+      popularReviews: [],
     };
   },
   created() {
@@ -184,6 +185,12 @@ export default {
       })
       .then((res) => {
         this.nowplaying_MovieList = res.data.results;
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get(`api/v1/movies/reviews/popular`)
+      .then((res) => {
+        this.popularReviews = res.data.slice(0, 3);
       })
       .catch((err) => console.log(err));
   },
@@ -260,6 +267,16 @@ export default {
   font-weight: 700;
   font-size: 24px;
   margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.left__title__temporary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 0rem;
   margin-bottom: 1rem;
 }
 

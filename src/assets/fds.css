@@ -16,6 +16,11 @@ html {
   letter-spacing: 0rem;
 }
 
+.hover:hover {
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
 :root {
   /* Colors */
   --coral: #ed5656;

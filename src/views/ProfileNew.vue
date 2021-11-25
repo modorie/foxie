@@ -1,7 +1,7 @@
 <template>
-  <div class="settings">
+  <div class="settings" v-if="haveProfile">
     <div class="settings__header">
-      <p class="settings__header__title mulish">New Profile</p>
+      <p class="settings__header__title mulish hover">New Profile</p>
       <p class="settings__header__description">
         모두에게 보여줄 나만의 프로필을 만들어보세요
       </p>
@@ -41,6 +41,7 @@
               settings__button
               settings__button__secondary
               settings__form__photo__input
+              hover
             "
             >사진 업로드</label
           >
@@ -64,12 +65,12 @@
         ></textarea>
       </div>
       <div class="settings__form__submit">
-        <button class="settings__button settings__button__secondary">
+        <button class="settings__button settings__button__secondary hover">
           취소
         </button>
         <button
           @click="editArticle"
-          class="settings__button settings__button__primary"
+          class="settings__button settings__button__primary hover"
         >
           제출
         </button>
@@ -95,10 +96,36 @@ export default {
       nickname: null,
       content: null,
       avatar: null,
+      haveProfile: false,
     };
   },
   created() {
     const user = localStorage.getItem("user");
+    if (user) {
+      this.username = JSON.parse(localStorage.getItem("user")).user.username;
+      axios({
+        method: "get",
+        url: `accounts/${this.username}`,
+      })
+        .then(() => {
+          this.$router.push({
+            name: "Profile",
+            params: { username: this.username },
+          });
+          this.haveProfile = true;
+        })
+        .catch(() => {
+          // window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
+          this.$router.push({
+            name: "ProfileNew",
+          });
+          this.haveProfile = true;
+        });
+    } else {
+      // window.alert("프로필을 보시려면 로그인하세요.");
+    }
+
+    // const user = localStorage.getItem("user");
     if (user) {
       this.userid = JSON.parse(localStorage.getItem("user")).user.id;
       this.username = JSON.parse(localStorage.getItem("user")).user.username;
@@ -157,9 +184,11 @@ export default {
 }
 
 .settings__header__title {
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0rem;
+  color: var(--page-title);
   font-size: 20px;
   font-weight: 700;
-  color: var(--profile-settings-header);
 }
 
 .settings__header__description {
