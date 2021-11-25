@@ -51,7 +51,7 @@
           class="card__right__text__link"
           >{{ recommData.target_movie.title }}</router-link
         >
-        영화의 {{ actorName }} 배우가 출연하는 다른 영화를 만나보세요.
+        영화의 <b>{{ actorName }}</b> 배우가 출연했어요
       </p>
     </div>
   </div>
@@ -161,6 +161,8 @@ export default {
 }
 
 .card__right__text {
+  font-size: 14px;
+  line-height: 1.1rem;
   color: var(--recommend-text);
 }
 

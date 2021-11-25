@@ -102,16 +102,16 @@ export default {
     this.user = localStorage.getItem("user");
 
     axios
-      .get(`api/v1/movies/reviews/new`)
+      .get(`api/v1/movies/reviews/popular`)
       .then((res) => {
-        this.newReviews = res.data;
+        this.popularReviews = res.data;
       })
       .catch((err) => console.log(err));
 
     axios
-      .get(`api/v1/movies/reviews/popular`)
+      .get(`api/v1/movies/reviews/new`)
       .then((res) => {
-        this.popularReviews = res.data;
+        this.newReviews = res.data;
       })
       .catch((err) => console.log(err));
 

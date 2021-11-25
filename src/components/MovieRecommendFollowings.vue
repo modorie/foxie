@@ -50,7 +50,7 @@
           }"
           class="card__right__text__link"
           >{{ recommData.target_user.nickname }}</router-link
-        >님이 이 영화를 추천했어요.
+        >님이 이 영화를 재밌게 봤어요
       </p>
     </div>
   </div>
@@ -70,6 +70,7 @@ export default {
     return {
       movie: [],
       recommData: {},
+      isNoData: false,
     };
   },
   created() {
@@ -88,7 +89,10 @@ export default {
           console.log(this.recommData);
           this.getMovieData();
         })
-        .catch((err) => console.log(err));
+        .catch(() => {
+          this.isNoData = true;
+          this.$emit("no-data", this.isNoData);
+        });
     }
   },
   methods: {
@@ -143,7 +147,7 @@ export default {
 }
 
 .card__right__genres {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .card__right__genre {
   font-size: 12px;
@@ -154,6 +158,8 @@ export default {
 }
 
 .card__right__text {
+  font-size: 14px;
+  line-height: 1.1rem;
   color: var(--recommend-text);
 }
 
