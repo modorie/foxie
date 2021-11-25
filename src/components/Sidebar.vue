@@ -51,13 +51,30 @@
         name: 'ProfileNew',
       }"
     >
-      <div class="sidebar__menu">
+      <div class="sidebar__menu" @click="getProfile">
         <icon-base viewBox="0 0 32 36" width="32" height="32" icon-name="icon">
           <icon-profile class="sidebar__menu__icon" />
         </icon-base>
         <p class="sidebar__menu__title mulish">PROFILE</p>
       </div>
     </router-link>
+
+    <!-- 프로필이 없습니다. 프로필을 작성해주세요. -->
+    <Modal
+      v-if="modal1"
+      @close="closeModal1"
+      title="이런!"
+      content="아직 프로필이 없네요. 나만의 프로필을 만들어보세요!"
+    />
+
+    <!-- 프로필을 보시려면 로그인하세요 -->
+    <Modal
+      v-if="modal2"
+      @close="closeModal2"
+      title="환영해요!"
+      content="로그인하여 Foxie의 다양한 기능을 만나보세요!"
+      buttonText="로그인"
+    />
   </div>
 </template>
 
@@ -71,6 +88,8 @@ import IconCommunity from "@/components/icons/IconCommunity.vue";
 import IconProfile from "@/components/icons/IconProfile.vue";
 import IconReview from "@/components/icons/IconReview.vue";
 
+import Modal from "@/components/Modal.vue";
+
 export default {
   name: "Sidebar",
   components: {
@@ -81,13 +100,31 @@ export default {
     IconCommunity,
     IconProfile,
     IconReview,
+    Modal,
   },
   data() {
     return {
       username: null,
+      modal1: false,
+      modal2: false,
     };
   },
   methods: {
+    openModal1() {
+      this.modal1 = true;
+    },
+    openModal2() {
+      this.modal2 = true;
+    },
+
+    closeModal1() {
+      this.modal1 = false;
+    },
+
+    closeModal2() {
+      this.modal2 = false;
+    },
+
     getProfile() {
       const user = localStorage.getItem("user");
       if (user) {
@@ -103,13 +140,16 @@ export default {
             });
           })
           .catch(() => {
-            window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
+            // window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
+            this.openModal1();
+
             this.$router.push({
               name: "ProfileNew",
             });
           });
       } else {
-        window.alert("프로필을 보시려면 로그인하세요.");
+        // window.alert("프로필을 보시려면 로그인하세요.");
+        this.openModal2();
       }
     },
   },
