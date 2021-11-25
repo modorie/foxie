@@ -90,28 +90,28 @@
       <div class="tab">
         <button
           @click="currentTab = 'myMovies'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'myMovies' ? 'active' : '']"
         >
           My Movies
         </button>
         <button
           @click="currentTab = 'myReviews'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'myReviews' ? 'active' : '']"
         >
           My Reviews
         </button>
         <button
           @click="currentTab = 'myDashboard'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'myDashboard' ? 'active' : '']"
         >
           Dashboard
         </button>
         <button
           @click="currentTab = 'mySettings'"
-          class="tab__item mulish"
+          class="tab__item mulish hover"
           :class="[currentTab === 'mySettings' ? 'active' : '']"
         >
           Settings

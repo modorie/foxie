@@ -13,7 +13,9 @@
     ></textarea>
 
     <div class="comment__button__wrapper">
-      <button class="comment__button" @click="createReview">리뷰 등록</button>
+      <button class="comment__button hover" @click="createReview">
+        리뷰 등록
+      </button>
     </div>
   </div>
 </template>

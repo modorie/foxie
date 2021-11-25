@@ -1,16 +1,12 @@
 <template>
   <div class="settings">
     <div class="settings__header">
-      <p class="settings__header__title mulish">Profile</p>
-      <p class="settings__header__description">
-        프로필에 작성한 내용은 전체공개됩니다.
-      </p>
+      <p class="settings__header__title mulish hover">Edit Profile</p>
+      <p class="settings__header__description">프로필을 수정 할 수 있어요.</p>
     </div>
     <form @submit.prevent="" class="settings__form">
       <div class="settings__form__div">
-        <label for="nickname" class="settings__form__label mulish">
-          Nickname
-        </label>
+        <label for="nickname" class="settings__form__label">닉네임</label>
         <input
           name="nickname"
           class="settings__form__input"
@@ -20,7 +16,7 @@
       </div>
 
       <div class="settings__form__div">
-        <label for="Photo" class="settings__form__label mulish"> Photo </label>
+        <label for="Photo" class="settings__form__label">프로필 사진</label>
         <p class="settings__form__photo">
           <img
             v-if="avatar"
@@ -40,25 +36,24 @@
           <label
             for="input-file"
             class="
-              mulish
               settings__button
               settings__button__secondary
               settings__form__photo__input
+              hover
             "
-            >Change</label
+            >사진 업로드</label
           >
           <input
             id="input-file"
             type="file"
             @change="uploadImages"
             style="display: none"
-            multiple
             accept="image/*"
           />
         </p>
       </div>
       <div class="settings__form__div">
-        <label for="about" class="settings__form__label mulish"> About </label>
+        <label for="about" class="settings__form__label">소개</label>
         <textarea
           name="about"
           rows="3"
@@ -68,14 +63,14 @@
         ></textarea>
       </div>
       <div class="settings__form__submit">
-        <button class="mulish settings__button settings__button__secondary">
-          Back
+        <button class="settings__button settings__button__secondary hover">
+          취소
         </button>
         <button
           @click="editArticle"
-          class="mulish settings__button settings__button__primary"
+          class="settings__button settings__button__primary hover"
         >
-          Submit
+          제출
         </button>
       </div>
     </form>

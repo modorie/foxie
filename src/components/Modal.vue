@@ -2,7 +2,7 @@
   <transition name="modal" appear>
     <div class="outside" @click.self="$emit('close')">
       <div class="inside">
-        <div class="modal__exit" @click="$emit('close')">
+        <div class="modal__exit hover" @click="$emit('close')">
           <icon-base viewBox="0 0 18 18" width="16" height="16">
             <icon-x />
           </icon-base>
@@ -15,7 +15,7 @@
 
         <div v-if="buttonText" class="modal__button__wrapper">
           <router-link to="/login">
-            <div @click="$emit('close')" class="modal__button">
+            <div @click="$emit('close')" class="modal__button hover">
               {{ buttonText }}
             </div>
           </router-link>

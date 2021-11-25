@@ -35,14 +35,14 @@
                     v-if="post.author.profile.avatar"
                     :src="post.author.profile.avatar"
                     style="height: 32px; width: 32px"
-                    class="post__author__avatar"
+                    class="post__author__avatar hover"
                   />
                   <icon-base
                     v-else
                     viewBox="0 0 64 64"
                     width="32"
                     height="32"
-                    class="post__author__avatar"
+                    class="post__author__avatar hover"
                   >
                     <icon-avatar />
                   </icon-base>
@@ -54,7 +54,7 @@
                       params: { username: post.author.username },
                     }"
                   >
-                    <p>
+                    <p class="hover">
                       {{
                         post.author.profile.nickname
                           ? post.author.profile.nickname

@@ -62,6 +62,7 @@ export default {
     size: Number,
   },
   methods: {
+    // TODO : Debouncing
     getPos(event) {
       const left = this.$refs.score.getBoundingClientRect().left;
       const right = this.$refs.score.getBoundingClientRect().right;
@@ -84,6 +85,7 @@ export default {
 .container {
   display: flex;
   cursor: pointer;
+  padding: 1rem 0rem;
 }
 
 .star__on {

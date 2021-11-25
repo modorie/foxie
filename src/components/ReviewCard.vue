@@ -8,7 +8,7 @@
             params: { username: review.author.username },
           }"
         >
-          <div class="profile__avatar">
+          <div class="profile__avatar hover">
             <img
               v-if="review.author.profile.avatar"
               :src="review.author.profile.avatar"
@@ -30,7 +30,7 @@
                 }"
               >
                 <p
-                  class="profile__nickname"
+                  class="profile__nickname hover"
                   v-text="
                     review.author.profile.nickname
                       ? review.author.profile.nickname
@@ -234,7 +234,7 @@ export default {
 
 .profile__info__header__user {
   display: flex;
-  align-items: baseline;
+  align-items: initial;
 }
 
 .profile__avatar__img {

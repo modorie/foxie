@@ -4,7 +4,7 @@
       <router-link
         :to="{ name: 'Profile', params: { username: review.author.username } }"
       >
-        <div class="profile__avatar">
+        <div class="profile__avatar hover">
           <img
             v-if="review.author.profile.avatar"
             :src="review.author.profile.avatar"
@@ -27,7 +27,7 @@
               }"
             >
               <p
-                class="profile__nickname"
+                class="profile__nickname hover"
                 v-text="
                   review.author.profile.nickname
                     ? review.author.profile.nickname

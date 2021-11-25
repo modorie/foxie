@@ -10,7 +10,7 @@
         </div>
 
         <div>
-          <button @click="createArticle" class="mulish header__button">
+          <button @click="createArticle" class="mulish header__button hover">
             Create New Post
           </button>
         </div>

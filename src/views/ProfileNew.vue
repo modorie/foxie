@@ -1,7 +1,7 @@
 <template>
   <div class="settings" v-if="haveProfile">
     <div class="settings__header">
-      <p class="settings__header__title mulish">New Profile</p>
+      <p class="settings__header__title mulish hover">New Profile</p>
       <p class="settings__header__description">
         모두에게 보여줄 나만의 프로필을 만들어보세요
       </p>
@@ -41,6 +41,7 @@
               settings__button
               settings__button__secondary
               settings__form__photo__input
+              hover
             "
             >사진 업로드</label
           >
@@ -64,12 +65,12 @@
         ></textarea>
       </div>
       <div class="settings__form__submit">
-        <button class="settings__button settings__button__secondary">
+        <button class="settings__button settings__button__secondary hover">
           취소
         </button>
         <button
           @click="editArticle"
-          class="settings__button settings__button__primary"
+          class="settings__button settings__button__primary hover"
         >
           제출
         </button>

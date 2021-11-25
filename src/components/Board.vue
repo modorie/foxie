@@ -22,7 +22,7 @@
           <tr>
             <td class="board__body__row">{{ article.id }}</td>
             <router-link :to="`community/${article.id}`">
-              <td class="board__body__row">
+              <td class="board__body__row hover">
                 {{ article.title | truncate(50) }}
                 <span class="board__comment"
                   >[{{ article.comments_count }}]</span

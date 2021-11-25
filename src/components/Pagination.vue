@@ -8,14 +8,14 @@
         class="pagination__arrow"
       >
         <icon-left
-          class="pagination__arrow__svg"
+          class="pagination__arrow__svg hover"
           :class="{ disactive: pageSetting.first == null }"
         />
       </icon-base>
     </div>
 
     <div
-      class="pagination__index"
+      class="pagination__index hover"
       :class="{ active: page === pageSetting.currentPage }"
       v-for="page in pageSetting.list"
       :key="page"
@@ -32,7 +32,7 @@
         class="pagination__arrow"
       >
         <icon-right
-          class="pagination__arrow__svg"
+          class="pagination__arrow__svg hover"
           :class="{ disactive: pageSetting.end == null }"
         />
       </icon-base>

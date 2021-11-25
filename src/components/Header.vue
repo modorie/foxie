@@ -13,7 +13,7 @@
         :key="movie.id"
         :href="`/movie/${movie.id}`"
       >
-        <p class="search__item__title">
+        <p class="search__item__title hover">
           {{ movie.title }}
           <span class="search__item__release"
             >({{ movie.release_date.split("-")[0] }})
@@ -48,11 +48,11 @@
         width="1.5rem"
         height="1.5rem"
       >
-        <icon-moon />
+        <icon-moon class="hover" />
       </icon-base>
 
       <icon-base v-else viewBox="0 0 16 16" width="1.5rem" height="1.5rem">
-        <icon-sun />
+        <icon-sun class="hover" />
       </icon-base>
     </button>
 

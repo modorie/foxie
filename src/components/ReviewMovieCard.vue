@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{ name: 'MovieDetail', params: { id: movieId } }">
-    <div class="card">
+    <div class="card hover">
       <div class="card__left">
         <img
           class="card__left__img"

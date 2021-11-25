@@ -8,14 +8,14 @@
             params: { username: comment.author.username },
           }"
         >
-          <div class="profile__avatar">
+          <div class="profile__avatar hover">
             <img
               v-if="comment.author.profile.avatar"
               :src="comment.author.profile.avatar"
-              style="height: 32px; width: 32px"
+              style="height: 40px; width: 40px"
               class="settings__form__photo__thumbnail"
             />
-            <icon-base v-else viewBox="0 0 64 64" width="32" height="32">
+            <icon-base v-else viewBox="0 0 64 64" width="40" height="40">
               <icon-avatar />
             </icon-base>
           </div>
@@ -30,7 +30,7 @@
             }"
           >
             <p
-              class="profile__nickname"
+              class="profile__nickname hover"
               v-text="
                 comment.author.profile.nickname
                   ? comment.author.profile.nickname
@@ -122,6 +122,7 @@ export default {
 
 .profile {
   display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -132,7 +133,7 @@ export default {
 
 .profile__info__header {
   display: flex;
-  align-items: center;
+  align-items: initial;
 }
 
 .profile__info__name {

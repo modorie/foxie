@@ -10,13 +10,17 @@
     <div class="dropdown__list">
       <router-link
         :to="{ name: 'Profile', params: { username: user.user.username } }"
-        class="dropdown__item"
+        class="dropdown__item hover"
         >내 프로필</router-link
       >
-      <a href="#" class="dropdown__item">정보 수정</a>
+      <a href="#" class="dropdown__item hover">정보 수정</a>
     </div>
     <div class="dropdown__list">
-      <router-link @click.native="logout" to="#" class="dropdown__item block">
+      <router-link
+        @click.native="logout"
+        to="#"
+        class="dropdown__item hover block"
+      >
         로그아웃
       </router-link>
     </div>

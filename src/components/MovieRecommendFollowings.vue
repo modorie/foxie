@@ -8,14 +8,14 @@
         }"
       >
         <img
-          class="card__left__img"
+          class="card__left__img hover"
           :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
         />
       </router-link>
     </div>
     <div class="card__right">
       <div class="card__right__header">
-        <div class="card__right__header__title">
+        <div class="card__right__header__title hover">
           <router-link
             :to="{
               name: 'MovieDetail',

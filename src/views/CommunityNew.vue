@@ -24,7 +24,7 @@
       />
 
       <div class="editor__footer">
-        <button class="editor__footer__button" @click="createArticle">
+        <button class="editor__footer__button hover" @click="createArticle">
           글 쓰기
         </button>
       </div>

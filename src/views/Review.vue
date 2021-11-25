@@ -14,21 +14,21 @@
           <div class="tab">
             <button
               @click="currentTab = 'popularReviews'"
-              class="tab__item mulish"
+              class="tab__item mulish hover"
               :class="[currentTab === 'popularReviews' ? 'active' : '']"
             >
               Popular Reviews
             </button>
             <button
               @click="currentTab = 'newReviews'"
-              class="tab__item mulish"
+              class="tab__item mulish hover"
               :class="[currentTab === 'newReviews' ? 'active' : '']"
             >
               New Reviews
             </button>
             <button
               @click="currentTab = 'myFollowings'"
-              class="tab__item mulish"
+              class="tab__item mulish hover"
               :class="[currentTab === 'myFollowings' ? 'active' : '']"
             >
               My Followings

@@ -56,11 +56,9 @@
                   </p>
                 </div>
 
-                <router-link to="#">
-                  <div class="info__button" @click="scrollMeTo('review')">
-                    리뷰 쓰기
-                  </div>
-                </router-link>
+                <div class="info__button hover" @click="scrollMeTo('review')">
+                  리뷰 쓰기
+                </div>
               </div>
 
               <!-- <p class="info__overview">{{ movie.overview }}</p> -->
@@ -287,6 +285,7 @@ export default {
   color: var(--white);
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .info__sub {
