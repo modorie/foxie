@@ -130,11 +130,10 @@
             v-show="currentTab == 'myReviews'"
             class="profile__body__reviews"
           >
-            <ReviewCardSimple
+            <ReviewCard
               v-for="review in reviews"
               :key="review.id"
-              :reviewId="review.id"
-              :movieId="review.movie_id"
+              :propReview="review"
               class="profile__body__reviews__cards"
             />
           </div>
@@ -156,7 +155,7 @@ import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconFollow from "@/components/icons/IconFollow.vue";
 import MovieCard from "@/components/MovieCard.vue";
-import ReviewCardSimple from "@/components/ReviewCardSimple.vue";
+import ReviewCard from "@/components/ReviewCard.vue";
 import ProfileSettings from "@/components/ProfileSettings.vue";
 import ProfileDashboard from "@/components/ProfileDashboard.vue";
 
@@ -166,7 +165,7 @@ export default {
     IconAvatar,
     IconFollow,
     MovieCard,
-    ReviewCardSimple,
+    ReviewCard,
     ProfileSettings,
     ProfileDashboard,
   },
@@ -246,6 +245,7 @@ export default {
 
 .profile__header__avatar__image {
   border-radius: 190px;
+  object-fit: cover;
 }
 
 .profile__header__info {

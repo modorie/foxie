@@ -218,6 +218,7 @@ export default {
 .settings__form__photo__thumbnail {
   margin-right: 1rem;
   border-radius: 190px;
+  object-fit: cover;
 }
 
 .settings__form__photo__input {

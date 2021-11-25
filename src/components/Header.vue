@@ -70,12 +70,8 @@
         </div>
 
         <div class="header__avatar" @click="isDropdownOpen = !isDropdownOpen">
-          <icon-base
-            viewBox="0 0 64 64"
-            width="32"
-            height="32"
-            icon-name="icon"
-          >
+          <img v-if="avatar" :src="avatar" class="header__avatar__img" />
+          <icon-base v-else viewBox="0 0 64 64" width="32" height="32">
             <icon-avatar />
           </icon-base>
         </div>
@@ -83,8 +79,9 @@
 
       <transition name="fade">
         <Dropdown
-          v-if="isDropdownOpen"
+          v-show="isDropdownOpen"
           @close-dropdown="isDropdownOpen = false"
+          @user-avatar="getAvater"
         />
       </transition>
     </div>
@@ -138,6 +135,7 @@ export default Vue.extend({
       isLogin: false,
       isDropdownOpen: false,
       isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
+      avatar: null,
     };
   },
 
@@ -167,6 +165,9 @@ export default Vue.extend({
           }
         }
       }
+    },
+    getAvater(data) {
+      this.avatar = data;
     },
 
     onSearch(event: any) {
@@ -297,9 +298,17 @@ export default Vue.extend({
 }
 
 .header__avatar {
-  margin-left: 2rem;
-  margin-right: 2rem;
   cursor: pointer;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.header__avatar__img {
+  /* margin-left: 2rem; */
+  object-fit: cover;
+  border-radius: 50%;
+  min-width: 32px;
+  height: 32px;
 }
 
 .header__auth {
