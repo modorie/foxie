@@ -1,16 +1,14 @@
 <template>
   <div class="settings">
     <div class="settings__header">
-      <p class="settings__header__title mulish">Profile</p>
+      <p class="settings__header__title mulish">New Profile</p>
       <p class="settings__header__description">
-        프로필에 작성한 내용은 전체공개됩니다.
+        모두에게 보여줄 나만의 프로필을 만들어보세요
       </p>
     </div>
     <form @submit.prevent="" class="settings__form">
       <div class="settings__form__div">
-        <label for="nickname" class="settings__form__label mulish">
-          Nickname
-        </label>
+        <label for="nickname" class="settings__form__label">닉네임</label>
         <input
           name="nickname"
           class="settings__form__input"
@@ -20,7 +18,7 @@
       </div>
 
       <div class="settings__form__div">
-        <label for="Photo" class="settings__form__label mulish"> Photo </label>
+        <label for="Photo" class="settings__form__label">프로필 사진</label>
         <p class="settings__form__photo">
           <img
             v-if="avatar"
@@ -32,7 +30,7 @@
             v-else
             viewBox="0 0 64 64"
             width="50"
-            height="50"
+            height="48"
             class="settings__form__photo__thumbnail"
           >
             <icon-avatar />
@@ -40,27 +38,25 @@
           <label
             for="input-file"
             class="
-              mulish
               settings__button
               settings__button__secondary
               settings__form__photo__input
             "
-            >Change</label
+            >사진 업로드</label
           >
           <input
             id="input-file"
             type="file"
             @change="uploadImages"
             style="display: none"
-            multiple
             accept="image/*"
           />
         </p>
       </div>
       <div class="settings__form__div">
-        <label for="about" class="settings__form__label mulish"> About </label>
+        <label for="about" class="settings__form__label">소개</label>
         <textarea
-          name="about"
+          name="ㄴ"
           rows="3"
           class="settings__form__textarea"
           placeholder="자신을 소개해보세요."
@@ -68,14 +64,14 @@
         ></textarea>
       </div>
       <div class="settings__form__submit">
-        <button class="mulish settings__button settings__button__secondary">
-          Back
+        <button class="settings__button settings__button__secondary">
+          취소
         </button>
         <button
           @click="editArticle"
-          class="mulish settings__button settings__button__primary"
+          class="settings__button settings__button__primary"
         >
-          Submit
+          제출
         </button>
       </div>
     </form>
@@ -154,13 +150,10 @@ export default {
 
 <style>
 .settings {
-  min-width: 50rem;
-  width: 100%;
 }
 
 .settings__header {
   margin-bottom: 3rem;
-  margin-left: 0.5rem;
 }
 
 .settings__header__title {
@@ -189,10 +182,9 @@ export default {
 }
 
 .settings__form__label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 14px;
-  font-weight: 700;
+  margin-bottom: 0.2rem;
+  padding-left: 0.3rem;
+  font-size: 16px;
   color: var(--profile-settings-form-label);
 }
 
@@ -203,7 +195,11 @@ export default {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--profile-settings-form-input);
   border: 1px solid var(--profile-settings-form-input-border);
-  border-radius: 8px;
+  border-radius: 4px;
+}
+
+.settings__form__input:focus {
+  outline: 1px solid var(--recommend-text);
 }
 
 .settings__form__textarea {
@@ -214,15 +210,18 @@ export default {
   background-color: var(--profile-settings-form-input);
   border: 1px solid var(--profile-settings-form-input-border);
   border-radius: 8px;
+  resize: none;
 }
 
 .settings__form__photo {
   display: flex;
   align-items: center;
+  margin-top: 1rem;
+  margin-left: 0.2rem;
 }
 
 .settings__form__photo__thumbnail {
-  margin-right: 1rem;
+  margin-right: 2rem;
   border-radius: 190px;
 }
 
@@ -240,7 +239,7 @@ export default {
   padding: 0.5rem;
   margin-right: 0.5rem;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  width: 5.5rem;
+  width: 6.5rem;
   text-align: center;
 }
 
