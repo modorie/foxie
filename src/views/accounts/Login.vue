@@ -87,6 +87,8 @@ export default {
         })
         .then(() => {
           this.$router.push({ name: "Home" });
+          this.$store.dispatch("getUserImage");
+          location.reload();
         })
         .catch((err) => {
           console.log(err);

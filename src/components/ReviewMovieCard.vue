@@ -20,7 +20,7 @@
       <div class="card__right__genres">
         <span
           class="card__right__genre"
-          v-for="genre in movie.genres"
+          v-for="genre in movie.genre_ids"
           :key="genre.id"
         >
           {{ genre.name }}
@@ -48,14 +48,12 @@ export default {
       movie: [],
     };
   },
+  props: {
+    movieId: Number,
+  },
   created() {
     axios
-      .get(`https://api.themoviedb.org/3/movie/580489`, {
-        params: {
-          api_key: process.env.VUE_APP_TMDB_API_KEY,
-          language: "ko-KR",
-        },
-      })
+      .get(`api/v1/movies/${this.movieId}`)
       .then((res) => {
         this.movie = res.data;
       })
@@ -71,6 +69,7 @@ export default {
   border-radius: 4px;
   padding: 1rem;
   border: 1px solid var(--recommend-border);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
 }
 
 .card__left {
@@ -93,6 +92,7 @@ export default {
 }
 
 .card__right__header__title {
+  margin-left: 0.2rem;
   font-weight: 700;
   display: flex;
   align-items: center;

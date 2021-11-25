@@ -51,6 +51,7 @@
               <ReviewDropdown
                 v-if="isDropdownOpen"
                 @close-dropdown="isDropdownOpen = false"
+                :review="review"
                 :reviewId="review.id"
               />
             </transition>
@@ -133,27 +134,27 @@
         </div> -->
 
         <!-- <div class="footer__item">
-            <icon-base viewBox="0 0 24 18" width="20" height="20">
-              <icon-comment class="footer__svg" />
-            </icon-base>
+          <icon-base viewBox="0 0 24 18" width="20" height="20">
+            <icon-comment class="footer__svg" />
+          </icon-base>
 
-            <p class="footer__item__count">{{ review.comments.length }}</p>
-          </div> -->
+          <p class="footer__item__count">{{ review.comments.length }}</p>
+        </div> -->
       </div>
 
       <!-- <div class="comment">
-          <div class="comment__avatar">
-            <icon-base viewBox="0 0 64 64" width="32" height="32">
-              <icon-avatar />
-            </icon-base>
-          </div>
+        <div class="comment__avatar">
+          <icon-base viewBox="0 0 64 64" width="32" height="32">
+            <icon-avatar />
+          </icon-base>
+        </div>
 
-          <input
-            class="footer__input"
-            placeholder="댓글을 입력하세요."
-            type="text"
-          />
-        </div> -->
+        <input
+          class="footer__input"
+          placeholder="댓글을 입력하세요."
+          type="text"
+        />
+      </div> -->
     </div>
   </div>
 </template>
