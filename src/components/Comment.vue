@@ -2,17 +2,29 @@
   <div class="container">
     <div class="comment__left">
       <div class="comment__author">
-        <icon-base
-          viewBox="0 0 64 64"
-          width="32"
-          height="32"
-          class="comment__author__avatar"
+        <router-link
+          :to="{
+            name: 'Profile',
+            params: { username: comment.author.username },
+          }"
         >
-          <icon-avatar />
-        </icon-base>
+          <img
+            v-if="comment.author.profile.avatar"
+            :src="comment.author.profile.avatar"
+            style="height: 32px; width: 32px"
+            class="comment__author__avatar"
+          />
+          <icon-base v-else viewBox="0 0 64 64" width="32" height="32">
+            <icon-avatar />
+          </icon-base>
+        </router-link>
         <div>
           <p class="comment__author__name">
-            {{ comment.author.username }}
+            {{
+              comment.author.profile.nickname
+                ? comment.author.profile.nickname
+                : comment.author.username
+            }}
           </p>
           <p class="comment__date">
             {{ comment.created_at | time() }}
@@ -80,6 +92,7 @@ export default {
 }
 
 .comment__author__avatar {
+  border-radius: 50%;
   margin-right: 1rem;
 }
 

@@ -1,23 +1,42 @@
 <template>
   <div class="dropdown">
     <div class="dropdown__list">
-      <p class="dropdown__info">Signed in as</p>
-      <b class="dropdown__info">example@example.com</b>
+      <p class="dropdown__info">
+        <b>{{ user.nickname }}</b>
+        <span>님 안녕하세요.</span>
+      </p>
+      <p class="dropdown__info">{{ user.user.email }}</p>
     </div>
     <div class="dropdown__list">
-      <a href="#" class="dropdown__item">Profile</a>
-      <a href="#" class="dropdown__item">Accounts settings</a>
+      <router-link
+        :to="{ name: 'Profile', params: { username: user.user.username } }"
+        class="dropdown__item"
+        >내 프로필</router-link
+      >
+      <a href="#" class="dropdown__item">정보 수정</a>
     </div>
     <div class="dropdown__list">
       <router-link @click.native="logout" to="#" class="dropdown__item block">
-        Log out
+        로그아웃
       </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
+  data() {
+    return {
+      user: null,
+    };
+  },
+  created() {
+    const username = JSON.parse(localStorage.getItem("user")).user.username;
+    axios.get(`accounts/${username}`).then((res) => {
+      this.user = res.data;
+    });
+  },
   methods: {
     logout() {
       this.$store.dispatch("logout");

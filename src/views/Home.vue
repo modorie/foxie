@@ -72,13 +72,11 @@
             </router-link>
           </div>
 
-          <router-link to="/movie/">
-            <ReviewCardHome
-              v-for="review in popularReviews"
-              :key="review.id"
-              :propReview="review"
-            />
-          </router-link>
+          <ReviewCardHome
+            v-for="review in popularReviews"
+            :key="review.id"
+            :propReview="review"
+          />
         </section>
 
         <section>
