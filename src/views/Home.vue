@@ -60,7 +60,7 @@
               </p>
             </div>
 
-            <router-link to="/movie">
+            <router-link to="/review">
               <icon-base
                 viewBox="-4 0 18 18"
                 width="1.5rem"
@@ -87,7 +87,7 @@
               </p>
             </div>
 
-            <router-link to="/movie">
+            <router-link to="/community">
               <icon-base
                 viewBox="-4 0 18 18"
                 width="1.5rem"
@@ -100,8 +100,6 @@
           </div>
 
           <div>
-            <CommunityCardHome />
-            <CommunityCardHome />
             <CommunityCardHome />
           </div>
         </section>
@@ -195,6 +193,7 @@ export default {
 <style scoped>
 .wrapper {
   display: flex;
+  margin-bottom: 4rem;
 }
 
 .left {
