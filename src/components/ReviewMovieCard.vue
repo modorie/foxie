@@ -72,6 +72,7 @@ export default {
   padding: 1rem;
   border: 1px solid var(--recommend-border);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
 .card__left {

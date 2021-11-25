@@ -35,7 +35,7 @@
                 "
               ></p>
             </router-link>
-            <p class="profile__time">{{ review.created_at.slice(0, 10) }}</p>
+            <p class="profile__time">{{ review.created_at | time }}</p>
           </div>
           <div v-if="review.author.id === userId" class="profile__toggle">
             <button
@@ -114,19 +114,6 @@
       </div>
 
       <ReviewCommentWrite :review="propReview" />
-      <div class="comment">
-        <!-- <div class="comment__avatar">
-          <icon-base viewBox="0 0 64 64" width="32" height="32">
-            <icon-avatar />
-          </icon-base>
-        </div>
-
-        <input
-          class="footer__input"
-          placeholder="댓글을 입력하세요."
-          type="text"
-        /> -->
-      </div>
       <ReviewComment
         v-for="comment in review.comments"
         :key="comment.id"

@@ -36,8 +36,7 @@
                 <div>
                   <p>{{ post.author.username }}</p>
                   <p class="post__date">
-                    {{ post.created_at.slice(0, 10) }}
-                    {{ post.created_at.slice(11, 16) }}
+                    {{ post.created_at | time() }}
                   </p>
                 </div>
               </div>

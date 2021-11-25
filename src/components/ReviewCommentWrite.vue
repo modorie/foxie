@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p class="comment__title mulish">Comment</p>
     <div class="comment__form">
       <input
         class="comment__input"

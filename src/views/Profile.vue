@@ -60,6 +60,7 @@
         <div class="follow__container">
           <div>
             <button
+              v-if="!isMyProfile"
               class="follow__button mulish"
               @click="follow"
               :class="[
@@ -172,6 +173,7 @@ export default {
       currentTab: "myMovies",
       username: "",
       userId: null,
+      isMyProfile: false,
       followCount: 0,
       isFollowed: false,
     };
@@ -181,6 +183,9 @@ export default {
     if (user) {
       this.userId = JSON.parse(localStorage.getItem("user")).user.id;
       this.username = this.$route.params.username;
+      this.isMyProfile =
+        this.username ===
+        JSON.parse(localStorage.getItem("user")).user.username;
     }
 
     axios.get(`accounts/${this.username}`).then((res) => {

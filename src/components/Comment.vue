@@ -15,12 +15,7 @@
             {{ comment.author.username }}
           </p>
           <p class="comment__date">
-            {{
-              comment.created_at
-                .slice(0, 16)
-                .replaceAll("-", ".")
-                .replace("T", " ")
-            }}
+            {{ comment.created_at | time() }}
           </p>
         </div>
       </div>

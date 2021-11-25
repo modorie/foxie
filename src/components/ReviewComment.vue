@@ -38,7 +38,7 @@
               "
             ></p>
           </router-link>
-          <p class="profile__time">{{ comment.created_at.slice(0, 10) }}</p>
+          <p class="profile__time">{{ comment.created_at | time }}</p>
         </div>
         <p class="comment__body">{{ comment.content }}</p>
       </div>

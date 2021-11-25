@@ -16,28 +16,27 @@
           </icon-base>
         </div>
       </router-link>
+
       <div class="profile__info">
         <div class="profile__info__header">
-          <p>
+          <div class="profile__info__header__user">
             <router-link
               :to="{
                 name: 'Profile',
                 params: { username: review.author.username },
               }"
             >
-              <span
+              <p
                 class="profile__nickname"
                 v-text="
                   review.author.profile.nickname
                     ? review.author.profile.nickname
                     : review.author.username
                 "
-              ></span>
+              ></p>
             </router-link>
-            <span class="profile__time">
-              {{ review.created_at.slice(0, 10) }}
-            </span>
-          </p>
+            <p class="profile__time">{{ review.created_at | time }}</p>
+          </div>
           <div v-if="review.author.id === userId" class="profile__toggle">
             <button
               @click="isDropdownOpen = !isDropdownOpen"
@@ -60,32 +59,13 @@
 
         <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
         <div class="profile__score">
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__on" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__on" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__on" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star-half class="star__half" />
-          </icon-base>
-
-          <icon-base viewBox="0 0 18 18" width="16" height="16">
-            <icon-star class="star__off" />
-          </icon-base>
-          {{ review.rank }}
+          <StarRating size="18" :score="review.rank" />
         </div>
       </div>
     </div>
     <div class="body">
-      <p class="body__content" v-if="(review.content.length >= 200) & !isMore">
-        {{ review.content | truncate(200) }}
+      <p class="body__content" v-if="(review.content.length >= 120) & !isMore">
+        {{ review.content | truncate(120) }}
       </p>
 
       <p class="body__content" v-else>
@@ -99,7 +79,6 @@
       >
         더보기
       </div>
-
       <div
         class="body__more"
         v-if="(review.content.length >= 200) & isMore"
@@ -108,86 +87,72 @@
         간략히
       </div>
       <div class="footer">
-        <button
-          :class="[isLike ? 'post__button__liked' : 'post__button__like']"
-          @click="likeIt(review.id)"
-        >
-          <icon-base
-            viewBox="0 0 22 26"
-            width="24"
-            height="22"
-            :iconColor="[isLike ? 'var(--heart-isliked)' : 'var(--heart)']"
-          >
-            <icon-heart :class="[isLike ? 'liked__svg' : 'like__svg']" />
-          </icon-base>
-          <span class="like__count">
-            {{ likeCount }}
-          </span>
-        </button>
+        <div class="footer__item">
+          <button @click="likeIt(review.id)">
+            <icon-base
+              viewBox="0 0 22 25"
+              width="24"
+              height="22"
+              :iconColor="[isLike ? 'var(--coral)' : 'var(--heart)']"
+            >
+              <icon-heart class="footer__svg like__svg" />
+            </icon-base>
+          </button>
+          <p class="footer__item__count">{{ likeCount }}</p>
+        </div>
 
-        <!-- <div class="footer__item">
-          <icon-base viewBox="0 0 22 25" width="24" height="22">
-            <icon-heart class="footer__svg" />
-          </icon-base>
-
-          <p class="footer__item__count">{{ review.like_users.length }}</p>
-        </div> -->
-
-        <!-- <div class="footer__item">
+        <div class="footer__item">
           <icon-base viewBox="0 0 24 18" width="20" height="20">
             <icon-comment class="footer__svg" />
           </icon-base>
 
           <p class="footer__item__count">{{ review.comments.length }}</p>
-        </div> -->
+        </div>
       </div>
 
-      <!-- <div class="comment">
-        <div class="comment__avatar">
-          <icon-base viewBox="0 0 64 64" width="32" height="32">
-            <icon-avatar />
-          </icon-base>
-        </div>
-
-        <input
-          class="footer__input"
-          placeholder="댓글을 입력하세요."
-          type="text"
-        />
-      </div> -->
+      <ReviewCommentWrite :review="review" />
+      <ReviewComment
+        v-for="comment in review.comments"
+        :key="comment.id"
+        :review="review"
+        :commentId="comment.id"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ReviewCommentWrite from "@/components/ReviewCommentWrite.vue";
+import ReviewComment from "@/components/ReviewComment.vue";
+import ReviewDropdown from "@/components/ReviewDropdown.vue";
+
 import IconBase from "@/components/IconBase.vue";
 import IconAvatar from "@/components/icons/IconAvatar.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
-import IconStar from "@/components/icons/IconStar.vue";
-import IconStarHalf from "@/components/icons/IconStarHalf.vue";
+import IconComment from "@/components/icons/IconComment.vue";
 import IconHorizontalDots from "@/components/icons/IconHorizontalDots.vue";
-import ReviewDropdown from "@/components/ReviewDropdown.vue";
-// import IconComment from "@/components/icons/IconComment.vue";
+import StarRating from "@/components/StarRating.vue";
 
 export default {
   components: {
+    ReviewCommentWrite,
+    ReviewComment,
+    ReviewDropdown,
     IconBase,
     IconAvatar,
     IconHeart,
-    // IconComment,
+    IconComment,
     IconHorizontalDots,
-    IconStar,
-    IconStarHalf,
-    ReviewDropdown,
+    StarRating,
   },
   data() {
     return {
       userId: null,
       isMore: false,
+      review: {},
       likeCount: 0,
       isLike: "",
-      review: {},
       isDropdownOpen: false,
     };
   },
@@ -241,7 +206,7 @@ export default {
   background-color: var(--recommend);
   margin-bottom: 1rem;
   padding: 1.5rem 0rem;
-  border-bottom: 1px solid var(--profile-tag);
+  border-bottom: 1px solid var(--board-body-line);
 }
 
 .profile {
@@ -260,6 +225,11 @@ export default {
   justify-content: space-between;
 }
 
+.profile__info__header__user {
+  display: flex;
+  align-items: baseline;
+}
+
 .profile__info__name {
   display: flex;
 }
@@ -275,12 +245,16 @@ export default {
 }
 
 .profile__time {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--recommend-text);
 }
 
 .profile__toggle {
   position: relative;
+}
+
+.review__dropdown {
+  position: absolute;
 }
 
 .dots__svg {
@@ -302,6 +276,7 @@ export default {
 
 .body__content {
   font-size: 16px;
+  margin-bottom: 1rem;
 }
 
 .body__header {
@@ -330,8 +305,8 @@ export default {
 
 .footer {
   display: flex;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .footer__item {
@@ -349,6 +324,10 @@ export default {
   margin-left: 0.2rem;
 }
 
+.like__svg {
+  stroke: var(--coral);
+}
+
 .footer__input {
   background-color: var(--profile-tag);
   margin-left: 1rem;
@@ -360,62 +339,6 @@ export default {
 
 .footer__input:focus {
   outline: 1px solid gray;
-}
-
-.star__on {
-  fill: #ffac33;
-}
-
-.star__off {
-  fill: var(--gray-600);
-}
-
-.post__button__like {
-  display: flex;
-  justify-content: center;
-
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-  padding-right: 0.7rem;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  width: 4rem;
-  font-size: 14px;
-  text-align: center;
-
-  background-color: var(--btn-secondary);
-  border: 1px solid var(--btn-secondary-border);
-  color: var(--text);
-  font-weight: 600;
-}
-
-.post__button__liked {
-  display: flex;
-  justify-content: center;
-
-  border-radius: 0.3rem;
-  padding: 0.5rem;
-  padding-right: 0.7rem;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  width: 4rem;
-  font-size: 14px;
-  text-align: center;
-
-  background-color: var(--btn-primary);
-  border: 1px solid var(--btn-primary);
-  color: var(--white);
-  font-weight: 600;
-}
-
-.like__svg {
-  stroke: var(--coral);
-}
-
-.liked__svg {
-  stroke: var(--white);
-}
-
-.like__count {
-  margin-left: 0.3rem;
 }
 
 .fade-enter-active,
