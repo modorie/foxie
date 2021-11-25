@@ -8,8 +8,7 @@
           <img
             v-if="review.author.profile.avatar"
             :src="review.author.profile.avatar"
-            style="height: 48px; width: 48px"
-            class="settings__form__photo__thumbnail"
+            class="profile__avatar__img"
           />
           <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
             <icon-avatar />
@@ -221,7 +220,6 @@ export default {
 
 .profile__info {
   margin-left: 1rem;
-  width: 100%;
 }
 
 .profile__info__header {
@@ -233,6 +231,13 @@ export default {
 .profile__info__header__user {
   display: flex;
   align-items: baseline;
+}
+
+.profile__avatar__img {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
 }
 
 .profile__info__name {

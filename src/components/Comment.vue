@@ -93,7 +93,8 @@ export default {
 
 .comment__author__avatar {
   border-radius: 50%;
-  margin-right: 1rem;
+  margin-right: 0.2rem;
+  object-fit: cover;
 }
 
 .comment__author__right {

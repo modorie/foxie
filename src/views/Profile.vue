@@ -245,6 +245,7 @@ export default {
 
 .profile__header__avatar__image {
   border-radius: 190px;
+  object-fit: cover;
 }
 
 .profile__header__info {

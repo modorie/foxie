@@ -233,6 +233,7 @@ export default {
 .profile__avatar__thumbnail {
   border-radius: 50%;
   margin-right: 1rem;
+  object-fit: cover;
 }
 
 .profile__info__name {
