@@ -8,6 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: null,
+    userAvatar: null,
   },
   mutations: {
     SET_USER_DATA(state, userData) {
@@ -17,6 +18,10 @@ export default new Vuex.Store({
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${userData.access_token}`;
+    },
+    SET_USER_IMAGE(state, avatarData) {
+      state.userAvatar = avatarData;
+      localStorage.setItem("avatar", avatarData);
     },
     LOGOUT() {
       localStorage.removeItem("user");
@@ -40,8 +45,17 @@ export default new Vuex.Store({
         url: "/accounts/login/",
         data: credentials,
       }).then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         commit("SET_USER_DATA", data);
+      });
+    },
+    getUserImage({ state, commit }) {
+      return axios({
+        method: "get",
+        url: `/accounts/${state.user.username}`,
+      }).then(({ data }) => {
+        const { avatar } = data;
+        commit("SET_USER_IMAGE", avatar);
       });
     },
     logout({ commit }) {
