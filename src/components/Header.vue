@@ -281,7 +281,9 @@ export default Vue.extend({
 }
 
 .search__item__release {
-  color: var(--recommend-text);
+  color: var(--text);
+  font-size: 16px;
+  opacity: 0.5;
 }
 
 .header__info {
