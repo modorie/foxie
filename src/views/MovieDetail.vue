@@ -87,7 +87,11 @@
             <h2 class="body__info__title">감독</h2>
 
             <div class="body__info__members">
-              <div v-for="director in this.directors" :key="director.id">
+              <div
+                v-for="director in this.directors"
+                :key="director.id"
+                class="body__info__member"
+              >
                 <img
                   v-if="director.profile_path"
                   class="member__profile"
@@ -399,7 +403,7 @@ export default {
   border-radius: 8px;
   color: var(--header-search);
   text-align: center;
-  padding-top: 6rem;
+  padding: 6rem 0rem 6rem 0rem;
   font-size: 18px;
   font-weight: 800;
   margin-bottom: 0.3rem;
