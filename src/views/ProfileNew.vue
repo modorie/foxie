@@ -159,7 +159,7 @@ export default {
 }
 
 .settings__header {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   margin-left: 0.5rem;
 }
 

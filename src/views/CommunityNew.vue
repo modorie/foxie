@@ -3,7 +3,7 @@
     <h1 class="page__title">New Post</h1>
 
     <p class="page__subtitle">
-      새로운 게시글을 작성 해보세요. 사진도 맘껏 넣을 수 있어요!
+      새로운 게시글을 작성할 수 있어요. 사진도 맘껏 넣어보세요.
     </p>
 
     <div class="editor">
@@ -92,7 +92,7 @@ export default {
   font-family: "Mulish", sans-serif;
   letter-spacing: 0rem;
   color: var(--page-title);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
 }
 

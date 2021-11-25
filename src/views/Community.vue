@@ -89,7 +89,7 @@ export default {
 }
 
 .right {
-  margin-top: 104px;
+  margin-top: 100px;
 }
 
 .header {
@@ -102,7 +102,7 @@ export default {
   font-family: "Mulish", sans-serif;
   letter-spacing: 0rem;
   color: var(--page-title);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
 }
 

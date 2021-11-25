@@ -1,6 +1,7 @@
 <template>
   <section class="community container">
-    <h1 class="page__title mulish">Post</h1>
+    <h1 class="page__title">Community</h1>
+    <p class="page__subtitle">커뮤니티 공간에서 자유롭게 이야기를 나눠보세요</p>
 
     <div class="community__body">
       <div class="community__body__left">
@@ -209,10 +210,17 @@ export default {
 }
 
 .page__title {
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0rem;
   color: var(--page-title);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 2rem;
+}
+
+.page__subtitle {
+  font-size: 14px;
+  color: var(--profile-settings-description);
+  margin-bottom: 3rem;
 }
 
 .post__header {
