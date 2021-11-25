@@ -13,6 +13,7 @@ import axios from "axios";
 export default {
   props: {
     reviewId: Number,
+    review: Object,
   },
   methods: {
     // editReview(reviewId) {
@@ -20,12 +21,12 @@ export default {
     // },
     deleteReview() {
       const token = JSON.parse(localStorage.getItem("user")).access_token;
-      const { id } = this.$route.params;
+      // const { id } = this.$route.params;
 
       if (confirm("정말 삭제하시겠습니까?")) {
         axios({
           method: "delete",
-          url: `api/v1/movies/${id}/reviews/${this.reviewId}/`,
+          url: `api/v1/movies/${this.review.movie}/reviews/${this.reviewId}/`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
