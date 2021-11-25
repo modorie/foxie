@@ -1,10 +1,9 @@
 <template>
   <div>
     <div class="comment__score">
-      <StarRatingInput size="36" />
+      <StarRatingInput size="36" @score="onScore" />
     </div>
 
-    <input type="number" class="review__rank" min="1" max="10" v-model="rank" />
     <textarea
       class="review__input"
       cols="30"
@@ -39,6 +38,8 @@ export default {
       const token = JSON.parse(localStorage.getItem("user")).access_token;
       const author = JSON.parse(localStorage.getItem("user")).user.id;
 
+      console.log(this.rank);
+
       const reviewData = {
         content: this.content,
         rank: this.rank,
@@ -63,6 +64,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    onScore(score) {
+      this.rank = score;
     },
   },
 };

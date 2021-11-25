@@ -73,6 +73,8 @@ export default {
       this.yellow = parseInt(this.score / 2);
       this.half = this.score % 2;
       this.gray = parseInt((10 - this.score) / 2);
+
+      this.$emit("score", this.score);
     },
   },
 };
