@@ -18,7 +18,7 @@
             <icon-avatar />
           </icon-base>
         </router-link>
-        <div>
+        <div class="comment__author__right">
           <p class="comment__author__name">
             {{
               comment.author.profile.nickname
@@ -94,6 +94,10 @@ export default {
 .comment__author__avatar {
   border-radius: 50%;
   margin-right: 1rem;
+}
+
+.comment__author__right {
+  margin-left: 1rem;
 }
 
 .comment__author__name {
