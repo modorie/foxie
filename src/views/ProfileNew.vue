@@ -114,14 +114,14 @@ export default {
           this.haveProfile = true;
         })
         .catch(() => {
-          window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
+          // window.alert("프로필이 없습니다. 프로필을 작성해주세요.");
           this.$router.push({
             name: "ProfileNew",
           });
           this.haveProfile = true;
         });
     } else {
-      window.alert("프로필을 보시려면 로그인하세요.");
+      // window.alert("프로필을 보시려면 로그인하세요.");
     }
 
     // const user = localStorage.getItem("user");
@@ -183,9 +183,11 @@ export default {
 }
 
 .settings__header__title {
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 0rem;
+  color: var(--page-title);
   font-size: 20px;
   font-weight: 700;
-  color: var(--profile-settings-header);
 }
 
 .settings__header__description {

@@ -158,7 +158,7 @@ import IconFollow from "@/components/icons/IconFollow.vue";
 import MovieCard from "@/components/MovieCard.vue";
 import ReviewCardSimple from "@/components/ReviewCardSimple.vue";
 import ProfileSettings from "@/components/ProfileSettings.vue";
-import ProfileDashboard from "@/components/ProfileDashbaord.vue";
+import ProfileDashboard from "@/components/ProfileDashboard.vue";
 
 export default {
   components: {
