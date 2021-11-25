@@ -1,65 +1,69 @@
 <template>
   <div class="container">
     <div class="profile">
-      <router-link
-        :to="{ name: 'Profile', params: { username: review.author.username } }"
-      >
-        <div class="profile__avatar">
-          <img
-            v-if="review.author.profile.avatar"
-            :src="review.author.profile.avatar"
-            class="profile__avatar__img"
-          />
-          <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
-            <icon-avatar />
-          </icon-base>
-        </div>
-      </router-link>
-
-      <div class="profile__info">
-        <div class="profile__info__header">
-          <div class="profile__info__header__user">
-            <router-link
-              :to="{
-                name: 'Profile',
-                params: { username: review.author.username },
-              }"
-            >
-              <p
-                class="profile__nickname"
-                v-text="
-                  review.author.profile.nickname
-                    ? review.author.profile.nickname
-                    : review.author.username
-                "
-              ></p>
-            </router-link>
-            <p class="profile__time">{{ review.created_at | time }}</p>
+      <div class="profile__left">
+        <router-link
+          :to="{
+            name: 'Profile',
+            params: { username: review.author.username },
+          }"
+        >
+          <div class="profile__avatar">
+            <img
+              v-if="review.author.profile.avatar"
+              :src="review.author.profile.avatar"
+              class="profile__avatar__img"
+            />
+            <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
+              <icon-avatar />
+            </icon-base>
           </div>
-          <div v-if="review.author.id === userId" class="profile__toggle">
-            <button
-              @click="isDropdownOpen = !isDropdownOpen"
-              class="profile__toggle__button"
-            >
-              <icon-base viewBox="0 0 22 26" width="24" height="22">
-                <icon-horizontal-dots class="dots__svg" />
-              </icon-base>
-            </button>
-            <transition name="fade">
-              <ReviewDropdown
-                v-if="isDropdownOpen"
-                @close-dropdown="isDropdownOpen = false"
-                :review="review"
-                :reviewId="review.id"
-              />
-            </transition>
+        </router-link>
+
+        <div class="profile__info">
+          <div class="profile__info__header">
+            <div class="profile__info__header__user">
+              <router-link
+                :to="{
+                  name: 'Profile',
+                  params: { username: review.author.username },
+                }"
+              >
+                <p
+                  class="profile__nickname"
+                  v-text="
+                    review.author.profile.nickname
+                      ? review.author.profile.nickname
+                      : review.author.username
+                  "
+                ></p>
+              </router-link>
+              <p class="profile__time">{{ review.created_at | time }}</p>
+            </div>
+          </div>
+          <div class="profile__score">
+            <StarRating size="18" :score="review.rank" />
           </div>
         </div>
-
         <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
-        <div class="profile__score">
-          <StarRating size="18" :score="review.rank" />
-        </div>
+      </div>
+      <div v-if="review.author.id === userId" class="profile__toggle">
+        <button
+          @click="isDropdownOpen = !isDropdownOpen"
+          class="profile__toggle__button"
+        >
+          <icon-base viewBox="0 0 22 26" width="24" height="22">
+            <icon-horizontal-dots class="dots__svg" />
+          </icon-base>
+        </button>
+        <transition name="fade">
+          <ReviewDropdown
+            v-if="isDropdownOpen"
+            @close-dropdown="isDropdownOpen = false"
+            :review="review"
+            :reviewId="review.id"
+          />
+        </transition>
       </div>
     </div>
     <div class="body">
@@ -216,16 +220,16 @@ export default {
 .profile {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .profile__info {
   margin-left: 1rem;
 }
 
-.profile__info__header {
+.profile__left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .profile__info__header__user {
