@@ -22,8 +22,8 @@
     <Modal
       v-if="modal"
       @close="closeModal"
-      title="어이어이 잠깐 멈춰방"
-      content="글을 쓰려면 로그인을 해"
+      title="잠깐!"
+      content="글을 쓰려면 로그인을 해주세요."
       buttonText="로그인"
     />
 
