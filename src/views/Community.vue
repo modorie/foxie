@@ -80,12 +80,14 @@ export default {
 
 <style scoped>
 .container {
+  min-width: 80rem;
+  max-width: 90rem;
   display: flex;
 }
 
 .left {
-  margin-right: 2rem;
   width: 100%;
+  margin-right: 2rem;
 }
 
 .right {

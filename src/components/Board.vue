@@ -5,7 +5,7 @@
         <thead class="board__header">
           <tr>
             <th class="board__header__row" style="width: 4rem">번호</th>
-            <th class="board__header__row" style="width: ">제목</th>
+            <th class="board__header__row">제목</th>
             <th class="board__header__row" style="width: 10rem">글쓴이</th>
             <th class="board__header__row" style="width: 6rem">작성일</th>
             <!-- TODO: 서버에서 게시글 조회수 처리 시 살리기 -->
