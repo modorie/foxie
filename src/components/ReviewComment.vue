@@ -126,7 +126,7 @@ export default {
 }
 
 .profile__info {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   width: 100%;
 }
 

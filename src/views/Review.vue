@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="container">
     <h1 class="page__title">Review</h1>
     <p class="page__subtitle">영화에 대한 유저들의 리뷰들을 모아봤어요</p>
 
@@ -12,18 +12,18 @@
         </div> -->
         <div class="tab">
           <button
-            @click="currentTab = 'newReviews'"
-            class="tab__item mulish"
-            :class="[currentTab === 'newReviews' ? 'active' : '']"
-          >
-            New Reviews
-          </button>
-          <button
             @click="currentTab = 'popularReviews'"
             class="tab__item mulish"
             :class="[currentTab === 'popularReviews' ? 'active' : '']"
           >
             Popular Reviews
+          </button>
+          <button
+            @click="currentTab = 'newReviews'"
+            class="tab__item mulish"
+            :class="[currentTab === 'newReviews' ? 'active' : '']"
+          >
+            New Reviews
           </button>
           <button
             @click="currentTab = 'myFollowings'"
@@ -34,15 +34,6 @@
           </button>
         </div>
         <div>
-          <div v-show="currentTab === 'newReviews'">
-            <ReviewCard
-              v-for="review in newReviews"
-              :key="review.id"
-              :propReview="review"
-              class="review__wrapper"
-            />
-          </div>
-
           <div v-show="currentTab === 'popularReviews'">
             <ReviewCard
               v-for="review in popularReviews"
@@ -52,6 +43,14 @@
             />
           </div>
 
+          <div v-show="currentTab === 'newReviews'">
+            <ReviewCard
+              v-for="review in newReviews"
+              :key="review.id"
+              :propReview="review"
+              class="review__wrapper"
+            />
+          </div>
           <div v-if="user" v-show="currentTab === 'myFollowings'">
             <ReviewCard
               v-for="review in followingsReviews"
@@ -90,7 +89,7 @@ export default {
   },
   data() {
     return {
-      currentTab: "newReviews",
+      currentTab: "popularReviews",
       newReviews: [],
       popularReviews: [],
       followingsReviews: [],
