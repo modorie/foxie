@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="move">
     <div v-if="isLogin" class="list">
       <h1 class="title">이 영화 어때요</h1>
 
@@ -78,6 +78,11 @@ export default {
   font-size: 18px;
   font-weight: 700;
   color: var(--recommend-title);
+}
+
+.move {
+  position: sticky;
+  top: 6rem;
 }
 
 .recommend__preview {
