@@ -6,6 +6,7 @@
         <icon-base viewBox="0 0 45 56" width="42" height="42" icon-name="icon">
           <icon-logo />
         </icon-base>
+        <p class="sidebar__logo__name mulish"><span>Foxie</span></p>
       </router-link>
     </div>
 
@@ -44,6 +45,7 @@
         <p class="sidebar__menu__title mulish">COMMUNITY</p>
       </div>
     </router-link>
+
     <div @click="getProfile">
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 32 36" width="32" height="32" icon-name="icon">
@@ -114,7 +116,7 @@ export default {
 .sidebar {
   background-color: var(--sidebar);
   position: fixed;
-  z-index: 1;
+  z-index: 101;
   top: 0;
   left: 0;
   bottom: 0;
@@ -129,7 +131,26 @@ export default {
 .sidebar__logo {
   padding: 1rem;
   margin-top: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar__logo__name {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.05rem;
+  margin-top: 0.2rem;
+}
+
+.sidebar__logo__name span {
+  background: linear-gradient(to bottom, #ed5656, #ed5656e0, #ffa97e9f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidebar__logo:hover {
+  transition: 0.3s;
+  opacity: 0.7;
 }
 
 .sidebar__menu {
@@ -139,6 +160,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .sidebar__menu__title {
@@ -148,6 +170,7 @@ export default {
 }
 
 .router-link-active {
+  transition: 0.2s;
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: inset -3px 0 0 0px #ed5656;
 }

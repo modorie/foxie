@@ -5,9 +5,9 @@
         <thead class="board__header">
           <tr>
             <th class="board__header__row" style="width: 4rem">번호</th>
-            <th class="board__header__row" style="width: ">제목</th>
+            <th class="board__header__row">제목</th>
             <th class="board__header__row" style="width: 10rem">글쓴이</th>
-            <th class="board__header__row" style="width: 6rem">조회</th>
+            <th class="board__header__row" style="width: 6rem">작성일</th>
             <!-- TODO: 서버에서 게시글 조회수 처리 시 살리기 -->
             <!-- <th class="board__header__row">VIEWS</th> -->
             <th class="board__header__row" style="width: 4rem">추천</th>
@@ -31,8 +31,7 @@
             </router-link>
             <td class="board__body__row">{{ article.author.username }}</td>
             <td class="board__body__row">
-              <!-- TODO: 1시간 이내: 00분 전 / 24시간 이내 : 00시간 전 / else: 0일 전 -->
-              {{ article.created_at.slice(5, 10) }}
+              {{ article.created_at | time() }}
             </td>
             <!-- <td class="board__body__row">1234</td> -->
             <td class="board__body__row">{{ article.likes_count }}</td>

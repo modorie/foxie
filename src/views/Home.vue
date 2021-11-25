@@ -1,60 +1,111 @@
 <template>
   <section>
-    <!-- TODO : Banner 컴포넌트로 빼기 -->
-    <div class="banner">
-      <div class="banner__left">
-        <img src="@/assets/banner-blur.png" alt="" />
-        <!-- <img src="@/assets/banner.png" alt="" /> -->
-      </div>
-      <div class="banner__right">
-        <div class="banner__right__brand">
-          <icon-base viewBox="0 0 45 56" width="4rem" height="4rem">
-            <icon-logo />
-          </icon-base>
-
-          <p class="banner__right__title mulish"><span>Foxie</span></p>
-        </div>
-
-        <p class="banner__right__text">
-          "난 네게 아직 수십 만의 영화에 지나지 않아,<br />
-          너 역시 내게 수십 만의 아이들과 같은 어린아이일뿐이고.<br />
-          하지만 네가 나를 길들인다면 나는 너에게 이 세상에 유일한 존재가
-          될거야"<br />
-          <br />
-          <b style="color: var(--coral)">"널 길들이려면 어떻게 해야 하니?"</b
-          ><br />
-        </p>
-        <div class="banner__footer">
-          <router-link to="#">
-            <div class="banner__footer__button">네 이야기를 들려주렴</div>
-          </router-link>
-        </div>
-      </div>
-    </div>
-
-    <div class="home__body">
-      <div class="home__body__left">
-        <h1 class="left__title mulish">Best Movies 🚀</h1>
-
-        <p class="left__subtitle">
-          장르별 전문가들의 섬세한 리뷰들을 읽어보세요.
-        </p>
-
-        <div>
-          <div class="tab">
-            <div class="tab__item active">Popular Movies</div>
-            <div class="tab__item">New Movies</div>
-            <div class="tab__item">Foxie's Pick</div>
+    <div class="wrapper">
+      <div class="left">
+        <!-- TODO : Banner 컴포넌트로 빼기 -->
+        <div class="banner">
+          <div class="banner__left">
+            <img src="@/assets/banner.png" alt="" />
+            <!-- <img src="@/assets/banner.png" alt="" /> -->
           </div>
-          <div class="carousel__container">
-            <MovieCarousel :movies="nowplaying_MovieList" />
-            <!-- <MovieCarousel :movies="popular_MovieList" /> -->
-            <!-- <MovieCarousel :movies="toprated_MovieList" /> -->
+          <div class="banner__right">
+            <p class="banner__right__fox">
+              난 네게 아직 수십 만의 영화에 지나지 않아<br />
+              하지만 네가 날 길들인다면, 나는 너에게 이 세상에 유일한 존재가 될
+              거야
+            </p>
+
+            <p class="banner__right__prince">널 길들이려면 어떻게 해야 하니?</p>
+
+            <p class="banner__right__fox">
+              그건 간단해, 나에 대한 네 생각을 들려줘
+            </p>
           </div>
         </div>
+
+        <section>
+          <div class="left__title">
+            <div>
+              <p>요즘 핫한 영화</p>
+
+              <p class="left__subtitle">
+                요즘 가장 인기 있는 영화들을 모아봤어요!
+              </p>
+            </div>
+
+            <router-link to="/movie">
+              <icon-base
+                viewBox="-4 0 18 18"
+                width="1.5rem"
+                height="1.5rem"
+                class="more__svg"
+              >
+                <icon-right />
+              </icon-base>
+            </router-link>
+          </div>
+
+          <div class="left__container">
+            <MovieCarousel :movies="popular_MovieList" />
+          </div>
+        </section>
+
+        <section>
+          <div class="left__title">
+            <div>
+              <p>베스트 리뷰</p>
+
+              <p class="left__subtitle">
+                가장 많은 추천을 받은 리뷰는 무엇일까요
+              </p>
+            </div>
+
+            <router-link to="/review">
+              <icon-base
+                viewBox="-4 0 18 18"
+                width="1.5rem"
+                height="1.5rem"
+                class="more__svg"
+              >
+                <icon-right />
+              </icon-base>
+            </router-link>
+          </div>
+
+          <ReviewCardHome />
+          <ReviewCardHome />
+          <ReviewCardHome />
+        </section>
+
+        <section>
+          <div class="left__title">
+            <div>
+              <p>인기 게시글</p>
+
+              <p class="left__subtitle">
+                유저들이 가장 많이 본 게시글을 보여줄게요.
+              </p>
+            </div>
+
+            <router-link to="/community">
+              <icon-base
+                viewBox="-4 0 18 18"
+                width="1.5rem"
+                height="1.5rem"
+                class="more__svg"
+              >
+                <icon-right />
+              </icon-base>
+            </router-link>
+          </div>
+
+          <div>
+            <CommunityCardHome />
+          </div>
+        </section>
       </div>
 
-      <div class="home__body__right">
+      <div class="right">
         <MovieRecommend />
         <MovieRecommend />
       </div>
@@ -65,10 +116,13 @@
 <script>
 import axios from "axios";
 
-import IconBase from "@/components/IconBase.vue";
-import IconLogo from "@/components/icons/IconLogo.vue";
 import MovieRecommend from "@/components/MovieRecommend.vue";
 import MovieCarousel from "@/components/MovieCarousel.vue";
+import ReviewCardHome from "@/components/ReviewCardHome.vue";
+import CommunityCardHome from "@/components/CommunityCardHome.vue";
+
+import IconBase from "@/components/IconBase.vue";
+import IconRight from "@/components/icons/IconRight.vue";
 
 const MOVIE_DB_API_URL_POPULAR = "https://api.themoviedb.org/3/movie/popular";
 const MOVIE_DB_API_URL_TOP_RATED =
@@ -78,10 +132,12 @@ const MOVIE_DB_API_URL_GET_NOW_PLAYING =
 
 export default {
   components: {
-    IconBase,
-    IconLogo,
     MovieRecommend,
     MovieCarousel,
+    IconBase,
+    IconRight,
+    ReviewCardHome,
+    CommunityCardHome,
   },
   data() {
     return {
@@ -135,118 +191,87 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+.left {
+  margin-right: 2rem;
+}
+
+.right {
+}
+
 .banner {
-  width: 100%;
-  height: 24rem;
+  height: 20rem;
   border-radius: 8px;
   display: flex;
-  background: linear-gradient(to right, #f0d3d3d0, #fdf8dccc);
-  color: var(--gray-600);
+  background: linear-gradient(
+    to right,
+    var(--banner-left),
+    var(--banner-right)
+  );
+  color: var(--banner-text);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
 }
 
 .banner__left img {
-  width: 38rem;
-  height: 100%;
-  opacity: 0.7;
+  width: 28rem;
+  margin-top: 1rem;
+  opacity: 0.6;
   border-radius: 8px 0 0 8px;
+  -webkit-user-drag: none;
 }
 
 .banner__right {
-  padding: 2rem;
+  padding: 6rem 2rem 2rem 0rem;
+  width: 100%;
   margin-left: -2rem;
-  width: 100%;
 }
 
-.banner__right__brand {
-  display: flex;
+.banner__right__fox {
+  font-weight: 500;
+  color: var(--banner-fox);
+  font-size: 20px;
+  line-height: 1.7rem;
+  margin-bottom: 1rem;
 }
 
-.banner__right__title {
-  font-size: 3rem;
-  margin-left: 1rem;
-  margin-bottom: 2rem;
-  color: var(--coral);
-  font-weight: 700;
+.banner__right__prince {
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--banner-prince);
+  margin-bottom: 1rem;
 }
 
-.banner__right__title span {
-  background: linear-gradient(to bottom, #ed5656, #ed5656, #ffa97e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.banner__right__text {
-  color: var(--banner-text);
-  font-size: 18px;
-  line-height: 2rem;
-}
-
-.banner__footer {
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  margin-top: 1rem;
-}
-
-.banner__footer__button {
-  align-items: center;
-  text-align: center;
-  background-color: var(--btn-primary);
-  border: 1px solid var(--btn-primary);
-  color: var(--white);
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-}
-
-.home__body {
-  width: 100%;
-  display: flex;
-}
-
-.home__body__left {
-  width: calc(100% - 29rem);
-  margin-right: 3rem;
-}
-
-.tab {
-  display: flex;
-  justify-content: space-between;
+.left__container {
+  /* FIXME - 완전 하드코딩.. 라이브러리 컨트롤이 어렵다*/
+  max-width: 56rem;
   background-color: var(--header);
-  font-weight: 700;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
-}
-
-.tab__item {
-  display: flex;
-  justify-content: center;
-  width: 100%;
   padding: 1rem;
-  border-bottom: 5px solid var(--board-header);
-}
-
-.active {
-  background-color: var(--board-header);
-  border-bottom: 5px solid var(--coral);
-  color: var(--coral);
-}
-
-.carousel__container {
-  background-color: var(--header);
-  padding: 1rem 0.5rem;
-  border-radius: 8px 0px;
+  border-radius: 8px;
 }
 
 .left__title {
-  font-weight: 800;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
   font-size: 24px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .left__subtitle {
-  color: var(--gray-400);
+  color: var(--recommend-text);
+  font-size: 16px;
   font-weight: 300;
-  margin-bottom: 1rem;
+}
+
+.more__svg:hover {
+  opacity: 0.7;
+  transition: 0.2s;
+  cursor: pointer;
 }
 </style>

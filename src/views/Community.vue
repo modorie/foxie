@@ -2,7 +2,12 @@
   <section class="container">
     <div class="left">
       <div class="header">
-        <h1 class="page__title">Post</h1>
+        <div>
+          <h1 class="page__title">Community</h1>
+          <p class="page__subtitle">
+            커뮤니티 공간에서 자유롭게 이야기를 나눠보세요
+          </p>
+        </div>
 
         <div>
           <button @click="createArticle" class="mulish header__button">
@@ -75,30 +80,37 @@ export default {
 
 <style scoped>
 .container {
+  min-width: 80rem;
+  max-width: 90rem;
   display: flex;
 }
 
 .left {
-  margin-right: 2rem;
   width: 100%;
+  margin-right: 2rem;
 }
 
 .right {
-  margin-top: 68px;
+  margin-top: 100px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 3rem;
 }
 
 .page__title {
   font-family: "Mulish", sans-serif;
   letter-spacing: 0rem;
   color: var(--page-title);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 2rem;
+}
+
+.page__subtitle {
+  font-size: 14px;
+  color: var(--profile-settings-description);
 }
 
 .header__button {

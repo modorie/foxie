@@ -1,6 +1,8 @@
 <template>
   <section>
     <h1 class="page__title">Movies</h1>
+    <p class="page__subtitle">카테고리별로 다양한 영화 정보를 보여드릴게요</p>
+
     <h1 class="movielist__title">최신 영화</h1>
     <MovieCarousel :movies="nowplaying_MovieList" />
 
@@ -154,8 +156,13 @@ export default Vue.extend({
   font-family: "Mulish", sans-serif;
   letter-spacing: 0rem;
   color: var(--page-title);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
+}
+
+.page__subtitle {
+  font-size: 14px;
+  color: var(--profile-settings-description);
 }
 
 .movielist__title {

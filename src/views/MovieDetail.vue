@@ -129,13 +129,6 @@
             </div>
           </div>
 
-          <!-- TODO: Directing이면서 Popularity 가장 높은 사람을 메인 감독 -->
-          <!-- <div class="body__info">
-          <h2 class="body__info__title">감독 (임시)</h2>
-
-          <div>{{ staffs[0] }}</div>
-        </div> -->
-
           <div class="body__info">
             <h2 class="body__info__title">리뷰</h2>
 
