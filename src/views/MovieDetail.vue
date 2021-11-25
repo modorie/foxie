@@ -47,7 +47,7 @@
 
               <div class="info__footer">
                 <div class="info__score">
-                  <icon-base viewBox="0 0 18 18" width="1.5rem" height="1.5rem">
+                  <icon-base viewBox="0 0 18 18" width="1.3rem" height="1.3rem">
                     <icon-star />
                   </icon-base>
 
@@ -286,7 +286,7 @@ export default {
 }
 
 .info__release {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .info__time::before {
