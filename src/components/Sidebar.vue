@@ -45,6 +45,7 @@
         <p class="sidebar__menu__title mulish">COMMUNITY</p>
       </div>
     </router-link>
+
     <div @click="getProfile">
       <div class="sidebar__menu">
         <icon-base viewBox="0 0 32 36" width="32" height="32" icon-name="icon">
@@ -159,6 +160,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .sidebar__menu__title {
