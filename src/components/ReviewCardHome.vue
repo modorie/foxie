@@ -1,64 +1,66 @@
 <template>
-  <div class="card">
-    <div class="card__left">
-      <img
-        class="card__left__img"
-        :src="`https://image.tmdb.org/t/p/original${moviePoster}`"
-      />
-    </div>
+  <router-link :to="{ name: 'MovieDetail', params: { id: review.movie } }">
+    <div class="card">
+      <div class="card__left">
+        <img
+          class="card__left__img"
+          :src="`https://image.tmdb.org/t/p/original${moviePoster}`"
+        />
+      </div>
 
-    <div class="card__right">
-      <div>
-        <div class="profile">
-          <div class="profile__avatar">
-            <img
-              v-if="review.author.profile.avatar"
-              :src="review.author.profile.avatar"
-              style="height: 48px; width: 48px"
-              class="settings__form__photo__thumbnail"
-            />
-            <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
-              <icon-avatar />
+      <div class="card__right">
+        <div>
+          <div class="profile">
+            <div class="profile__avatar">
+              <img
+                v-if="review.author.profile.avatar"
+                :src="review.author.profile.avatar"
+                style="height: 48px; width: 48px"
+                class="settings__form__photo__thumbnail"
+              />
+              <icon-base v-else viewBox="0 0 64 64" width="48" height="48">
+                <icon-avatar />
+              </icon-base>
+            </div>
+
+            <div class="profile__info">
+              <div class="profile__info__header">
+                <p
+                  class="profile__nickname"
+                  v-text="
+                    review.author.profile.nickname
+                      ? review.author.profile.nickname
+                      : review.author.username
+                  "
+                ></p>
+                <p class="profile__time">{{ review.created_at | time }}</p>
+              </div>
+
+              <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
+              <div class="profile__score">
+                <StarRating size="18" score="9" />
+              </div>
+            </div>
+          </div>
+
+          <div class="card__right__title">{{ movieTitle }}</div>
+
+          <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
+          <p class="card__right__text">{{ review.content | truncate(90) }}</p>
+        </div>
+        <div class="footer">
+          <div class="footer__item">
+            <icon-base viewBox="0 0 22 25" width="24" height="22">
+              <icon-heart class="footer__svg" />
             </icon-base>
+            <p class="footer__item__count">
+              {{ review.like_users.length }}
+            </p>
           </div>
-
-          <div class="profile__info">
-            <div class="profile__info__header">
-              <p
-                class="profile__nickname"
-                v-text="
-                  review.author.profile.nickname
-                    ? review.author.profile.nickname
-                    : review.author.username
-                "
-              ></p>
-              <p class="profile__time">{{ review.created_at | time }}</p>
-            </div>
-
-            <!-- TODO : 컴포넌트로 분리해서 점수만 줬을 때 별점 만들어지도록 할 예정 -->
-            <div class="profile__score">
-              <StarRating size="18" score="9" />
-            </div>
-          </div>
-        </div>
-
-        <div class="card__right__title">{{ movieTitle }}</div>
-
-        <!-- FIX ME: 사이즈 줄이면 줄 늘어남 -->
-        <p class="card__right__text">{{ review.content | truncate(170) }}</p>
-      </div>
-      <div class="footer">
-        <div class="footer__item">
-          <icon-base viewBox="0 0 22 25" width="24" height="22">
-            <icon-heart class="footer__svg" />
-          </icon-base>
-          <p class="footer__item__count">
-            {{ review.like_users.length }}
-          </p>
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>

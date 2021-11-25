@@ -2,14 +2,6 @@
   <div>
     <p class="comment__title mulish">Comment</p>
     <div class="comment__form">
-      <icon-base
-        viewBox="0 0 64 64"
-        width="32"
-        height="32"
-        class="comment__author__avatar"
-      >
-        <icon-avatar />
-      </icon-base>
       <input
         class="comment__input"
         type="text"
@@ -26,14 +18,8 @@
 
 <script>
 import axios from "axios";
-import IconBase from "@/components/IconBase.vue";
-import IconAvatar from "@/components/icons/IconAvatar.vue";
 
 export default {
-  components: {
-    IconBase,
-    IconAvatar,
-  },
   data() {
     return {
       comment: null,

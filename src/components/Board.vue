@@ -29,9 +29,22 @@
                 >
               </td>
             </router-link>
-            <td class="board__body__row">{{ article.author.username }}</td>
             <td class="board__body__row">
-              {{ article.created_at | time() }}
+              <router-link
+                :to="{
+                  name: 'Profile',
+                  params: { username: article.author.username },
+                }"
+              >
+                {{
+                  article.author.profile.nickname
+                    ? article.author.profile.nickname
+                    : article.author.username
+                }}
+              </router-link>
+            </td>
+            <td class="board__body__row">
+              {{ article.created_at | time }}
             </td>
             <!-- <td class="board__body__row">1234</td> -->
             <td class="board__body__row">{{ article.likes_count }}</td>
