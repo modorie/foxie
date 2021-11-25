@@ -57,7 +57,9 @@
                 </div>
 
                 <router-link to="#">
-                  <div class="info__button">리뷰 쓰기</div>
+                  <div class="info__button" @click="scrollMeTo('review')">
+                    리뷰 쓰기
+                  </div>
                 </router-link>
               </div>
 
@@ -133,7 +135,7 @@
             </div>
           </div>
 
-          <div class="body__info">
+          <div class="body__info" ref="review">
             <h2 class="body__info__title">리뷰</h2>
 
             <p class="body__info__content">
@@ -201,6 +203,14 @@ export default {
     axios.get(`api/v1/movies/${id}/reviews`).then((res) => {
       this.reviews = res.data;
     });
+  },
+  methods: {
+    scrollMeTo(ref) {
+      var element = this.$refs[ref];
+      var top = element.offsetTop;
+
+      window.scrollTo(0, top);
+    },
   },
 };
 </script>
