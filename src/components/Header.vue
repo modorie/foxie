@@ -56,7 +56,7 @@
       </icon-base>
     </button>
 
-    <div v-if="!isLogin">
+    <div v-if="isLogin">
       <div class="header__info">
         <div class="header-bell">
           <icon-base
@@ -135,6 +135,7 @@ export default Vue.extend({
       search_MovieList: [],
       searchInput: "",
       active: false,
+      isLogin: false,
       isDropdownOpen: false,
       isDark: window.matchMedia("(prefers-color-scheme: dark)").matches,
     };
@@ -193,6 +194,13 @@ export default Vue.extend({
 
   computed: {
     ...authComputed,
+  },
+
+  created() {
+    const token = localStorage.getItem("user");
+    if (token) {
+      this.isLogin = true;
+    }
   },
 
   mounted() {
