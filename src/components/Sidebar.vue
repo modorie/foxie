@@ -170,33 +170,39 @@ export default {
 }
 
 .router-link-active {
-  transition: 0.2s;
+  transition: 0.3s;
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: inset -3px 0 0 0px #ed5656;
 }
 
 .router-link-active .sidebar__menu__title {
+  transition: 0.3s;
   color: #ffffff;
 }
 
 .router-link-active .sidebar__menu__icon {
+  transition: 0.3s;
   stroke: #ed5656;
 }
 
 .sidebar__menu:hover .sidebar__menu__title {
+  transition: 0.3s;
   color: rgba(255, 255, 255, 0.6);
 }
 
 .sidebar__menu:hover .sidebar__menu__icon {
+  transition: 0.3s;
   stroke: rgba(255, 255, 255, 0.6);
 }
 
 /* not active를 css not selector로 처리 하기 어려워서 무식하게 구현 */
 .router-link-active .sidebar__menu:hover .sidebar__menu__title {
+  transition: 0.3s;
   color: #ffffff;
 }
 
 .router-link-active .sidebar__menu:hover .sidebar__menu__icon {
+  transition: 0.3s;
   stroke: #ed5656;
 }
 </style>
