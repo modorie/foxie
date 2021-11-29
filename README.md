@@ -167,6 +167,7 @@ $ python manage.py seed_community --number=100
 - 마크다운 및 이미지 지원
 
 <br/>
+
 ### 프로필 페이지
 
 ![](https://i.imgur.com/pgjATOT.jpg)
