@@ -1,3 +1,6 @@
+<br />
+<br />
+
 <div align="center">
     <img src="https://github.com/modorie/foxie/blob/dev/src/assets/Foxie1.png?raw=true"  width="100px"/>
     <h1>Foxie</h1>
