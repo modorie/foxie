@@ -227,7 +227,7 @@ $ python manage.py seed_community --number=100
 
 ### ERD
 
-![](https://i.imgur.com/kIY1oEm.png)
+![](https://i.imgur.com/EyqlakY.png)
 
 <br/>
 
@@ -235,27 +235,28 @@ $ python manage.py seed_community --number=100
 
 <!-- ![](https://i.imgur.com/VztpmKn.png) -->
 
+<div align="center">
 <table width="100%">
   <thead>
     <tr>
-      <td width="25%" align="center">
+      <td align="center">
         <br />
         <a href="https://github.com/devpla"
           ><img
             src="https://avatars.githubusercontent.com/u/87457066?v=4"
-            width="200px"
+            width="300px"
         /></a>
           <p>
             <br />
             <b>채연희</b>
           </p>
       </td>
-      <td width="25%" align="center">
+      <td align="center">
         <br />
         <a href="https://github.com/seokzin">
           <img
             src="https://avatars.githubusercontent.com/u/43740455?v=4"
-            width="200px"
+            width="300px"
         />
         </a>
         <p>
@@ -322,7 +323,8 @@ $ python manage.py seed_community --number=100
     </tr>
   </tbody>
 </table>
-
+</div>
+    
 <br/>
 
 ## Retrospective
