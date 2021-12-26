@@ -207,9 +207,9 @@ $ python manage.py seed_community --number=100
 | ![](https://i.imgur.com/KHp9sIv.png) | ![](https://i.imgur.com/Lw68cFn.png) |
 | --- | --- |
 
+<br/>
 
 ## Development
-
 
 ### Schedule
 
