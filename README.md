@@ -1,7 +1,7 @@
 <div align="center">
     <img src="https://github.com/modorie/foxie/blob/dev/src/assets/Foxie1.png?raw=true"  width="100px"/>
     <h1>Foxie</h1>
-    <a href="https://github.com/modorie"><img src="https://img.shields.io/badge/MADE%20BY%20Modorie-f67878.svg?style=for-the-badge&labelColor=000"></a> <img alt="" src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=3f3f46&color=ffcc99">
+    <a href="https://github.com/modorie"><img src="https://img.shields.io/badge/MADE%20BY%20Modorie-f67878.svg?style=for-the-badge&labelColor=000"></a> <a href="https://github.com/modorie/foxie/blob/dev/LICENSE"><img alt="" src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=3f3f46&color=ffcc99"></a>
 </div>
 
 <br/>
@@ -24,7 +24,9 @@
 
 ## Description
 
-![](https://raw.githubusercontent.com/modorie/foxie/313db7241cfb8879609e40013d8af8a8a8932102/src/assets/prince-and-fox1.svg)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/modorie/foxie/313db7241cfb8879609e40013d8af8a8a8932102/src/assets/prince-and-fox1.svg"/>
+</div>
 
 ### 당신만을 위한 영화 커뮤니티, Foxie
 - 유저 참여형 추천 시스템
