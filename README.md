@@ -226,7 +226,7 @@ $ python manage.py seed_community --number=100
 
 ### Languages and Tools
 
-![](https://i.imgur.com/O6z6lEn.png)
+![image](https://user-images.githubusercontent.com/87457066/156410064-deccad50-68f7-48ce-bc1d-3fbe3c43495f.png)
 
 <br/>
 
