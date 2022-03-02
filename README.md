@@ -218,7 +218,7 @@ $ python manage.py seed_community --number=100
 
 ### Schedule
 
-- **기간** : 2021.11.17 ~ 2021.11.25
+- **기간** : 2021.11.12 ~ 2021.11.25
 
 ![](https://i.imgur.com/MmGbUIf.png)
 
